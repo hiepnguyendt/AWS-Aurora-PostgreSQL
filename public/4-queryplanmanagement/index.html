@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Query Plan Management :: AWS RDS PostgreSQL</title>
+
+    
+    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
+    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
+    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
+    <link href="/css/theme.css?1703602489" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/4-queryplanmanagement/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1703602489"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/" title="Preparation Steps" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/">
+           <b> 2. </b> Preparation Steps
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/2-1-createvpc/" title="Create a VPC" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/2-1-createvpc/">
+           <b> 2.1. </b> Create a VPC
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/2-2-createsg/" title="Create Security Group " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/2-2-createsg/">
+           <b> 2.2. </b> Create Security Group 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/2-3-createec2/" title="Create a EC2 instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/2-3-createec2/">
+           <b> 2.3. </b> Create a EC2 instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/2-4-createpgsg/">
+           <b> 2.4. </b> Create Subnet Group and Parameter Group
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/2-5-createaupg/" title="Create Aurora PostgreSQL Database" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/2-5-createaupg/">
+           <b> 2.5. </b> Create Aurora PostgreSQL Database
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-preparation/2-6-configurecloud9andinitializedatabase/" title=" Create, Configure Cloud9 and Initialize Database" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-preparation/2-6-configurecloud9andinitializedatabase/">
+           <b> 2.6.</b>  Create, Configure Cloud9 and Initialize Database
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-fastcloning/" title="Fast Cloning" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-fastcloning/">
+           <b> 3. </b> Fast Cloning
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-queryplanmanagement/" title="Query Plan Management" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/4-queryplanmanagement/">
+           <b> 4. </b> Query Plan Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-clustercachemanagement/" title="Cluster Cache Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-clustercachemanagement/">
+           <b> 5. </b> Cluster Cache Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-clustercachemanagement/5-1-setupclustercachemanagement/" title="Setup cluster cache management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-clustercachemanagement/5-1-setupclustercachemanagement/">
+           <b> 5.1. </b> Setup cluster cache management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" title="Benchmarking with Cluster Cache management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">
+           <b> 5.2. </b> Benchmarking with Cluster Cache management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-databaseactivitystreaming/" title="Database activity streaming" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-databaseactivitystreaming/">
+           <b> 6. </b> Database activity streaming
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/" title="Setup KMS for Database Activity Streaming" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/">
+           <b> 6.1. </b> Setup KMS for Database Activity Streaming
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/" title="Database Activity Streams in action" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/">
+           <b> 6.2. </b> Database Activity Streams in action
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-rdsperformanceinsights/" title="RDS Performance Insights" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-rdsperformanceinsights/">
+           <b> 7. </b> RDS Performance Insights
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/8-createdatasetandautoscale/" title="Create dataset and Auto Scale" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/8-createdatasetandautoscale/">
+           <b> 8. </b> Create dataset and Auto Scale
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/9-testfaulttolerance/" title="Test Fault Tolerance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/9-testfaulttolerance/">
+           <b> 9. </b> Test Fault Tolerance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/9-testfaulttolerance/9-1-setupfailovereventnotifications/" title="Set up failover event notifications" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/9-testfaulttolerance/9-1-setupfailovereventnotifications/">
+           <b> 9.1. </b> Set up failover event notifications
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/9-testfaulttolerance/9-2-testamanualdbclusterfailover/" title="Test a manual DB cluster failover" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/9-testfaulttolerance/9-2-testamanualdbclusterfailover/">
+           <b> 9.2. </b> Test a manual DB cluster failover
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/9-testfaulttolerance/9-3-testingfaultinjectionqueries/" title="Testing fault injection queries" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/9-testfaulttolerance/9-3-testingfaultinjectionqueries/">
+           <b> 9.3 </b> Testing fault injection queries
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10-comparationrdspgandaupg/" title="Comparison RDS PostgreSQL and Aurora PostgreSQL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/10-comparationrdspgandaupg/">
+           <b> 10. </b> Comparison RDS PostgreSQL and Aurora PostgreSQL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/11-cleanup/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/11-cleanup/">
+           <b> 11. </b> Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/4-queryplanmanagement/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="/vi/4-queryplanmanagement/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>AWS Aurora PostgreSQL</a> > Query Plan Management
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Query Plan Management
+            </h1>
+          
+
+        
+
+
+
+	<p>With query plan management (QPM), you can control execution plans for a set of statements that you want to manage. You can do the following:</p>
+<ul>
+<li>Improve plan stability by forcing the optimizer to choose from a small number of known, good plans.</li>
+<li>Optimize plans centrally and then distribute the best plans globally.</li>
+<li>Identify indexes that aren&rsquo;t used and assess the impact of creating or dropping an index.</li>
+<li>Automatically detect a new minimum-cost plan discovered by the optimizer.</li>
+<li>Try new optimizer features with less risk, because you can choose to approve only the plan changes that improve performance.</li>
+</ul>
+<p>For additional details on the Query Plan Management please refer official documentation <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.html">Managing Query Execution Plans for Aurora PostgreSQL</a> .</p>
+<p>The quickest way to enable QPM is to use the automatic plan capture, which enables the plan capture for all SQL statements that run at least two times. In this lab, we will walk through the process of enabling QPM with automatic plan capture, evolving captured query plans to manually accept them and fixing query plans by using optimizer hints.</p>
+<h4 id="quick-start-guide-on-using-qpm-with-automatic-capture">Quick start guide on using QPM with automatic capture</h4>
+<p>Here are the steps to configure and enable QPM on your Aurora PostgreSQL cluster to automatically capture and control execution plans for a set of SQL statements.</p>
+<ol>
+<li>Modify the Amazon Aurora DB Cluster Parameters related to the QPM.</li>
+</ol>
+<ul>
+<li>
+<p>Open the <a href="https://console.aws.amazon.com/rds/home?#parameter-group-list:">Amazon RDS service console Parameters group section</a>  located on left-hand panel of RDS console.</p>
+</li>
+<li>
+<p>In the list, choose the parameter group for your Aurora PostgreSQL DB cluster. The DB cluster must use a parameter group other than the default, because you can&rsquo;t change values in a default parameter group. For more information, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_WorkingWithParamGroups.html#USER_WorkingWithParamGroups.CreatingCluster">Creating a DB Cluster Parameter Group</a>.</p>
+</li>
+<li>
+<p>Click <strong>Edit</strong> under the <strong>Actions</strong> menu.</p>
+<pre><code> ![QMP](/images/4.1/1.png)
+</code></pre>
+</li>
+<li>
+<p>In Parameter Filter field, enter <code>rds.enable_plan_management</code> without any spaces to reveal the filtered parameter. Set value of <strong>rds.enable_plan_management</strong> to 1 and click on Save changes.</p>
+<pre><code> ![QMP](/images/4.1/2.png)
+</code></pre>
+</li>
+<li>
+<p>Click on the database parameter group name <strong>DB instance parameter group</strong> and click Edit.</p>
+<pre><code> ![QMP](/images/4.1/3.png)
+</code></pre>
+</li>
+<li>
+<p>We need to change two paramaters:</p>
+<ul>
+<li>
+<p>Modify the value for <code>apg_plan_mgmt.capture_plan_baselines</code> parameter to automatic</p>
+</li>
+<li>
+<p>Modify the value for <code>apg_plan_mgmt.use_plan_baselines</code> to true</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> Changes to save changes</p>
+<p><img src="/images/4.1/4.png" alt="QMP"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Databases</strong> on the left navigation panel and wait for the status of the instance to change to <strong>available</strong>. The parameter changes will take effect after reboot as suggested on the configuration tab of the Aurora writer and reader instances.</p>
+</li>
+<li>
+<p>Reboot the writer and reader nodes by selecting it and going to the <strong>Actions</strong> menu.</p>
+</li>
+<li>
+<p>Wait for the Status of Writer and Reader nodes to become Available.</p>
+</li>
+</ul>
+<ol start="2">
+<li>Create and verify the apg_plan_mgmt extension for your DB instance.</li>
+</ol>
+<ul>
+<li>
+<p>Open a Cloud9 terminal window by referring <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/098605dc-8eee-4e84-85e9-c5c6c9e43de2/en-US/lab1-5-client/cloud9-terminal/">Open Cloud9 Terminal Window</a> section and create the <strong>apg_plan_mgmt</strong> extension for your DB instance.</p>
+<pre><code> ```
+ psql
+ CREATE EXTENSION apg_plan_mgmt;
+ select extname,extversion from pg_extension where extname='apg_plan_mgmt';
+
+ ```
+</code></pre>
+</li>
+</ul>
+<p>You should see output similar to the following. The extension version will vary depending on the Aurora PostgreSQL version.</p>
+<pre><code>   ![QMP](/images/4.1/5.png)
+</code></pre>
+<ul>
+<li>
+<p>Review all QPM related parameters are modified to the appropriate value by pasting the following queries.</p>
+<pre><code> ```
+ show apg_plan_mgmt.capture_plan_baselines;
+ show apg_plan_mgmt.use_plan_baselines;
+ \q
+ ```
+
+ ![QMP](/images/4.1/6.png)
+</code></pre>
+</li>
+</ul>
+<ol start="3">
+<li>Run synthetic workload with automatic capture.</li>
+</ol>
+<ul>
+<li>
+<p>Open a terminal window in Cloud9 and run pgbench (a PostgreSQL benchmarking tool) to generate a simulated workload, which runs same queries for a specified period. With automatic capture enabled, QPM captures plans for each query that runs at least twice.</p>
+<pre><code> ```
+ pgbench --progress-timestamp -M prepared -n -T 100 -P 1  -c 100 -j 100 -b tpcb-like@1 -b select-only@20
+ # The following pgbench command runs for 100 seconds with 100 clients/db sessions and 100 job threads emitting progress every 1 second
+ ```
+</code></pre>
+</li>
+</ul>
+<p><em>Wait for the above command to finish.</em></p>
+<ul>
+<li>Open another terminal window on Cloud9 to query <code>apg_plan_mgmt.dba_plans</code> table to view the managed statements and the execution plans for the SQL statements started with the pgbench tool. Then run the following commands:</li>
+</ul>
+<pre tabindex="0"><code>psql
+
+SELECT sql_hash, 
+       plan_hash, 
+       status, 
+       enabled, 
+       sql_text 
+FROM   apg_plan_mgmt.dba_plans;
+</code></pre><p><img src="/images/4.1/7.png" alt="QMP"></p>
+<ul>
+<li>Turn off automatic capture of query plans. Capturing all plans with automatic capture has little runtime overhead and can be enabled in production. We are turning off the automatic capture to make sure that we don’t capture SQL statements outside the pgbench workload. This can be turned off by setting the <strong>apg_plan_mgmt.capture_plan_baselines</strong> parameter to <code>off</code> from the DB parameter group.</li>
+</ul>
+<p><img src="/images/4.1/8.png" alt="QMP"></p>
+<ul>
+<li>Verify parameter settings using PSQL. As <strong>apg_plan_mgmt.capture_plan_baselines</strong> is a dynamic parameter, it doesn&rsquo;t need an instance reboot to take effect. It will take a 5-10 seconds for the parameter value to change.</li>
+</ul>
+<pre tabindex="0"><code>show apg_plan_mgmt.capture_plan_baselines;
+</code></pre><p><img src="/images/4.1/9.png" alt="QMP"></p>
+<ul>
+<li>Let’s verify that the execution plan for one of the managed statements is same as the plan captured by QPM. Execute explain plan on one of the managed statements. The explain plan output shows that the SQL hash and the plan hash matches with the QPM approved plan for that statement.</li>
+</ul>
+<pre tabindex="0"><code>explain (hashes true) UPDATE pgbench_tellers SET tbalance = tbalance + 100 WHERE tid = 200; 
+# (hashes true): This is likely part of a specific testing or benchmarking framework and doesn&#39;t directly affect the UPDATE statement itself. It might indicate a particular flag or configuration within the framework.
+</code></pre><p><img src="/images/4.1/10.png" alt="QMP"></p>
+
+<div class="notices note" ><p>In addition to automatic plan capture, QPM has manual plan capture capability, which offers a mechanism to capture execution plans for known problematic queries. Capturing the plans automatically is recommended generally. However, there are situations where capturing plans manually would be the best option, such as:</p>
+<ul>
+<li>You don&rsquo;t want to enable plan management at the Database level, but you do want to control a few critical SQL statements only.</li>
+<li>You want to save the plan for a specific set of literals or parameter values that are causing a performance proble</li>
+</ul>
+</div>
+
+<h4 id="qpm-plan-adaptability-with-plan-evolution-mechanism">QPM Plan adaptability with plan evolution mechanism</h4>
+<ul>
+<li>
+<p>If the optimizer&rsquo;s generated plan is not a stored plan, the optimizer captures and stores it as a new unapproved plan to preserve stability for the QPM-managed SQL statements. Query plan management provides techniques and functions to add, maintain, and improve execution plans and thus provides Plan adaptability. Users can instruct QPM on demand or periodically to evolve all the stored plans to see if there is a better minimum cost plan available than any of the approved plans.</p>
+</li>
+<li>
+<p>QPM provides <strong>apg_plan_mgmt.evolve_plan_baselines</strong> function to compare plans based on their actual performance. Depending on the outcome of your performance experiments, you can change a plan&rsquo;s status from <strong>unapproved</strong> to either <strong>approved</strong> or <strong>rejected</strong>. You can instead decide to use the <strong>apg_plan_mgmt.evolve_plan_baselines</strong> function to temporarily disable a plan if it does not meet your requirements. For additional details about the QPM Plan evolution, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.Maintenance.html#AuroraPostgreSQL.Optimize.Maintenance.EvaluatingPerformance">Evaluating Plan Performance</a> .</p>
+</li>
+<li>
+<p>For the first use case, we’ll walk through an example on how QPM helps ensure plan stability where various changes can result in plan regression.</p>
+</li>
+<li>
+<p>In most cases, you set up QPM to use automatic plan capture so that plans are captured for all statements that run two or more times. However, you can also capture plans for a specific set of statements that you specify manually. To do this, you set <strong>apg_plan_mgmt.capture_plan_baselines = off</strong> in the DB parameter group (which is the default) and <strong>apg_plan_mgmt.capture_plan_baselines = manual</strong> at the session level.</p>
+</li>
+</ul>
+<ol>
+<li>Enable manual plan capture to instruct QPM to capture the execution plan of the desired SQL statements manually.</li>
+</ol>
+<pre tabindex="0"><code>SET apg_plan_mgmt.capture_plan_baselines = manual;
+</code></pre><ol start="2">
+<li>Run explain plan for a specific query so that QPM can capture the execution plan (the following output for the explain plan is truncated for brevity).</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 );
+</code></pre><p><img src="/images/4.1/11.png" alt="QMP"></p>
+<ol start="3">
+<li>Disable manual capture of new SQL statements with their plans after you capture the execution plan for the desired SQL statement.</li>
+</ol>
+
+<div class="notices note" ><p>QPM continues to capture new plans for managed SQL statements even after setting apg_plan_mgmt.capture_plan_baselines to off.</p>
+</div>
+
+<pre tabindex="0"><code>SET apg_plan_mgmt.capture_plan_baselines = off;
+</code></pre><ol start="4">
+<li>View captured query plan for the specific query that you ran previously. The plan_outline column in the table <code>apg_plan_mgmt.dba_plans</code> shows the entire plan for the SQL. For brevity, the plan_outline isn&rsquo;t shown here.</li>
+</ol>
+<pre tabindex="0"><code>SELECT sql_hash,
+                plan_hash,
+               status,
+               estimated_total_cost &#34;cost&#34;,
+               sql_text
+FROM apg_plan_mgmt.dba_plans;
+</code></pre><p><img src="/images/4.1/12.png" alt="QMP"></p>
+<ol start="5">
+<li>To instruct the query optimizer to use the approved or preferred captured plans for your managed statements, set the parameter <strong>apg_plan_mgmt.use_plan_baselines</strong> to true.</li>
+</ol>
+<pre tabindex="0"><code>SET apg_plan_mgmt.use_plan_baselines = true;
+</code></pre><ol start="6">
+<li>View the explain plan output to see that the QPM approved plan is used by the query optimizer.</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 ); 
+</code></pre><p><img src="/images/4.1/13.png" alt="QMP"></p>
+<ol start="7">
+<li>Create a new index on the pgbench_history table column bid to change the planner configuration and force the query optimizer to generate a new plan.</li>
+</ol>
+<pre tabindex="0"><code>create index pgbench_hist_bid on pgbench_history(bid);
+</code></pre><ol start="8">
+<li>View the explain plan output to see that QPM detects a new plan but still uses the approved plan and maintains the plan stability. Note the line <em><strong>An Approved plan was used instead of the minimum cost plan</strong></em>. in the explain plan output.</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 );
+</code></pre><p><img src="/images/4.1/14.png" alt="QMP"></p>
+<ol start="9">
+<li>Run the following SQL query to view the new plan and status of the plan. To ensure plan stability, QPM stores all the newly generated plans for a managed query in QPM as unapproved plans.</li>
+</ol>
+<ul>
+<li>
+<p>The following output shows that there are two different execution plans stored for the same managed statement, as shown by the two different plan_hash values. Although the new execution plan has the minimum cost (lower than the approved plan), QPM continues to ignore the unapproved plans to maintain plan stability.</p>
+</li>
+<li>
+<p>The plan_outline column in the table <code>apg_plan_mgmt.dba_plans</code> shows the entire plan for the SQL. For brevity, the plan_outline is not shown here.</p>
+</li>
+</ul>
+<pre tabindex="0"><code>SELECT sql_hash,
+                plan_hash,
+               status,
+               estimated_total_cost &#34;cost&#34;,
+               sql_text
+FROM apg_plan_mgmt.dba_plans;
+</code></pre><p><img src="/images/4.1/15.png" alt="QMP"></p>
+<ul>
+<li>The following is an example of plan adaptability with QPM. This example evaluates the unapproved plan based on the minimum speedup factor. It approves any captured unapproved plan that is faster by at least 10 percent than the best approved plan for the statement. For additional details, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.Maintenance.html#AuroraPostgreSQL.Optimize.Maintenance.EvaluatingPerformance">Evaluating Plan Performance in the Aurora documentation</a>.</li>
+</ul>
+<pre tabindex="0"><code>SELECT apg_plan_mgmt.Evolve_plan_baselines (sql_hash, plan_hash, 1.1,&#39;approve&#39;)
+FROM   apg_plan_mgmt.dba_plans
+WHERE  status = &#39;Unapproved&#39;; 
+</code></pre><p><img src="/images/4.1/16.png" alt="QMP"></p>
+<ul>
+<li>After QPM evaluates the plan based on the speed factor, the plan status changes from <strong>unapproved</strong> to <strong>approved</strong>. At this point, the optimizer can choose the newly approved lower cost plan for that managed statement.</li>
+</ul>
+<pre tabindex="0"><code>SELECT sql_hash,
+                plan_hash,
+               status,
+               estimated_total_cost &#34;cost&#34;,
+               sql_text
+FROM apg_plan_mgmt.dba_plans;
+</code></pre><p><img src="/images/4.1/17.png" alt="QMP"></p>
+<ol start="10">
+<li>View the explain plan output to see whether the query is using the newly approved minimum cost plan.</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 );
+</code></pre><p><img src="/images/4.1/18.png" alt="QMP"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-fastcloning/" title="Fast Cloning"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/5-clustercachemanagement/" title="Cluster Cache Management" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1703602489"></script>
+    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
+    <script src="/js/jquery.sticky.js?1703602489"></script>
+    <script src="/js/featherlight.min.js?1703602489"></script>
+    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
+    <script src="/js/learn.js?1703602489"></script>
+    <script src="/js/hugo-learn.js?1703602489"></script>
+
+    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

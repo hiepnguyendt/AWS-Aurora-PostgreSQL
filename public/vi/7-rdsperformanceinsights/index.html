@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>RDS Performance Insights :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
+    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
+    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
+    <link href="/css/theme.css?1703602489" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/7-rdsperformanceinsights/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1703602489"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-introduce/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-introduce/">
+           <b> 1. </b> Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/" title="Preparation Steps" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/">
+          Preparation Steps
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Create a VPC" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/2-1-createvpc/">
+           <b> 2.1. </b> Create a VPC
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Create Security Group " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/2-2-createsg/">
+           <b> 2.2. </b> Create Security Group 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Create a EC2 instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/2-3-createec2/">
+           <b> 2.3. </b> Create a EC2 instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/2-4-createpgsg/">
+           <b> 2.4. </b> Create Subnet Group and Parameter Group
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/2-5-createaupg/" title="Create Aurora PostgreSQL Database" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/2-5-createaupg/">
+           <b> 2.5. </b> Create Aurora PostgreSQL Database
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title=" Create, Configure Cloud9 and Initialize Database" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">
+           <b> 2.6.</b>  Create, Configure Cloud9 and Initialize Database
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-fastcloning/" title="Start with PostgreSQL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-fastcloning/">
+           <b> 2. </b> Start with PostgreSQL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-clustercachemanagement/" title="Start with PostgreSQL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-clustercachemanagement/">
+           <b> 2. </b> Start with PostgreSQL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/" title="Setup cluster cache management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/">
+           <b> 5.1. </b> Setup cluster cache management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" title="Database and Schemas" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">
+           <b> 2.2. </b> Database and Schemas
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-queryplanmanagement/" title="Create RDS PostgreSQL Database Instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-queryplanmanagement/">
+           <b> 3. </b> Create RDS PostgreSQL Database Instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-databaseactivitystreaming/" title="Import data into PostgreSQl" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-databaseactivitystreaming/">
+           <b> 4. </b> Import data into PostgreSQl
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/" title="Configure the database client" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/">
+           <b> 4.1. </b> Configure the database client
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/" title="Verify DB instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/">
+           <b> 2. </b> Verify DB instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/9-testfaulttolerance/" title="Querying data" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/9-testfaulttolerance/">
+           <b> 5. </b> Querying data
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/" title="Set up failover event notifications" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/">
+           <b> 9.1 </b> Set up failover event notifications
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/9-testfaulttolerance/9-2-testamanualdbclusterfailover/" title="Test a manual DB cluster failover" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/9-testfaulttolerance/9-2-testamanualdbclusterfailover/">
+           <b> 9.2. </b> Test a manual DB cluster failover
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/9-testfaulttolerance/9-3-testingfaultinjectionqueries/" title="Testing fault injection queries" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/9-testfaulttolerance/9-3-testingfaultinjectionqueries/">
+           <b> 9.3 </b> Testing fault injection queries
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/11-cleanup/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/11-cleanup/">
+           <b> 6. </b> Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-rdsperformanceinsights/" title="RDS Performance Insights" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/7-rdsperformanceinsights/">
+           <b> 7. </b> RDS Performance Insights
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/8-createdatasetandautoscale/" title="Create dataset and Auto Scale" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/8-createdatasetandautoscale/">
+           <b> 8. </b> Create dataset and Auto Scale
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/10-comparationrdspgandaupg/" title="Comparison RDS PostgreSQL and Aurora PostgreSQL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/10-comparationrdspgandaupg/">
+           <b> 10. </b> Comparison RDS PostgreSQL and Aurora PostgreSQL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/7-rdsperformanceinsights/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="/vi/7-rdsperformanceinsights/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>AWS RDS PostgreSQL</a> > RDS Performance Insights
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              RDS Performance Insights
+            </h1>
+          
+
+        
+
+
+
+	<p>This lab will demonstrate the use of Amazon RDS Performance Insights . Amazon RDS Performance Insights (RDS PI) monitors your Amazon RDS DB instance load so that you can analyze and troubleshoot your database performance.</p>
+<p>This lab contains the following tasks:</p>
+<ul>
+<li>Load sample data to the Aurora PostgreSQL DB cluster</li>
+<li>Understand the RDS Performance Insights interface</li>
+<li>Use RDS Performance Insights to identify performance issue
+<ul>
+<li>High volume insert load on the Aurora DB cluster using pgbench</li>
+<li>High volume update load on the Aurora DB cluster using pgbench</li>
+</ul>
+</li>
+</ul>
+<h4 id="load-sample-data-to-the-aurora-postgresql-db-cluster">Load sample data to the Aurora PostgreSQL DB cluster</h4>
+<ol>
+<li>
+<p>First, download all the required scripts used in this lab. Open a cloud9 terminal window by referring Open Cloud9 Terminal Window section and paste the commands below.</p>
+<pre tabindex="0"><code>cd
+wget wget https://aupg-fcj-assets.s3.us-west-2.amazonaws.com/lab-scripts/aupg-scripts.zip
+unzip aupg-scripts.zip
+</code></pre><p><img src="/images/7/1.png" alt="PI"></p>
+</li>
+<li>
+<p>Create sample HR schema by running the following commands on the Cloud9 terminal window:</p>
+<pre tabindex="0"><code>cd /home/ec2-user/aupg-scripts/scripts
+psql -f postgres-hr.sql # runs a PostgreSQL script named postgres-hr.sql
+</code></pre><p><img src="/images/7/2.png" alt="PI"></p>
+</li>
+</ol>
+<h4 id="understanding-the-rds-performance-insights-interface">Understanding the RDS Performance Insights interface</h4>
+<ol>
+<li>
+<p>While the command is running, open the Amazon RDS service <a href="https://console.aws.amazon.com/rds/">console</a>  in a new tab, if not already open.</p>
+<p><img src="/images/7/3.png" alt="PI"></p>
+</li>
+<li>
+<p>Next, select the desired <strong>DB instance</strong> to load the performance metrics for. For Aurora DB clusters, performance metrics are exposed on an individual DB instance basis. The different DB instances comprising a cluster may run different workload patterns, and might not all have Performance Insights enabled. For this lab, we are generating load on the <strong>Writer</strong> (Primary) DB instance only.</p>
+<p><img src="/images/7/4.png" alt="PI"></p>
+</li>
+<li>
+<p>Once a DB instance is selected, you will see the main dashboard view of RDS Performance Insights. The dashboard is divided into two sections, allowing you to drill down from high level performance indicator metrics down to individual waits, queries, users and hosts generating the load.</p>
+<p><img src="/images/7/7.png" alt="PI">
+<img src="/images/7/8.png" alt="PI"></p>
+</li>
+<li>
+<p>The performance metrics displayed by the dashboard are a moving time window. You can adjust the size of the time window by clicking the displayed time duration at the top right hand corner of the interface and selecting a relative range <strong>(5m, 1h, 5h, 24h, 1w, custom range)</strong> or specifying an absolute range. You can also zoom into a specific period of time by selecting with your mouse pointer and dragging across the graph</p>
+</li>
+</ol>
+
+<div class="notices note" ><p>All dashboard views are time synchronized. Zooming in will adjust all views, including the detailed drill-down section at the bottom.</p>
+</div>
+
+<p><em><strong>Here is a summary of all the sections of RDS Performance Insights console.</strong></em></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Filters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database load</td>
+<td>Load can be sliced by waits (default), application, database, hosts, session types, SQL commands and users</td>
+<td>This metric is designed to correlate aggregate load (sliced by the selected dimension) with the available compute capacity on that DB instance (number of vCPUs). Load is aggregated and normalized using the Average Active Session (AAS) metric. A number of AAS that exceeds the compute capacity of the DB instance is a leading indicator of performance problems.</td>
+</tr>
+<tr>
+<td>Granular Session Activity</td>
+<td>Sort by <strong>Waits, SQL (default), Hosts, Users, Session types, applications and databases</strong></td>
+<td>Drill down capability that allows you to get detailed performance data down to the individual commands. Amazon Aurora PostgreSQL specific wait events are documented in the Amazon Aurora PostgreSQL Reference <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Reference.html#AuroraPostgreSQL.Reference.Waitevents">guide</a>.</td>
+</tr>
+<tr>
+<td>Metrics Dashboard</td>
+<td>Click <strong>Metrics-new</strong> tab beside <strong>Dimensions</strong> to view counter metrics</td>
+<td>This section plots OS metrics, database metrics and CloudWatch metrics all in one place, such as number of rows read or written, transactions committed, etc. These metrics are useful to identify causes of abnormal behavior.</td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>
+<p>This is how the new metrics dashboard looks like.</p>
+<p><img src="/images/7/5.png" alt="PI"></p>
+</li>
+</ol>
+<h4 id="use-rds-performance-insights-to-identify-performance-issue">Use RDS Performance Insights to identify performance issue</h4>
+<p>In this exercise, we will learn how to use Performance Insights and PostgreSQL extensions to analyze the top wait events and performance issues. We will run some insert and update load test cases using pgbench utility on employees table in the HR schema.</p>
+<ol>
+<li>
+<p>Create pg_stat_statements extension</p>
+<p>In a new psql session, connect to mylab database and run the following SQL command:</p>
+
+<div class="notices note" ><p>Be sure to use a new psql session, otherwise your pg_stat_statements view will be created under the hr schema.</p>
+</div>
+
+<pre tabindex="0"><code>psql
+CREATE EXTENSION pg_stat_statements;
+\q
+</code></pre><p><img src="/images/7/6.png" alt="PI">
+Now, we are ready to run some load on the Aurora Instance to understand the capabilities of RDS Performance Insights.</p>
+</li>
+<li>
+<p>High volume insert load on the Aurora DB cluster using pgbench</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>On the cloud9 terminal window, run pgbench workload using the below command:</p>
+<pre tabindex="0"><code>pgbench -n -c 10 -T 300 -f /home/ec2-user/aupg-scripts/scripts/hrload1.sql  &gt; /tmp/pgload1-run1.log
+</code></pre><p>The <em><strong>hrload1.sql</strong></em> SQL script will ingest employee records using PL/pgSQL function <em><strong>add_employee_data</strong></em>. This function uses <em><strong>employee_seq</strong></em> to generate the next <em><strong>employee_id</strong></em>, randomly generate data including <em><strong>first_name</strong></em>, salary with <em><strong>department_id</strong></em> from departments table. Each function call will insert 5 records. This test will be executed for 5 minutes with 10 clients.</p>
+</li>
+<li>
+<p>Review the PI dashboard and check the top wait events, <strong>AAS (Average Active Sessions)</strong> for the duration.</p>
+<p><img src="/images/7/7.png" alt="PI">
+<img src="/images/7/8.png" alt="PI"></p>
+<p>You will find below top 3 wait events:</p>
+<ul>
+<li>
+<p><strong>IO:XactSync</strong> - In this wait event, a session is issuing a COMMIT or ROLLBACK, requiring the current transaction’s changes to be persisted. Aurora is waiting for Aurora storage to acknowledge persistence.</p>
+</li>
+<li>
+<p><strong>CPU</strong></p>
+</li>
+<li>
+<p><strong>LWLock:Buffer_content</strong> - In this wait event, a session is waiting to read or write a data page in memory while another session has that page locked for writing.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Note down the key metrics in the pgbench output such as latency average and tps.</p>
+<pre tabindex="0"><code>cat /tmp/pgload1-run1.log
+</code></pre><p><img src="/images/7/9.png" alt="PI"></p>
+</li>
+<li>
+<p>Now, lets check the top 5 queries by execute time and CPU Consumption. Run the below SQL query to understand the load caused by the above pgbench run using pg_stat_statements extension.</p>
+<pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
+</code></pre>
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span>
+        
+    	
+    	Explain psql command
+    	
+    	</span>
+    </div>
+    <div class="expand-content" style="display: none;">
+        <pre><code>**psql -c**: Executes a SQL command directly from the command line.\
+</code></pre>
+<p><strong>SELECT</strong>: Begins the SQL query.<br>
+<strong>substring(query, 1, 50) AS short_query</strong>: Displays the first 50 characters of each query for brevity.<br>
+<strong>round(total_exec_time::numeric, 2)</strong> AS total_exec_time: Shows the total execution time for each query, rounded to two decimal places.<br>
+<strong>calls</strong>: Indicates the number of times each query has been executed.<br>
+<strong>round(mean_exec_time::numeric, 2) AS mean_exec_time</strong>: Shows the average execution time per call for each query.<br>
+<strong>round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu</strong>: Calculates the percentage of total CPU time consumed by each query.<br>
+<strong>FROM pg_stat_statements</strong>: Accesses the pg_stat_statements view, which stores query execution statistics.<br>
+<strong>ORDER BY total_exec_time DESC</strong>: Sorts the results by total execution time in descending order (most resource-intensive queries first).<br>
+<strong>LIMIT 5</strong>: Restricts the output to the top 5 results.</p>
+
+    </div>
+</div>
+<p><img src="/images/7/10.png" alt="PI"></p>
+</li>
+<li>
+<p>Lets rerun the same function with 50 inserts per execution and check the impact on wait events. Use hrload2.sql for this run.</p>
+<pre tabindex="0"><code>pgbench -n -c 10 -T 300 -f /home/ec2-user/aurora-scripts/scripts/hrload2.sql &gt;  /tmp/pgload1-run2.log
+</code></pre></li>
+<li>
+<p>Go to PI dashboard and check the top wait events and top SQLs now and see if there are any changes.
+
+<div class="notices tip" ><p>If you don&rsquo;t see any new activity in the database load section, change the time range to last <strong>5 minutes</strong> and click <strong>Apply</strong>. Then change it back to last <strong>1 hour</strong> and click <strong>Apply</strong>.</p>
+</div>
+</p>
+<p><img src="/images/7/11.png" alt="PI">
+<img src="/images/7/12.png" alt="PI"></p>
+</li>
+<li>
+<p>Rerun the pg_stat_statements query to check resource consumption now.</p>
+<pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
+</code></pre><p><img src="/images/7/13.png" alt="PI"></p>
+</li>
+<li>
+<p>If you compare the wait events for the two pgbench runs, you will notice that IO:XactSync related waits have reduced in the latest run</p>
+</li>
+<li>
+<p>Can you verify whether the overall throughput (in terms of number of inserts) has increased by comparing the throughput and latencies reported by pgbench between the runs?</p>
+<pre tabindex="0"><code>cat /tmp/pgload1-run2.log
+</code></pre><p><img src="/images/7/14.png" alt="PI"></p>
+</li>
+</ul>
+<ol start="3">
+<li>High volume update load on the Aurora DB cluster using pgbench
+In this exercise, we will run updates on the employee table using update_employee_data_fname and update_employee_data_empid functions.</li>
+</ol>
+<ul>
+<li>
+<p>On the cloud9 terminal window, run pgbench update workload using the below command:</p>
+<pre tabindex="0"><code>pgbench -n -c 10  -T 180 -f /home/ec2-user/aurora-scripts/scripts/hrupdname.sql &gt; /tmp/pgload2-run1.log
+</code></pre><p>The <em><strong>hrupdname.sql</strong></em> SQL script will update employee salary details in <em><strong>employees</strong></em> table using PL/pgSQL function <em><strong>update_employee_data_fname</strong></em>. This function randomly selects the employee records and checks if their salary is within a range (min and max salary of their job), if not updates their salary using their <em><strong>first_name</strong></em>. Each function call will select 5 records randomly. This test will be executed for 3 minutes with 10 clients.</p>
+</li>
+<li>
+<p>Go to <strong>RDS PI</strong> dashboard. Check the top wait events and AAS for the run duration.</p>
+<p><img src="/images/7/15.png" alt="PI">
+<img src="/images/7/16.png" alt="PI"></p>
+<p>Top wait event is:</p>
+<p><strong>CPU</strong></p>
+<p>Also check the <strong>CPU utilization</strong> Cloudwatch metrics for the Aurora cluster by selecting the <strong>Monitoring</strong> tab, searching for cpu and expanding the <strong>CPUUtilization</strong> graph.</p>
+<p><img src="/images/7/17.png" alt="PI"></p>
+<p>Update the graph to display 1 minute average. As you can see the CPUUtilization reached ~100% during the update load test.</p>
+<p><img src="/images/7/18.png" alt="PI"></p>
+</li>
+<li>
+<p>Let’s look at the performance stats using pg_stat_statements extensions.</p>
+<p>Run the below command and observe the top 5 queries consuming CPU.</p>
+<pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
+</code></pre><p><img src="/images/7/19.png" alt="PI"></p>
+<p>Let’s look at the explain plan used by the SQL statements in the PL/pgSQL function. In order to capture the explain plan in the logs, set the below DB parameters at your session level.</p>
+<pre tabindex="0"><code>psql
+set auto_explain.log_nested_statements=1;
+set auto_explain.log_min_duration=10;  
+</code></pre><p>This will log any SQL statement including nested SQL statements which are taking more than 10ms in error/postgres.log with their corresponding explain plan.</p>
+</li>
+<li>
+<p>Run EXPLAIN ANALYZE to capture the explain plan as well as execute the query.</p>
+<pre tabindex="0"><code>EXPLAIN ANALYZE SELECT  hr.update_employee_data_fname(10);
+\q
+# hr.update_employee_data_fname(10): Calls the function update_employee_data_fname within the hr schema, passing the argument 10
+</code></pre><p><img src="/images/7/20.png" alt="PI"></p>
+</li>
+<li>
+<p>Now, lets rerun the load using the SQL Script hrupdid.sql to use the employee_id column to update employees table.</p>
+</li>
+<li>
+<p>On the cloud9 terminal window, run pgbench workload using the below command.</p>
+<pre tabindex="0"><code>pgbench -n -c 10  -T 180 -f /home/ec2-user/aurora-scripts/scripts/hrupdid.sql &gt; /tmp/pgload2-run2.log
+</code></pre><p>This will update employee salary details of employees using PL/pgSQL function <em><strong>update_employee_data_empid</strong></em>. This function randomly selects the employee records and checks if their salary is within a range (min and max salary of their job), if not updates their salary using their <em><strong>employee_id</strong></em>. Each function call will execute 5 records randomly. This test will be executed for 3 minutes with 10 clients.</p>
+</li>
+<li>
+<p>Compare the execution results using pg_stat_statements query again.</p>
+<pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
+</code></pre><p><img src="/images/7/22.png" alt="PI"></p>
+</li>
+<li>
+<p>Compare the throughput and latencies reported by pgbench between the runs.</p>
+<pre tabindex="0"><code>cat /tmp/pgload2-run1.log
+cat /tmp/pgload2-run2.log
+</code></pre><p><img src="/images/7/23.png" alt="PI"></p>
+</li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/11-cleanup/" title="Clean up resources"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/8-createdatasetandautoscale/" title="Create dataset and Auto Scale" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1703602489"></script>
+    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
+    <script src="/js/jquery.sticky.js?1703602489"></script>
+    <script src="/js/featherlight.min.js?1703602489"></script>
+    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
+    <script src="/js/learn.js?1703602489"></script>
+    <script src="/js/hugo-learn.js?1703602489"></script>
+
+    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
