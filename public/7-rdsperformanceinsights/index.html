@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>RDS Performance Insights :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/7-rdsperformanceinsights/" selected>English</option>
+                      <option id="en" value="//localhost:1313/7-rdsperformanceinsights/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/7-rdsperformanceinsights/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/7-rdsperformanceinsights/">Tiếng Việt</option>
                     
                   
               
@@ -971,29 +971,29 @@
 <pre tabindex="0"><code>cd
 wget wget https://aupg-fcj-assets.s3.us-west-2.amazonaws.com/lab-scripts/aupg-scripts.zip
 unzip aupg-scripts.zip
-</code></pre><p><img src="/images/7/1.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/1.png"></p>
 </li>
 <li>
 <p>Create sample HR schema by running the following commands on the Cloud9 terminal window:</p>
 <pre tabindex="0"><code>cd /home/ec2-user/aupg-scripts/scripts
 psql -f postgres-hr.sql # runs a PostgreSQL script named postgres-hr.sql
-</code></pre><p><img src="/images/7/2.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/2.png"></p>
 </li>
 </ol>
 <h4 id="understanding-the-rds-performance-insights-interface">Understanding the RDS Performance Insights interface</h4>
 <ol>
 <li>
 <p>While the command is running, open the Amazon RDS service <a href="https://console.aws.amazon.com/rds/">console</a>  in a new tab, if not already open.</p>
-<p><img src="/images/7/3.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/3.png"></p>
 </li>
 <li>
 <p>Next, select the desired <strong>DB instance</strong> to load the performance metrics for. For Aurora DB clusters, performance metrics are exposed on an individual DB instance basis. The different DB instances comprising a cluster may run different workload patterns, and might not all have Performance Insights enabled. For this lab, we are generating load on the <strong>Writer</strong> (Primary) DB instance only.</p>
-<p><img src="/images/7/4.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/4.png"></p>
 </li>
 <li>
 <p>Once a DB instance is selected, you will see the main dashboard view of RDS Performance Insights. The dashboard is divided into two sections, allowing you to drill down from high level performance indicator metrics down to individual waits, queries, users and hosts generating the load.</p>
-<p><img src="/images/7/7.png" alt="PI">
-<img src="/images/7/8.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/7.png">
+<img alt="PI" src="/images/7/8.png"></p>
 </li>
 <li>
 <p>The performance metrics displayed by the dashboard are a moving time window. You can adjust the size of the time window by clicking the displayed time duration at the top right hand corner of the interface and selecting a relative range <strong>(5m, 1h, 5h, 24h, 1w, custom range)</strong> or specifying an absolute range. You can also zoom into a specific period of time by selecting with your mouse pointer and dragging across the graph</p>
@@ -1033,7 +1033,7 @@ psql -f postgres-hr.sql # runs a PostgreSQL script named postgres-hr.sql
 <ol start="5">
 <li>
 <p>This is how the new metrics dashboard looks like.</p>
-<p><img src="/images/7/5.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/5.png"></p>
 </li>
 </ol>
 <h4 id="use-rds-performance-insights-to-identify-performance-issue">Use RDS Performance Insights to identify performance issue</h4>
@@ -1049,7 +1049,7 @@ psql -f postgres-hr.sql # runs a PostgreSQL script named postgres-hr.sql
 <pre tabindex="0"><code>psql
 CREATE EXTENSION pg_stat_statements;
 \q
-</code></pre><p><img src="/images/7/6.png" alt="PI">
+</code></pre><p><img alt="PI" src="/images/7/6.png">
 Now, we are ready to run some load on the Aurora Instance to understand the capabilities of RDS Performance Insights.</p>
 </li>
 <li>
@@ -1064,8 +1064,8 @@ Now, we are ready to run some load on the Aurora Instance to understand the capa
 </li>
 <li>
 <p>Review the PI dashboard and check the top wait events, <strong>AAS (Average Active Sessions)</strong> for the duration.</p>
-<p><img src="/images/7/7.png" alt="PI">
-<img src="/images/7/8.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/7.png">
+<img alt="PI" src="/images/7/8.png"></p>
 <p>You will find below top 3 wait events:</p>
 <ul>
 <li>
@@ -1082,7 +1082,7 @@ Now, we are ready to run some load on the Aurora Instance to understand the capa
 <li>
 <p>Note down the key metrics in the pgbench output such as latency average and tps.</p>
 <pre tabindex="0"><code>cat /tmp/pgload1-run1.log
-</code></pre><p><img src="/images/7/9.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/9.png"></p>
 </li>
 <li>
 <p>Now, lets check the top 5 queries by execute time and CPU Consumption. Run the below SQL query to understand the load caused by the above pgbench run using pg_stat_statements extension.</p>
@@ -1113,7 +1113,7 @@ Now, we are ready to run some load on the Aurora Instance to understand the capa
 
     </div>
 </div>
-<p><img src="/images/7/10.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/10.png"></p>
 </li>
 <li>
 <p>Lets rerun the same function with 50 inserts per execution and check the impact on wait events. Use hrload2.sql for this run.</p>
@@ -1125,13 +1125,13 @@ Now, we are ready to run some load on the Aurora Instance to understand the capa
 <div class="notices tip" ><p>If you don&rsquo;t see any new activity in the database load section, change the time range to last <strong>5 minutes</strong> and click <strong>Apply</strong>. Then change it back to last <strong>1 hour</strong> and click <strong>Apply</strong>.</p>
 </div>
 </p>
-<p><img src="/images/7/11.png" alt="PI">
-<img src="/images/7/12.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/11.png">
+<img alt="PI" src="/images/7/12.png"></p>
 </li>
 <li>
 <p>Rerun the pg_stat_statements query to check resource consumption now.</p>
 <pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
-</code></pre><p><img src="/images/7/13.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/13.png"></p>
 </li>
 <li>
 <p>If you compare the wait events for the two pgbench runs, you will notice that IO:XactSync related waits have reduced in the latest run</p>
@@ -1139,7 +1139,7 @@ Now, we are ready to run some load on the Aurora Instance to understand the capa
 <li>
 <p>Can you verify whether the overall throughput (in terms of number of inserts) has increased by comparing the throughput and latencies reported by pgbench between the runs?</p>
 <pre tabindex="0"><code>cat /tmp/pgload1-run2.log
-</code></pre><p><img src="/images/7/14.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/14.png"></p>
 </li>
 </ul>
 <ol start="3">
@@ -1154,20 +1154,20 @@ In this exercise, we will run updates on the employee table using update_employe
 </li>
 <li>
 <p>Go to <strong>RDS PI</strong> dashboard. Check the top wait events and AAS for the run duration.</p>
-<p><img src="/images/7/15.png" alt="PI">
-<img src="/images/7/16.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/15.png">
+<img alt="PI" src="/images/7/16.png"></p>
 <p>Top wait event is:</p>
 <p><strong>CPU</strong></p>
 <p>Also check the <strong>CPU utilization</strong> Cloudwatch metrics for the Aurora cluster by selecting the <strong>Monitoring</strong> tab, searching for cpu and expanding the <strong>CPUUtilization</strong> graph.</p>
-<p><img src="/images/7/17.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/17.png"></p>
 <p>Update the graph to display 1 minute average. As you can see the CPUUtilization reached ~100% during the update load test.</p>
-<p><img src="/images/7/18.png" alt="PI"></p>
+<p><img alt="PI" src="/images/7/18.png"></p>
 </li>
 <li>
 <p>Let’s look at the performance stats using pg_stat_statements extensions.</p>
 <p>Run the below command and observe the top 5 queries consuming CPU.</p>
 <pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
-</code></pre><p><img src="/images/7/19.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/19.png"></p>
 <p>Let’s look at the explain plan used by the SQL statements in the PL/pgSQL function. In order to capture the explain plan in the logs, set the below DB parameters at your session level.</p>
 <pre tabindex="0"><code>psql
 set auto_explain.log_nested_statements=1;
@@ -1179,7 +1179,7 @@ set auto_explain.log_min_duration=10;
 <pre tabindex="0"><code>EXPLAIN ANALYZE SELECT  hr.update_employee_data_fname(10);
 \q
 # hr.update_employee_data_fname(10): Calls the function update_employee_data_fname within the hr schema, passing the argument 10
-</code></pre><p><img src="/images/7/20.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/20.png"></p>
 </li>
 <li>
 <p>Now, lets rerun the load using the SQL Script hrupdid.sql to use the employee_id column to update employees table.</p>
@@ -1192,13 +1192,13 @@ set auto_explain.log_min_duration=10;
 <li>
 <p>Compare the execution results using pg_stat_statements query again.</p>
 <pre tabindex="0"><code>psql -c &#34;SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;&#34;
-</code></pre><p><img src="/images/7/22.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/22.png"></p>
 </li>
 <li>
 <p>Compare the throughput and latencies reported by pgbench between the runs.</p>
 <pre tabindex="0"><code>cat /tmp/pgload2-run1.log
 cat /tmp/pgload2-run2.log
-</code></pre><p><img src="/images/7/23.png" alt="PI"></p>
+</code></pre><p><img alt="PI" src="/images/7/23.png"></p>
 </li>
 </ul>
 
@@ -1657,19 +1657,19 @@ cat /tmp/pgload2-run2.log
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

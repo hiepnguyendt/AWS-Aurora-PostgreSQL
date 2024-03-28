@@ -1,5 +1,5 @@
 ---
-title : "Testing fault injection queries"
+title : "Kiểm tra các truy vấn gây lỗi (fault injection queries)"
 date :  "`r Sys.Date()`" 
 weight : 3
 chapter : false
@@ -7,26 +7,25 @@ pre : " <b> 9.3 </b> "
 ---
 
 
-In this test you will simulate a crash of the database engine service on the DB instance. This type of crash can be encountered in real circumstances as a result of out-of-memory conditions, or other unexpected circumstances.
+Trong bài kiểm tra này, bạn sẽ mô phỏng một sự cố xảy ra khi dịch vụ cơ sở dữ liệu trên DB instance bị sập. Loại sự cố này có thể xảy ra trong các trường hợp thực tế do điều kiện hết bộ nhớ hoặc các tình huống không mong đợi khác.
 
 {{%expand "Learn more about fault injection queries" %}}
-Fault injection queries provide a mechanism to simulate a variety of faults in the operation of the DB cluster. They are used to test the tolerance of client applications to such faults. They can be used to:
+Các truy vấn gây lỗi (fault injection queries) cung cấp một cơ chế để mô phỏng các lỗi khác nhau trong hoạt động của cụm DB. Chúng được sử dụng để kiểm tra khả năng chịu lỗi của các ứng dụng khách hàng đối với các lỗi như vậy. Chúng có thể được sử dụng để:
 
-- Simulate crashes of the critical services running on the DB instance. These do not typically result in a failover to a reader, but will result in a restart of the relevant services.
-- Simulate disk subsystem degradation or congestion, whether transient in nature or more persistent.
-- Simulate read replica failures
+- Mô phỏng sự cố của các dịch vụ quan trọng đang chạy trên DB instance. Thông thường, điều này không dẫn đến việc chuyển đổi sang chế độ đọc (reader), nhưng sẽ dẫn đến việc khởi động lại các dịch vụ liên quan.
+- Mô phỏng sự suy giảm hoặc tắc nghẽn của hệ thống, có thể là tạm thời hoặc ổn định hơn.
+- Mô phỏng lỗi của read replica.
 
 {{% /expand%}}
 
-1. In one of the two terminal windows, run the failover test script using the following command:
+1. Tại một trong hai terminal, chạy script kiểm thử failover bằng cách sử dụng lệnh sau:
 
     ```
      python /home/ec2-user/simple_failover.py -e $DBENDP -u $DBUSER -p $DBPASS -d $PGDATABASE
     ```
-    Since we are using the cluster endpoint to connect, the motioning script is connected to the current writer node.
+    Vì chúng ta đang sử dụng cluster endpoint để kết nối, script giám sát đang kết nối với writer node hiện tại.
 
-2. On the other Cloud9 terminal window, issue the following fault injection command. A crash of the PostgreSQL-compatible database for the Amazon Aurora instance will be simulated.
-
+2. Trên terminal Cloud9 khác, thực hiện lệnh gây lỗi sau đây. Một lỗi của cơ sở dữ liệu tương thích PostgreSQL cho phiên bản Amazon Aurora sẽ được mô phỏng.
     ```
     psql -c "SELECT aurora_inject_crash ('instance');"
 
@@ -34,8 +33,8 @@ Fault injection queries provide a mechanism to simulate a variety of faults in t
 
     ![test](/images/9/9.2/1.png)
 
-2. Wait and observe the monitoring script output. Once the crash is triggered, you should see an output similar to the example below.
+2. Vui lòng đợi và quan sát đầu ra của script giám sát. Khi lỗi được kích hoạt, bạn sẽ thấy một đầu ra tương tự như ví dụ dưới đây.
 
     ![test](/images/9/9.2/2.png)
 
-As you see above, the instance was restarted and the monitoring script reconnected after a brief interruption.
+Như bạn đã thấy ở trên, DB instance đã được khởi động lại và script giám sát đã kết nối lại sau một khoảng thời gian gián đoạn ngắn.

@@ -10,31 +10,25 @@ pre : " <b> 2.5. </b> "
 #### To create an Aurora PostgreSQL DB, follow these steps:
 
 1. Open the **Amazon RDS** [console](https://console.aws.amazon.com/rds/).
-
     ![Create Aupg](/images/1/1.1/1.png)
 
 2. Click **Create database**.
 3. For **Database engine**, select **PostgreSQL**.
 4. For **Version**, select the version of PostgreSQL that you want to use.
-
     ![Create Aupg](/images/1/1.1/2.png)
 
 5. For **Template**, select a template for your DB instance. A template is a pre-configured configuration for a DB instance.
-
     ![Create Aupg](/images/1/1.1/3.png)
 
 6. For **Availability** and **Durability**, For DB instance identifier, enter a name for your DB instance.
-
     ![Create Aupg](/images/1/1.1/7.png)
 
 7. For **DB instance identifier**, enter a unique name for your database instance.
 8. For **Master username**, enter the username for the master user of your database instance.
 9. For **Master password**, enter a strong password for the master user of your database instance.
-
     ![Create Aupg](/images/1/1.1/4.png)
 
 10. For **Cluster storage configuration**, select the amount of storage that you want to allocate for your database instance.
-
     ![Create Aupg](/images/1/1.1/5.png)
 
 11. For **Instance configuration**, select the DB instance class that you want to use for your database instance. The instance class will determine the amount of CPU and memory that is allocated to your database instance.
@@ -50,12 +44,10 @@ pre : " <b> 2.5. </b> "
 
 13. For **DB subnet group**, select the DB subnet group that you want to use for your DB instance.
 14. For **VPC security groups**, select the security groups that you want to use for your DB instance.
-
     ![Create Aupg](/images/1/1.1/9.png)
 
 15. Expand **Additional configuration**, Enter **5432** for **database port**
 16. Leave the **Babelfish settings** and **Database authentication** options at their default values.
-
     ![Create Aupg](/images/1/1.1/10.png)
 
 17. For **Monitoring**, 
@@ -74,7 +66,6 @@ pre : " <b> 2.5. </b> "
 - For Log exports check the PostgreSQL log box.
 - Leave the Maintenance options at their default values.
     ![Create Aupg](/images/1/1.1/13.png)
-
     ![Create Aupg](/images/1/1.1/14.png)
 
 
@@ -117,22 +108,18 @@ Private keys and certificates – We recommend AWS Certificate Manager.
 {{% /expand%}}
 
 1. Open the Secrets Manager [console](https://console.aws.amazon.com/secretsmanager/), then choose **Store a new secret**.
-
     ![Create Aupg](/images/1/1.1/16.png)
 
 2. On the **Secret type**, choose  **Credential for Amazon RDS database**
 3. On the **Credential**,  input the User name (should be masteruser) and Password that you provided when you created the DB cluster previously
-
     ![Create Aupg](/images/1/1.1/17.png)
 
 4. Leave the **Encryption Key** options at their default values.
 5. On the **Database**, choose the DB instance identifier you assigned to your instance (e.g. aupg-fcj-labs). 
 6. Click Next.
-
     ![Create Aupg](/images/1/1.1/18.png)
 
 7. Name the secret ``aupg-fcj-labs-DBMateruser-secret`` and provide a relevant description for the secret, then click **Next**.
-
     ![Create Aupg](/images/1/1.1/19.png)
 
 8. Finally, in the **Configure automatic rotation** section, leave the option of **Disable automatic rotation** selected. In a production environment you will want to use database credentials that rotate automatically for additional security. Click **Next**.

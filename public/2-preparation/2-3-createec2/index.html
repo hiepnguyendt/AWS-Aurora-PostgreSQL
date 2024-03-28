@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create a EC2 instance :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711431242" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711431242" rel="stylesheet">
+    <link href="/css/hybrid.css?1711431242" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711431242" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711431242" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711431242" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711431242" rel="stylesheet">
+    <link href="/css/theme.css?1711431242" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711431242" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711431242" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711431242"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711431242"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711431242"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711431242"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/2-preparation/2-3-createec2/" selected>English</option>
+                      <option id="en" value="//localhost:1313/2-preparation/2-3-createec2/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/2-preparation/2-3-createec2/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/2-preparation/2-3-createec2/">Tiếng Việt</option>
                     
                   
               
@@ -964,21 +964,21 @@
 <p>Open the <strong>Amazon EC2</strong> <a href="https://console.aws.amazon.com/ec2/">console</a>.</p>
 </li>
 <li>
-<p>Click <strong>Launch Instance</strong>.</p>
-<p><img src="/images/1/8.png" alt="Create EC2 instance"></p>
+<p>Click <strong>Launch Instance</strong>.
+<img alt="Create EC2 instance" src="/images/1/8.png"></p>
 </li>
 <li>
 <p>Enter name your EC2 instance. Choose an <strong>AMI</strong>. For an app server, you can choose a <strong>Linux AMI</strong>, such as <strong>Amazon Linux 2</strong>.</p>
 </li>
 <li>
-<p>Choose an <strong>instance type</strong>. The instance type that you choose will depend on the requirements of your app server. For example, if you are running a high-traffic website, you will need a larger instance type with more CPU and memory.</p>
-<p><img src="/images/1/9.png" alt="Create EC2 instance">
-<img src="/images/1/10.png" alt="Create EC2 instance">
-<img src="/images/1/11.png" alt="Create EC2 instance"></p>
+<p>Choose an <strong>instance type</strong>. The instance type that you choose will depend on the requirements of your app server. For example, if you are running a high-traffic website, you will need a larger instance type with more CPU and memory.
+<img alt="Create EC2 instance" src="/images/1/9.png">
+<img alt="Create EC2 instance" src="/images/1/10.png">
+<img alt="Create EC2 instance" src="/images/1/11.png"></p>
 </li>
 <li>
-<p>For <strong>Key Pair</strong>,choose your keypair you have created or click <strong>Create new key pair</strong></p>
-<p><img src="/images/1/12.png" alt="Create EC2 instance">
+<p>For <strong>Key Pair</strong>,choose your keypair you have created or click <strong>Create new key pair</strong>
+<img alt="Create EC2 instance" src="/images/1/12.png">
 Configure the instance details. This includes things like the number of instances to launch, the network configuration, and the storage configuration.</p>
 </li>
 <li>
@@ -986,19 +986,11 @@ Configure the instance details. This includes things like the number of instance
 </li>
 </ol>
 <ul>
-<li>
-<p>Choose <strong>VPC</strong> which contains EC2 app server</p>
-</li>
-<li>
-<p>Choose <strong>Subnet</strong></p>
-</li>
-<li>
-<p><strong>Enable</strong> Auto-assign public IP</p>
-</li>
-<li>
-<p>Add a <strong>security group</strong> for EC2 app server that you have created easier step . <em>A security group is a firewall that controls incoming and outgoing traffic to your instance.</em></p>
-<p><img src="/images/1/13.png" alt="Create EC2 instance"></p>
-</li>
+<li>Choose <strong>VPC</strong> which contains EC2 app server</li>
+<li>Choose <strong>Subnet</strong></li>
+<li><strong>Enable</strong> Auto-assign public IP</li>
+<li>Add a <strong>security group</strong> for EC2 app server that you have created easier step . <em>A security group is a firewall that controls incoming and outgoing traffic to your instance.</em>
+<img alt="Create EC2 instance" src="/images/1/13.png"></li>
 </ul>
 <ol start="8">
 <li><strong>Review</strong> and <strong>launch</strong> the instance</li>
@@ -1464,19 +1456,19 @@ Configure the instance details. This includes things like the number of instance
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711431242"></script>
+    <script src="/js/jquery.sticky.js?1711431242"></script>
+    <script src="/js/featherlight.min.js?1711431242"></script>
+    <script src="/js/highlight.pack.js?1711431242"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711431242"></script>
+    <script src="/js/learn.js?1711431242"></script>
+    <script src="/js/hugo-learn.js?1711431242"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711431242" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711431242"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Database Activity Streams in action :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/" selected>English</option>
+                      <option id="en" value="//localhost:1313/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/">Tiếng Việt</option>
                     
                   
               
@@ -979,7 +979,7 @@
 </li>
 <li>
 <p>Click <strong>Actions</strong> menu and choose <strong>Start activity stream</strong>.</p>
-<p><img src="/images/6/6.2/1.png" alt="streaming"></p>
+<p><img alt="streaming" src="/images/6/6.2/1.png"></p>
 </li>
 <li>
 <p>Enter the following settings in the Database Activity Stream window:</p>
@@ -994,18 +994,18 @@
 </li>
 <li>
 <p>Choose <strong>Apply immediately</strong>.</p>
-<p><img src="/images/6/6.2/2.png" alt="streaming">
-<img src="/images/6/6.2/3.png" alt="streaming"></p>
+<p><img alt="streaming" src="/images/6/6.2/2.png">
+<img alt="streaming" src="/images/6/6.2/3.png"></p>
 </li>
 </ul>
 <ol start="6">
 <li>
 <p>The Status column on the RDS, Database page for the cluster will start showing <strong>configuring-activity-stream</strong>.</p>
-<p><img src="/images/6/6.2/4.png" alt="streaming"></p>
+<p><img alt="streaming" src="/images/6/6.2/4.png"></p>
 </li>
 <li>
 <p>Verify the activity streaming by clicking on the cluster name and clicking on configuration. You will see the Kinesis stream name to which the Database Activity Stream will be published.</p>
-<p><img src="/images/6/6.2/5.png" alt="streaming"></p>
+<p><img alt="streaming" src="/images/6/6.2/5.png"></p>
 </li>
 <li>
 <p>Wait till the status on RDS,  Database page for the cluster changes back to <strong>Available</strong>. It might take upto 10 minutes for the status to change.</p>
@@ -1050,7 +1050,7 @@
 </li>
 <li>
 <p>Copy a block of the <strong>das-script.py</strong> script output starting from <strong>{&ldquo;type&rdquo;</strong>: and ending with <strong>}</strong> as shown in the below screenshot and paste it into JSON formatter . Then press the <strong>Format / Beautify</strong> button. You should see the formatted database activity similar to the following:</p>
-<p><img src="/images/6/6.2/6.png" alt="DAS"></p>
+<p><img alt="DAS" src="/images/6/6.2/6.png"></p>
 </li>
 </ol>
 <h4 id="stopping-a-database-activity-streaming">Stopping a Database Activity Streaming</h4>
@@ -1063,15 +1063,15 @@
 </li>
 <li>
 <p>Click on <strong>Action</strong> and select <strong>Stop database activity stream</strong>.</p>
-<p><img src="/images/6/6.2/7.png" alt="DAS"></p>
+<p><img alt="DAS" src="/images/6/6.2/7.png"></p>
 </li>
 <li>
 <p>Choose <strong>Apply immediately</strong> and click <strong>Continue</strong> to stop Database activity streaming on the cluster.</p>
-<p><img src="/images/6/6.2/9.png" alt="DAS"></p>
+<p><img alt="DAS" src="/images/6/6.2/9.png"></p>
 </li>
 <li>
 <p>The status column on the RDS Database home page for the cluster will start showing <strong>configuring-activity-stream</strong>.</p>
-<p><img src="/images/6/6.2/10.png" alt="DAS"></p>
+<p><img alt="DAS" src="/images/6/6.2/10.png"></p>
 </li>
 <li>
 <p>After some time, activity streams will be stopped and the status column on the RDS Database home page for the cluster will change back to <strong>Available</strong>.</p>
@@ -1537,19 +1537,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

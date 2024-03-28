@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Database activity streaming on AWS RDS PostgreSQL</title>
-    <link>/6-databaseactivitystreaming/</link>
+    <link>//localhost:1313/6-databaseactivitystreaming/</link>
     <description>Recent content in Database activity streaming on AWS RDS PostgreSQL</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/6-databaseactivitystreaming/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="//localhost:1313/6-databaseactivitystreaming/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

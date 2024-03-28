@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Set up failover event notifications :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -82,13 +82,13 @@
  
   
     
-    <li data-nav-id="/vi/1-introduce/" title="Introduction" class="dd-item 
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/1-introduce/">
-           <b> 1. </b> Introduction
+           <b> 1. </b> Giới thiệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -108,13 +108,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/" title="Các bước chuẩn bị" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/">
-          Preparation Steps
+           <b> 2. </b> Các bước chuẩn bị
           
             <i class="fas fa-check read-icon"></i>
           
@@ -139,13 +139,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Create a VPC" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Tạo VPC" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-1-createvpc/">
-           <b> 2.1. </b> Create a VPC
+           <b> 2.1. </b> Tạo VPC
           
             <i class="fas fa-check read-icon"></i>
           
@@ -167,13 +167,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Create Security Group " class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Tạo Security Group " class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-2-createsg/">
-           <b> 2.2. </b> Create Security Group 
+           <b> 2.2. </b> Tạo Security Group 
           
             <i class="fas fa-check read-icon"></i>
           
@@ -195,13 +195,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Create a EC2 instance" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Tạo EC2 instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-3-createec2/">
-           <b> 2.3. </b> Create a EC2 instance
+           <b> 2.3. </b> Tạo EC2 instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -223,13 +223,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Tạo Subnet Group và Parameter Group" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-4-createpgsg/">
-           <b> 2.4. </b> Create Subnet Group and Parameter Group
+           <b> 2.4. </b> Tạo Subnet Group và Parameter Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -279,13 +279,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title=" Create, Configure Cloud9 and Initialize Database" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title="Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">
-           <b> 2.6.</b>  Create, Configure Cloud9 and Initialize Database
+           <b> 2.6.</b> Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -300,32 +300,6 @@
           
         
         </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/3-fastcloning/" title="Start with PostgreSQL" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/3-fastcloning/">
-           <b> 2. </b> Start with PostgreSQL
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
               
     </li>
   
@@ -434,13 +408,13 @@
  
   
     
-    <li data-nav-id="/vi/4-queryplanmanagement/" title="Create RDS PostgreSQL Database Instance" class="dd-item 
+    <li data-nav-id="/vi/3-fastcloning/" title="Fast Cloning" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-queryplanmanagement/">
-           <b> 3. </b> Create RDS PostgreSQL Database Instance
+      <a href="/vi/3-fastcloning/">
+           <b> 3. </b> Fast Cloning
           
             <i class="fas fa-check read-icon"></i>
           
@@ -540,6 +514,32 @@
           
         
         </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-queryplanmanagement/" title="Query Plan Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-queryplanmanagement/">
+           <b> 4. </b> Query Plan Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
               
     </li>
   
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/9-testfaulttolerance/9-1-setupfailovereventnotifications/">English</option>
+                      <option id="en" value="//localhost:1313/9-testfaulttolerance/9-1-setupfailovereventnotifications/">English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/" selected>Tiếng Việt</option>
                     
                   
               
@@ -957,7 +957,7 @@
 <pre tabindex="0"><code>aws sns create-topic \
 --name auroralab-cluster-failovers
 </code></pre><p>If successful, the command will respond back with a TopicArn identifier, you will need this value in the next command.</p>
-<p><img src="/images/9/9.1/1.png" alt="failover"></p>
+<p><img alt="failover" src="/images/9/9.1/1.png"></p>
 </li>
 <li>
 <p>Next, subscribe your email address to the SNS topic using the command below, changing the placeholder [YourEmail] with your email address:</p>
@@ -966,13 +966,13 @@
 --protocol email \
 --notification-endpoint &#39;[YourEmail]&#39;
 </code></pre><p>You should see Output similar to the following:</p>
-<p><img src="/images/9/9.1/2.png" alt="failover"></p>
+<p><img alt="failover" src="/images/9/9.1/2.png"></p>
 </li>
 <li>
 <p>You will receive a verification email on that address, please confirm the subscription by following the instructions in the email.</p>
-<p><img src="/images/9/9.1/3.png" alt="failover"></p>
+<p><img alt="failover" src="/images/9/9.1/3.png"></p>
 <p>Once you click <strong>Confirm subscription</strong> in the email, you&rsquo;ll see a browser window with a confirmation message as follows:</p>
-<p><img src="/images/9/9.1/4.png" alt="failover"></p>
+<p><img alt="failover" src="/images/9/9.1/4.png"></p>
 </li>
 <li>
 <p>Once confirmed, or while you are waiting for the verification email to arrive, create an RDS event subscription and register the DB cluster as an event source using the command below:</p>
@@ -986,11 +986,11 @@
 --source-type db-cluster \
 --event-categories &#39;[&#34;failover&#34;]&#39; \
 --enabled
-</code></pre><p><img src="/images/9/9.1/5.png" alt="failover"></p>
+</code></pre><p><img alt="failover" src="/images/9/9.1/5.png"></p>
 <pre tabindex="0"><code>aws rds add-source-identifier-to-subscription \
 --subscription-name auroralab-cluster-failovers \
 --source-identifier aupg-fcj-labs
-</code></pre><p><img src="/images/9/9.1/6.png" alt="failover"></p>
+</code></pre><p><img alt="failover" src="/images/9/9.1/6.png"></p>
 </li>
 </ol>
 <p>At this time the event notifications have been configured. Ensure you have verified your email address before proceeding to the next section.</p>
@@ -1172,22 +1172,6 @@
 
                     
                     
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
                         
                     
                     
@@ -1290,6 +1274,22 @@
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
             
         
@@ -1451,19 +1451,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -29,7 +29,6 @@ You can choose to have the database session handle database activity events eith
 2. Select the **Aurora DB cluster** that was you created manually.
 
 3. Click **Actions** menu and choose **Start activity stream**.
-
     ![streaming](/images/6/6.2/1.png)
 
 4. Enter the following settings in the Database Activity Stream window:
@@ -37,15 +36,12 @@ You can choose to have the database session handle database activity events eith
 - For **AWS KMS key**, choose the key that you created in the earlier step. If you don't see the new key - try to refresh the browser window.
 - For Database activity stream mode, choose **Asynchronous**.
 - Choose **Apply immediately**.
-
     ![streaming](/images/6/6.2/2.png)
     ![streaming](/images/6/6.2/3.png)
 6. The Status column on the RDS, Database page for the cluster will start showing **configuring-activity-stream**. 
-
     ![streaming](/images/6/6.2/4.png)
 
 7. Verify the activity streaming by clicking on the cluster name and clicking on configuration. You will see the Kinesis stream name to which the Database Activity Stream will be published.
-
     ![streaming](/images/6/6.2/5.png)
 
 8. Wait till the status on RDS,  Database page for the cluster changes back to **Available**. It might take upto 10 minutes for the status to change.
@@ -87,8 +83,6 @@ You will see a lot of messages in the terminal output which is in JSON format.
 1. To format the Database Activity Streaming output and interpret the results, you can use a free tool like [JSON formatter](https://jsonformatter.org/) .
 
 2. Copy a block of the **das-script.py** script output starting from **{"type"**: and ending with **}** as shown in the below screenshot and paste it into JSON formatter . Then press the **Format / Beautify** button. You should see the formatted database activity similar to the following:
-
-
     ![DAS](/images/6/6.2/6.png)
 
 #### Stopping a Database Activity Streaming
@@ -98,15 +92,12 @@ You will see a lot of messages in the terminal output which is in JSON format.
 2. In the navigation pane, choose Databases and select the Aurora DB cluster that you created manually.
 
 3. Click on **Action** and select **Stop database activity stream**.
-
     ![DAS](/images/6/6.2/7.png)
 
 4. Choose **Apply immediately** and click **Continue** to stop Database activity streaming on the cluster.
-
     ![DAS](/images/6/6.2/9.png)
 
 5. The status column on the RDS Database home page for the cluster will start showing **configuring-activity-stream**.
-
     ![DAS](/images/6/6.2/10.png)
 
 6. After some time, activity streams will be stopped and the status column on the RDS Database home page for the cluster will change back to **Available**.

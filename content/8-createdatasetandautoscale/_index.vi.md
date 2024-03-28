@@ -1,58 +1,54 @@
 ---
-title : "Create dataset and Auto Scale"
+title : "Tạo dataset và Auto Scale"
 date :  "`r Sys.Date()`" 
 weight : 8 
 chapter : false
 pre : " <b> 8. </b> "
 ---
 
-**Aurora Auto Scaling** enables your Aurora DB cluster to handle sudden increases in connectivity or workload by dynamically adjusting the number of Aurora Replicas for a provisioned Aurora DB cluster. When the connectivity or workload decreases, Aurora Auto Scaling removes unnecessary Aurora Replicas so that you don't pay for unused DB instances.
+**Aurora Auto Scaling** cho phép cụm cơ sở dữ liệu Aurora của bạn xử lý tăng trưởng đột ngột về kết nối hoặc khối lượng công việc bằng cách tự động điều chỉnh số lượng Aurora Replicas cho một cụm cơ sở dữ liệu Aurora được cung cấp. Khi kết nối hoặc khối lượng công việc giảm, Aurora Auto Scaling loại bỏ các Aurora Replicas không cần thiết để bạn không phải trả tiền cho các DB instances không sử dụng.
 
-In this lab, we will walk through how Aurora read replica auto scaling works in practice using a load generator script.
+Trong lab này, chúng ta sẽ tìm hiểu cách Aurora read replica auto scaling hoạt động trong thực tế bằng cách sử dụng một tập lệnh tạo tải (load generator script).
 
-This lab contains the following tasks:
+Lab này bao gồm các task sau:
+- Cấu hình Aurora Replica Auto Scaling
+- Khởi tạo pgbench và Tạo tập dữ liệu
+- Chạy read-only workload
 
-- Configure aurora replica auto scaling
-- Initialize pgbench and Create a Dataset
-- Run a read-only workload
+1. Tạo replica auto scaling policy
+- Bạn sẽ thêm cấu hình tự động mở rộng cho read replica vào cụm cơ sở dữ liệu (DB cluster). Điều này cho phép cụm DB tự động điều chỉnh số lượng read instance trong cụm tại bất kỳ thời điểm nào dựa trên workload.
 
-1. Create a replica auto scaling policy
-- You will add a read replica auto scaling configuration to the DB cluster. This will allow the DB cluster to scale the number of reader DB instances that operate in the DB cluster at any given point in time based on the load.
-
-- Click on the Aurora cluster name and go to **Logs & events** tab. Click on the **Add auto scaling** policy button.
+- Nhấp vào tên cụm Aurora và chuyển đến tab **Logs & events**. Nhấp vào **Add auto scaling** để thêm policy.
 
     ![ACL](/images/8/1.png)
 
-- Enter ``auroralab-autoscale-readers`` as the **Policy Name**. For the **Target metric** choose **Average CPU utilization of Aurora Replicas**. Enter a **Target value of 20%**. In a production use case this value may need to be set much higher, but we are using a lower value for demonstration purposes.
+- Nhập ``auroralab-autoscale-readers`` vào trường **Policy Name**. Đối với **Target metric**, chọn **Average CPU utilization of Aurora Replicas**. Nhập **Target value** là 20%. Trong môi trường production, giá trị này có thể được đặt cao hơn nhiều, nhưng chúng ta đang sử dụng một giá trị thấp cho mục đích thử nghiệm.
 
-- Next, expand the **Additional configuration** section, and change both the **Scale in cooldown period** and **Scale out cooldown period** to a value of **180 seconds**. This will reduce the time you have to wait between scaling operations in subsequent labs.
-
+- Tiếp theo, mở rộng phần **Additional configuration**, và thay đổi cả **Scale in cooldown period** và **Scale out cooldown period** thành giá trị 180 giây. Điều này sẽ giảm thời gian bạn phải chờ đợi giữa các hoạt động tự động mở rộng trong các lab tiếp theo.
     ![ACL](/images/8/2.png)
 
-- In the **Cluster capacity details** section, set the **Minimum capacity** to **1** and **Maximum capacity** to **2**. In a production use case you may need to use different values, but for demonstration purposes, and to limit the cost associated with the labs we limit the number of readers to two.
-
+- Trong phần **Cluster capacity details**, đặt **Minimum capacity** thành 1 và **Maximum capacity** thành 2. Trong môi trường production, bạn có thể cần sử dụng các giá trị khác nhau. Tuy nhiên, cho mục đích thử nghiệm và để giới hạn chi phí liên quan đến các lab, chúng ta giới hạn số lượng reader là 2.
     ![ACL](/images/8/3.png)
 
-- Next click **Add policy**.
+- Tiếp theo click **Add policy**.
 
 
-2. Initialize pgbench and Create a Dataset
-- Open a Cloud9 terminal window by referring [Open Cloud9 Terminal Window](https://catalog.us-east-1.prod.workshops.aws/workshops/098605dc-8eee-4e84-85e9-c5c6c9e43de2/en-US/lab1-5-client/cloud9-terminal/) section and initialize pgbench to start the creation of dataset by pasting the command below in your terminal window.
-
+2. Khởi tạo pgbench và tạo a Dataset
+- Vui lòng mở một terminal Cloud9, sau đó khởi tạo pgbench để bắt đầu tạo Dataset bằng cách dán lệnh dưới đây vào terminal của bạn.
     ```
     pgbench -i --scale=1000
 
     ```
 
-     Data loading may take several minutes, you will receive similar output once complete:
+     Quá trình tải dữ liệu có thể mất vài phút, sau khi hoàn thành, bạn sẽ nhận được đầu ra tương tự:
     ![ACL](/images/8/4.png)
 
-3. Run a read-only workload
-- Once the data load completes successfully, you can run a read-only workload on the cluster (so that we can trigger our auto scaling policy). You will also observe the effects on the DB cluster topology.
+3. Chạy read-only workload
+- Sau khi quá trình tải dữ liệu hoàn tất thành công, bạn có thể chạy read-only workload trên cụm (để chúng ta có thể kích hoạt chính sách tự động mở rộng) và quan sát hiệu ứng lên topology của cụm cơ sở dữ liệu.
 
-- For this step you will use the **Reader Endpoint** of the cluster. You can find the reader endpoint by going to the [RDS Console - Databases](https://console.aws.amazon.com/rds/home?#databases:) section  , clicking the name of the Aurora cluster and going to the **Connectivity & security** tab.
+- Trong bước này, bạn sẽ sử dụng **Reader Endpoint** của cụm. Bạn có thể tìm thấy **reader endpoint** bằng cách truy cập vào phần **RDS Console - Databases**, nhấp vào tên cụm Aurora và chuyển đến tab **Connectivity & security**.
 
-- Run the load generation script from your Cloud9 terminal window, replacing the 
+- Hãy chạy load generation scrip từ terminal Cloud9 của bạn bằng cách thay thế dòng lệnh sau:
 [readerEndpoint] placeholder with the actual Aurora cluster reader endpoint:
 
     ```
@@ -60,17 +56,13 @@ This lab contains the following tasks:
 
     ```
 
-- Now, open the Amazon RDS management [console](https://console.aws.amazon.com/rds/home?#databases:)  in a different browser tab.
+- Bây giờ, truy cập giao diện Amazon RDS management [console](https://console.aws.amazon.com/rds/home?#databases:)  ở tab trình duyệt khác.
 
-- Take note that the reader node is currently receiving load. It may take a minute or more for the metrics to fully reflect the incoming load.
-
-- After several minutes return to the list of instances and notice that a new reader is being provisioned in your cluster.
-
+- Lưu ý rằng reader node hiện đang nhận tải. Có thể mất một phút hoặc hơn để các số liệu thể hiện đầy đủ.
+- Sau vài phút, quay lại danh sách các instance và lưu ý rằng một reader mới đang được triển khai trong cụm của bạn.
     ![ACL](/images/8/5.png)
 
-- It will take 5-7 minutes to add a new replica. Once the new replica becomes available, note that the load distributes and stabilizes (it may take a few minutes to stabilize).
-
+- Việc thêm một bản sao mới có thể mất từ 5 đến 7 phút. Khi bản sao mới trở thành khả dụng, lưu ý rằng tải được phân phối và ổn định (có thể mất vài phút để ổn định).
     ![ACL](/images/8/6.png)
 
-- You can now toggle back to your Cloud9 terminal window, and press CTRL+C to quit the running pgbench job. After a while the additional reader will be removed automatically.
-
+- Bây giờ bạn có thể chuyển lại terminal Cloud9 của mình và nhấn CTRL+C để dừng công việc pgbench đang chạy.

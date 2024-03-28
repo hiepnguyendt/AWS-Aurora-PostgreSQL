@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create Subnet Group and Parameter Group :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/2-preparation/2-4-createpgsg/" selected>English</option>
+                      <option id="en" value="//localhost:1313/2-preparation/2-4-createpgsg/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/2-preparation/2-4-createpgsg/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/2-preparation/2-4-createpgsg/">Tiếng Việt</option>
                     
                   
               
@@ -964,19 +964,19 @@
 <p>Open the Amazon RDS <a href="https://console.aws.amazon.com/rds/">console</a></p>
 </li>
 <li>
-<p>In the navigation pane, choose <strong>Subnet groups</strong> and click on <strong>Create DB Subnet Group</strong>.</p>
-<p><img src="/images/1/1.1/1.1.png" alt="Create SG"></p>
+<p>In the navigation pane, choose <strong>Subnet groups</strong> and click on <strong>Create DB Subnet Group</strong>.
+<img alt="Create SG" src="/images/1/1.1/1.1.png"></p>
 </li>
 <li>
 <p>For <strong>Name</strong> and <strong>Description</strong>, type in a name and description for your DB subnet group.</p>
 </li>
 <li>
-<p>For <strong>VPC</strong>, select the VPC in which you want to create your DB subnet group.</p>
-<p><img src="/images/1/1.1/1.2.png" alt="Create SG"></p>
+<p>For <strong>VPC</strong>, select the VPC in which you want to create your DB subnet group.
+<img alt="Create SG" src="/images/1/1.1/1.2.png"></p>
 </li>
 <li>
-<p>Select the subnets that you want to include in your DB subnet group. Make sure to select subnets in at least two different Availability Zones (AZs).</p>
-<p><img src="/images/1/1.1/1.3.png" alt="Create SG"></p>
+<p>Select the subnets that you want to include in your DB subnet group. Make sure to select subnets in at least two different Availability Zones (AZs).
+<img alt="Create SG" src="/images/1/1.1/1.3.png"></p>
 </li>
 <li>
 <p>Click <strong>Create</strong>.</p>
@@ -993,42 +993,32 @@
 <h4 id="to-create-a-database-parameter-group">To create a Database Parameter Group</h4>
 <ol>
 <li>
-<p>Go to the <a href="https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1">AWS RDS console</a>, select <strong>Parameter Group</strong>, choose <strong>Create parameter group</strong>.</p>
-<p><img src="/images/1/1.1/00.png" alt="Create PG"></p>
+<p>Go to the <a href="https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1">AWS RDS console</a>, select <strong>Parameter Group</strong>, choose <strong>Create parameter group</strong>.
+<img alt="Create PG" src="/images/1/1.1/00.png"></p>
 </li>
 <li>
 <p>In the <strong>Parameter group details</strong> section</p>
 </li>
 </ol>
 <ul>
-<li>
-<p>For <strong>Parameter group family</strong>, select <strong>aurora-postgresql15</strong></p>
-</li>
-<li>
-<p>For <strong>Type</strong>, select <strong>DB Parameter Group</strong></p>
-</li>
-<li>
-<p>For <strong>Group Name</strong>, type your parameter group name</p>
-</li>
-<li>
-<p>For <strong>Description</strong>, type your description</p>
-<p><img src="/images/1/1.1/0.3.png" alt="Create PG"></p>
-</li>
-<li>
-<p>Click <strong>Create</strong></p>
-</li>
+<li>For <strong>Parameter group family</strong>, select <strong>aurora-postgresql15</strong></li>
+<li>For <strong>Type</strong>, select <strong>DB Parameter Group</strong></li>
+<li>For <strong>Group Name</strong>, type your parameter group name</li>
+<li>For <strong>Description</strong>, type your description
+<img alt="Create PG" src="/images/1/1.1/0.3.png"></li>
+<li>Click <strong>Create</strong></li>
 </ul>
 <ol start="3">
 <li>Change and enable some configurations in the parameter group</li>
 </ol>
 <ul>
 <li>
-<p>Go to Parameter Group console, click <strong>Action</strong>, choose <strong>Edit</strong></p>
-<p><img src="/images/1/1.1/000.png" alt="Create PG"></p>
+<p>Go to Parameter Group console, click <strong>Action</strong>, choose <strong>Edit</strong>
+<img alt="Create PG" src="/images/1/1.1/000.png"></p>
 </li>
 <li>
-<p>Fill <code>shared_preload_libraries</code> parameter in the search bar, then select <strong>shared_preload_libraries</strong></p>
-<p><img src="/images/1/1.1/0.4.png" alt="Create PG"></p>
+<p>Fill <code>shared_preload_libraries</code> parameter in the search bar, then select <strong>shared_preload_libraries</strong>
+<img alt="Create PG" src="/images/1/1.1/0.4.png"></p>
 </li>
 <li>
 <p>Click <strong>Save Changes</strong></p>
@@ -1051,51 +1041,41 @@
 <p>This parameter specifies which shared libraries are preloaded when your Aurora PostgreSQL server starts. Preloading libraries reduces the overhead of loading them on-demand when needed, potentially improving performance for specific functionalities.</p>
 <p><strong>What libraries are preloaded?</strong></p>
 <p><strong>Built-in libraries</strong>: Certain core PostgreSQL functionalities rely on shared libraries that are automatically preloaded by default. You don&rsquo;t need to configure them in shared_preload_libraries.
-Custom libraries: You can specify additional shared libraries to be preloaded for specific needs. These could be:
-PostgreSQL extensions: For features like full-text search or geospatial data handling.
-Custom modules: Developed by you or third-party vendors for unique functionalities.
+<strong>Custom libraries</strong>: You can specify additional shared libraries to be preloaded for specific needs. These could be:
+<strong>PostgreSQL extensions</strong>: For features like full-text search or geospatial data handling.
+<strong>Custom modules</strong>: Developed by you or third-party vendors for unique functionalities.
 Important Notes:</p>
 <p><strong>Performance impact</strong>: Preloading unnecessary libraries can consume memory and negatively affect startup times. Only preload libraries actively used by your applications.
-Security considerations: Be cautious when adding custom libraries due to potential security vulnerabilities. Ensure they are from trusted sources and vetted carefully.
-Restart requirement: Modifying shared_preload_libraries requires restarting your Aurora PostgreSQL instance for the changes to take effect.</p>
+<strong>Security considerations</strong>: Be cautious when adding custom libraries due to potential security vulnerabilities. Ensure they are from trusted sources and vetted carefully.
+<strong>Restart requirement</strong>: Modifying shared_preload_libraries requires restarting your Aurora PostgreSQL instance for the changes to take effect.</p>
 
     </div>
 </div></p>
 <h4 id="to-create-a-database-cluster-parameter-group">To create a Database Cluster Parameter Group</h4>
 <ol>
 <li>
-<p>Go to the <a href="https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1">AWS RDS console</a>, select <strong>Parameter Group</strong>, choose <strong>Create parameter group</strong>.</p>
-<p><img src="/images/1/1.1/00.png" alt="Create PG"></p>
+<p>Go to the <a href="https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1">AWS RDS console</a>, select <strong>Parameter Group</strong>, choose <strong>Create parameter group</strong>.
+<img alt="Create PG" src="/images/1/1.1/00.png"></p>
 </li>
 <li>
 <p>In the <strong>Parameter group details</strong> section</p>
 </li>
 </ol>
 <ul>
-<li>
-<p>For <strong>Parameter group family</strong>, select <strong>aurora-postgresql15</strong></p>
-</li>
-<li>
-<p>For <strong>Type</strong>, select <strong>DB Cluster Parameter Group</strong></p>
-</li>
-<li>
-<p>For <strong>Group Name</strong>, type your parameter group name</p>
-</li>
-<li>
-<p>For <strong>Description</strong>, type your description</p>
-<p><img src="/images/1/1.1/0.png" alt="Create PG"></p>
-</li>
-<li>
-<p>Click <strong>Create</strong></p>
-</li>
+<li>For <strong>Parameter group family</strong>, select <strong>aurora-postgresql15</strong></li>
+<li>For <strong>Type</strong>, select <strong>DB Cluster Parameter Group</strong></li>
+<li>For <strong>Group Name</strong>, type your parameter group name</li>
+<li>For <strong>Description</strong>, type your description
+<img alt="Create PG" src="/images/1/1.1/0.png"></li>
+<li>Click <strong>Create</strong></li>
 </ul>
 <ol start="3">
 <li>Change and enable some configurations in the parameter group</li>
 </ol>
 <ul>
 <li>
-<p>Go to Parameter Group console, click <strong>Action</strong>, choose <strong>Edit</strong></p>
-<p><img src="/images/1/1.1/0001.png" alt="Create PG"></p>
+<p>Go to Parameter Group console, click <strong>Action</strong>, choose <strong>Edit</strong>
+<img alt="Create PG" src="/images/1/1.1/0001.png"></p>
 </li>
 <li>
 <p>Fill <code>log_rotation</code> parameter in the search bar,</p>
@@ -1105,7 +1085,7 @@ Restart requirement: Modifying shared_preload_libraries requires restarting your
 </li>
 <li>
 <p>Edit <strong>log_rotation_size</strong> value: <code>102400</code></p>
-<p><img src="/images/1/1.1/0.2.png" alt="Create PG"></p>
+<p><img alt="Create PG" src="/images/1/1.1/0.2.png"></p>
 </li>
 <li>
 <p>Click <strong>Save Changes</strong></p>
@@ -1636,19 +1616,19 @@ CloudWatch Logs integration: Aurora PostgreSQL automatically streams logs to Clo
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

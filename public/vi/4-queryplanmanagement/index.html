@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create RDS PostgreSQL Database Instance :: AWS System Manager</title>
+    <title>Query Plan Management :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -82,13 +82,13 @@
  
   
     
-    <li data-nav-id="/vi/1-introduce/" title="Introduction" class="dd-item 
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/1-introduce/">
-           <b> 1. </b> Introduction
+           <b> 1. </b> Giới thiệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -108,13 +108,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/" title="Các bước chuẩn bị" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/">
-          Preparation Steps
+           <b> 2. </b> Các bước chuẩn bị
           
             <i class="fas fa-check read-icon"></i>
           
@@ -139,13 +139,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Create a VPC" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Tạo VPC" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-1-createvpc/">
-           <b> 2.1. </b> Create a VPC
+           <b> 2.1. </b> Tạo VPC
           
             <i class="fas fa-check read-icon"></i>
           
@@ -167,13 +167,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Create Security Group " class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Tạo Security Group " class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-2-createsg/">
-           <b> 2.2. </b> Create Security Group 
+           <b> 2.2. </b> Tạo Security Group 
           
             <i class="fas fa-check read-icon"></i>
           
@@ -195,13 +195,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Create a EC2 instance" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Tạo EC2 instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-3-createec2/">
-           <b> 2.3. </b> Create a EC2 instance
+           <b> 2.3. </b> Tạo EC2 instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -223,13 +223,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Tạo Subnet Group và Parameter Group" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-4-createpgsg/">
-           <b> 2.4. </b> Create Subnet Group and Parameter Group
+           <b> 2.4. </b> Tạo Subnet Group và Parameter Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -279,13 +279,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title=" Create, Configure Cloud9 and Initialize Database" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title="Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">
-           <b> 2.6.</b>  Create, Configure Cloud9 and Initialize Database
+           <b> 2.6.</b> Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -300,32 +300,6 @@
           
         
         </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/3-fastcloning/" title="Start with PostgreSQL" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/3-fastcloning/">
-           <b> 2. </b> Start with PostgreSQL
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
               
     </li>
   
@@ -434,13 +408,13 @@
  
   
     
-    <li data-nav-id="/vi/4-queryplanmanagement/" title="Create RDS PostgreSQL Database Instance" class="dd-item 
+    <li data-nav-id="/vi/3-fastcloning/" title="Fast Cloning" class="dd-item 
         
-        active
+        
         
         ">
-      <a href="/vi/4-queryplanmanagement/">
-           <b> 3. </b> Create RDS PostgreSQL Database Instance
+      <a href="/vi/3-fastcloning/">
+           <b> 3. </b> Fast Cloning
           
             <i class="fas fa-check read-icon"></i>
           
@@ -540,6 +514,32 @@
           
         
         </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-queryplanmanagement/" title="Query Plan Management" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/4-queryplanmanagement/">
+           <b> 4. </b> Query Plan Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
               
     </li>
   
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/4-queryplanmanagement/">English</option>
+                      <option id="en" value="//localhost:1313/4-queryplanmanagement/">English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/4-queryplanmanagement/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/4-queryplanmanagement/" selected>Tiếng Việt</option>
                     
                   
               
@@ -909,7 +909,7 @@
             
           
           
-            <a href='/vi/'>AWS RDS PostgreSQL</a> > Create RDS PostgreSQL Database Instance
+            <a href='/vi/'>AWS RDS PostgreSQL</a> > Query Plan Management
           
         
           
@@ -924,8 +924,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#this-lab-contains-following-tasks">This lab contains following tasks:</a></li>
-        <li><a href="#content">Content</a></li>
+        <li></li>
       </ul>
     </li>
   </ul>
@@ -945,7 +944,7 @@
           
             <h1>
               
-              Create RDS PostgreSQL Database Instance
+              Query Plan Management
             </h1>
           
 
@@ -953,13 +952,264 @@
 
 
 
-	<h3 id="this-lab-contains-following-tasks">This lab contains following tasks:</h3>
-<h3 id="content">Content</h3>
+	<p>Với query plan management (QPM), bạn có thể kiểm soát các kế hoạch thực hiện cho một tập hợp các câu lệnh mà bạn muốn quản lý. Bạn có thể làm như sau:</p>
+<ul>
+<li>Cải thiện tính ổn định của kế hoạch bằng cách buộc trình tối ưu hóa chọn từ một số ít các kế hoạch tốt đã biết.</li>
+<li>Tối ưu hóa kế hoạch tập trung và sau đó phân phối các kế hoạch tốt nhất trên toàn cầu.</li>
+<li>Xác định các chỉ mục không được sử dụng và đánh giá tác động của việc tạo hoặc xóa chỉ mục.</li>
+<li>Tự động phát hiện kế hoạch chi phí tối thiểu mới được trình tối ưu hóa phát hiện.</li>
+<li>Thử nghiệm các tính năng tối ưu hóa mới với ít rủi ro hơn vì bạn có thể chọn chỉ phê duyệt những thay đổi trong kế hoạch nhằm cải thiện hiệu suất.</li>
+</ul>
+<p>Để biết thêm chi tiết về Query Plan Management vui lòng tham khảo tài liệu chính thức <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.html">Managing Query Execution Plans for Aurora PostgreSQL</a>.</p>
+<p>Cách nhanh nhất để kích hoạt QPM là sử dụng chức năng tự động ghi lại kế hoạch, cho phép ghi lại kế hoạch cho tất cả các câu lệnh SQL chạy ít nhất hai lần. Trong thí nghiệm này, chúng ta sẽ đi qua quy trình kích hoạt QPM với việc ghi lại kế hoạch tự động, cải tiến các kế hoạch truy vấn bằng cách chấp nhận chúng theo cách thủ công và sửa các kế hoạch truy vấn bằng cách sử dụng gợi ý tối ưu hóa.</p>
+<h4 id="bắt-đầu-nhanh-việc-sử-dụng-qpm-với-automatic-capture">Bắt đầu nhanh việc sử dụng QPM với automatic capture</h4>
+<p>Dưới đây là các bước để cấu hình và kích hoạt QPM trên cụm Aurora PostgreSQL của bạn để tự động nắm bắt và kiểm soát các kế hoạch thực thi cho một tập hợp câu lệnh SQL.</p>
 <ol>
-<li><a href="3-1-createdbinstance/">Create DB instance</a></li>
-<li><a href="3-2-retrievebdinstancendpoint/">Retrieve DB instance endpoint</a></li>
-<li><a href="3-3-storeaccountinawssms/">Store user/password database in AWS Secrets Manager secret </a></li>
+<li>Tùy chỉnh Amazon Aurora DB Cluster Parameters liên quan đến QPM.</li>
 </ol>
+<ul>
+<li>
+<p>Truy cập <a href="https://console.aws.amazon.com/rds/home?#parameter-group-list:">Amazon RDS service console Parameters group section</a>  nằm bên trái của RDS console.</p>
+</li>
+<li>
+<p>Trong danh sách, hãy chọn parameter group cho Aurora PostgreSQL DB cluster của bạn. Cụm DB phải sử dụng nhóm tham số khác với mặc định vì bạn không thể thay đổi giá trị trong nhóm tham số mặc định. Để biết thêm thông tin, xem <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_WorkingWithParamGroups.html#USER_WorkingWithParamGroups.CreatingCluster">Creating a DB Cluster Parameter Group</a>.</p>
+</li>
+<li>
+<p>Nhấp vào <strong>Edit</strong> bên dưới <strong>Action</strong>.
+<img alt="QMP" src="/images/4.1/1.png"></p>
+</li>
+<li>
+<p>Trong trường lọc Parametr, nhập <code>rds.enable_plan_management</code>. Đặt value của <strong>rds.enable_plan_management</strong> thành 1 và nhấp vào Save changes.
+<img alt="QMP" src="/images/4.1/2.png"></p>
+</li>
+<li>
+<p>Nhấp vào tên nhóm tham số cơ sở dữ liệu <strong>DB instance parameter group</strong> và nhấp vào Edit.
+<img alt="QMP" src="/images/4.1/3.png"></p>
+</li>
+<li>
+<p>Chúng ta cần thay đổi hai tham số:</p>
+<ul>
+<li>Sửa giá trị của tham số <code>apg_plan_mgmt.capture_plan_baselines</code> thành <code>automatic</code></li>
+<li>Sửa giá trị của <code>apg_plan_mgmt.use_plan_baselines</code> thành <code>true</code></li>
+<li>Bấm <strong>Save Changes</strong> để lưu thay đổi
+<img alt="QMP" src="/images/4.1/4.png"></li>
+</ul>
+</li>
+<li>
+<p>Nhấp vào <strong>Databases</strong> trên bảng điều hướng bên trái và đợi trạng thái của instance thay đổi thành <strong>available</strong>. Các thay đổi tham số sẽ có hiệu lực sau khi khởi động lại như được đề xuất trên tab cấu hình của Aurora writer và reader instances</p>
+</li>
+<li>
+<p>Khởi động lại writer và reader nodes bằng cách chọn vào nó và đi tới <strong>Actions</strong> menu.</p>
+</li>
+<li>
+<p>Đợi trạng thái của writer và reader nodes trở nên <strong>Available</strong>.</p>
+</li>
+</ul>
+<ol start="2">
+<li>Tạo và xác minh <code>apg_plan_mgmt</code> extension cho DB instance.</li>
+</ol>
+<ul>
+<li>
+<p>Mở Cloud9 terminal bằng cách sau [Open Cloud9 Terminal Window](<a href="https://catalog.us-east-1.prod.workshops.aws/workshops/098605dc-8eee-4e84-85e9-c5c6c9e43de2/en-US/lab1-">https://catalog.us-east-1.prod.workshops.aws/workshops/098605dc-8eee-4e84-85e9-c5c6c9e43de2/en-US/lab1-</a> 5-client/cloud9-terminal/) và tạo <strong>apg_plan_mgmt</strong> extension cho DB instance của bạn.</p>
+<pre><code> ```
+ psql
+ CREATE EXTENSION apg_plan_mgmt;
+ select extname,extversion from pg_extension where extname='apg_plan_mgmt';
+
+ ```
+</code></pre>
+</li>
+</ul>
+<p>Bạn sẽ thấy đầu ra tương tự như sau. Extension version sẽ khác nhau tùy thuộc vào Aurora PostgreSQL instance.</p>
+<pre><code>   ![QMP](/images/4.1/5.png)
+</code></pre>
+<ul>
+<li>
+<p>Xem lại tất cả các tham số liên quan đến QPM được sửa đổi thành giá trị phù hợp bằng cách chạy các truy vấn sau.</p>
+<pre><code> ```
+ show apg_plan_mgmt.capture_plan_baselines;
+ show apg_plan_mgmt.use_plan_baselines;
+ \q
+ ```
+ ![QMP](/images/4.1/6.png)
+</code></pre>
+</li>
+</ul>
+<ol start="3">
+<li>Chạy synthetic workload với automatic capture.</li>
+</ol>
+<ul>
+<li>
+<p>Mở một trong Cloud9 terminal và chạy pgbench (một công cụ đo điểm chuẩn của PostgreSQL) để tạo một workload mô phỏng chạy các truy vấn tương tự trong một khoảng thời gian cụ thể. Khi bật tính năng thu nạp tự động, QPM sẽ ghi lại các gói cho mỗi truy vấn chạy ít nhất hai lần.</p>
+<pre><code> ```
+ pgbench --progress-timestamp -M prepared -n -T 100 -P 1  -c 100 -j 100 -b tpcb-like@1 -b select-only@20
+ # The following pgbench command runs for 100 seconds with 100 clients/db sessions and 100 job threads emitting progress every 1 second
+ ```
+</code></pre>
+</li>
+</ul>
+<p><em>Đợi lệnh trên kết thúc.</em></p>
+<ul>
+<li>Mở một terminal khác trên Cloud9 để truy vấn bảng <code>apg_plan_mgmt.dba_plans</code> để xem các câu lệnh được quản lý và kế hoạch thực thi. Sau đó chạy các lệnh sau:</li>
+</ul>
+<pre tabindex="0"><code>psql
+
+SELECT sql_hash, 
+       plan_hash, 
+       status, 
+       enabled, 
+       sql_text 
+FROM   apg_plan_mgmt.dba_plans;
+</code></pre><p><img alt="QMP" src="/images/4.1/7.png"></p>
+<ul>
+<li>
+<p>Tắt tính năng automatic capture các gói truy vấn. Việc thu thập tất cả các gói bằng tính năng automatic capture có ít chi phí thời gian chạy và có thể được kích hoạt trong production. Chúng ta đang tắt tính năng automatic capture để đảm bảo rằng chúng ta không thu thập các câu lệnh SQL bên ngoài pgbench workload. Bạn có thể tắt tính năng này bằng cách đặt tham số <strong>apg_plan_mgmt.capture_plan_baselines</strong> thành <code>off</code> từ DB parameter group.
+<img alt="QMP" src="/images/4.1/8.png"></p>
+</li>
+<li>
+<p>Xác minh cài đặt parameter bằng PSQL. Vì <strong>apg_plan_mgmt.capture_plan_baselines</strong> là một tham số động nên nó không cần khởi động lại phiên bản để có hiệu lực. Sẽ mất 5-10 giây để giá trị tham số thay đổi.</p>
+</li>
+</ul>
+<pre tabindex="0"><code>show apg_plan_mgmt.capture_plan_baselines;
+</code></pre><p><img alt="QMP" src="/images/4.1/9.png"></p>
+<ul>
+<li>Hãy xác minh rằng kế hoạch thực hiện cho một trong các câu lệnh được quản lý có giống với kế hoạch được QPM nắm bắt hay không. Thực hiện explain plan trên một trong các câu lệnh được quản lý. Output của explain plan cho thấy hàm băm SQL và hàm băm kế hoạch khớp với kế hoạch được QPM phê duyệt cho câu lệnh đó.</li>
+</ul>
+<pre tabindex="0"><code>explain (hashes true) UPDATE pgbench_tellers SET tbalance = tbalance + 100 WHERE tid = 200; 
+# (hashes true): This is likely part of a specific testing or benchmarking framework and doesn&#39;t directly affect the UPDATE statement itself. It might indicate a particular flag or configuration within the framework.
+</code></pre><p><img alt="QMP" src="/images/4.1/10.png"></p>
+
+<div class="notices note" ><p>Ngoài việc automatic plan capture, QPM còn có khả năng manual plan capture, cung cấp cơ chế nắm bắt các kế hoạch thực hiện cho các truy vấn có vấn đề đã biết. Nói chung, việc nắm bắt các kế hoạch một cách tự động được khuyến khích. Tuy nhiên, có những tình huống mà việc thu thập kế hoạch theo cách thủ công sẽ là lựa chọn tốt nhất, chẳng hạn như:</p>
+<ul>
+<li>Bạn không muốn kích hoạt quản lý kế hoạch ở cấp Cơ sở dữ liệu, nhưng bạn chỉ muốn kiểm soát một vài câu lệnh SQL quan trọng.</li>
+<li>Bạn muốn lưu kế hoạch cho một tập hợp chữ hoặc giá trị tham số cụ thể đang gây ra sự cố về hiệu suất</li>
+</ul>
+</div>
+
+<h4 id="khả-năng-thích-ứng-của-qpm-plan-với-cơ-chế-plan-evolution">Khả năng thích ứng của QPM Plan với cơ chế plan evolution</h4>
+<ul>
+<li>
+<p>Nếu kế hoạch được tạo bởi trình tối ưu hóa không phải là kế hoạch được lưu trữ thì trình tối ưu hóa sẽ thu thập và lưu trữ nó dưới dạng kế hoạch mới chưa được phê duyệt để duy trì sự ổn định cho các câu lệnh SQL do QPM quản lý. Quản lý kế hoạch truy vấn cung cấp các kỹ thuật và chức năng để thêm, duy trì và cải thiện các kế hoạch thực hiện và do đó cung cấp khả năng thích ứng của Kế hoạch. Người dùng có thể hướng dẫn QPM theo yêu cầu hoặc định kỳ phát triển tất cả các gói được lưu trữ để xem liệu có gói chi phí tối thiểu nào tốt hơn bất kỳ gói nào được phê duyệt hay không.</p>
+</li>
+<li>
+<p>QPM cung cấp chức năng <strong>apg_plan_mgmt.evolve_plan_baselines</strong> để so sánh các gói dựa trên hiệu suất thực tế của chúng. Tùy thuộc vào kết quả thử nghiệm hiệu suất, bạn có thể thay đổi trạng thái của kế hoạch từ <strong>unapproved</strong> thành <strong>approved</strong> hoặc <strong>rejected</strong>. Thay vào đó, bạn có thể quyết định sử dụng chức năng <strong>apg_plan_mgmt.evolve_plan_baselines</strong> để tạm thời vô hiệu hóa một gói nếu gói đó không đáp ứng yêu cầu của bạn. Để biết thêm thông tin chi tiết về QPM Plan evolution, hãy xem <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.Maintenance.html#AuroraPostgreSQL.Optimize.Maintenance.EvaluatingPerformance">Evaluating Plan Performance</a> .</p>
+</li>
+<li>
+<p>Đối với trường hợp sử dụng đầu tiên, chúng ta sẽ xem qua một ví dụ về cách QPM giúp đảm bảo sự ổn định của kế hoạch trong đó các thay đổi khác nhau có thể dẫn đến sự suy giảm của kế hoạch.</p>
+</li>
+<li>
+<p>Trong hầu hết các trường hợp, bạn thiết lập QPM để ghi lại kế hoạch cho tất cả các câu lệnh chạy hai lần trở lên. uy nhiên, bạn cũng có thể ghi lại kế hoạch cho một tập hợp cụ thể các câu lệnh mà bạn chỉ định theo cách thủ công. Để thực hiện việc này, bạn đặt <strong>apg_plan_mgmt.capture_plan_baselines = off</strong> trong DB parameter group (là mặc định) và <strong>apg_plan_mgmt.capture_plan_baselines = manual</strong></p>
+</li>
+</ul>
+<ol>
+<li>Bật tính năng chụp kế hoạch thủ công để hướng dẫn QPM ghi lại kế hoạch thực hiện của các câu lệnh SQL mong muốn theo cách thủ công.</li>
+</ol>
+<pre tabindex="0"><code>SET apg_plan_mgmt.capture_plan_baselines = manual;
+</code></pre><ol start="2">
+<li>Chạy explain plan cho một truy vấn cụ thể để QPM có thể ghi lại được kế hoạch thực hiện (đầu ra sau đây cho explain plan được cắt bớt để ngắn gọn).</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 );
+</code></pre><p><img alt="QMP" src="/images/4.1/11.png"></p>
+<ol start="3">
+<li>Tắt tính năng thu thập thủ công các câu lệnh SQL mới cùng với các kế hoạch của chúng sau khi bạn nắm bắt kế hoạch thực hiện cho câu lệnh SQL mong muốn.</li>
+</ol>
+
+<div class="notices note" ><p>QPM tiếp tục nắm bắt các kế hoạch mới cho các câu lệnh SQL được quản lý ngay cả sau khi tắt apg_plan_mgmt.capture_plan_baselines.</p>
+</div>
+
+<pre tabindex="0"><code>SET apg_plan_mgmt.capture_plan_baselines = off;
+</code></pre><ol start="4">
+<li>Xem kế hoạch truy vấn đã thu thập cho truy vấn mà bạn đã chạy trước đó. Cột plan_outline trong bảng <code>apg_plan_mgmt.dba_plans</code> hiển thị toàn bộ kế hoạch cho SQL. Để cho ngắn gọn, plan_outline không được hiển thị ở đây.</li>
+</ol>
+<pre tabindex="0"><code>SELECT sql_hash,
+                plan_hash,
+               status,
+               estimated_total_cost &#34;cost&#34;,
+               sql_text
+FROM apg_plan_mgmt.dba_plans;
+</code></pre><p><img alt="QMP" src="/images/4.1/12.png"></p>
+<ol start="5">
+<li>Để hướng dẫn tối ưu hóa truy vấn sử dụng các gói đã chụp được phê duyệt hoặc ưu tiên cho các câu lệnh được quản lý của bạn, hãy đặt tham số <strong>apg_plan_mgmt.use_plan_baselines</strong> thành <strong>true</strong>.</li>
+</ol>
+<pre tabindex="0"><code>SET apg_plan_mgmt.use_plan_baselines = true;
+</code></pre><ol start="6">
+<li>Để xem đầu ra của lệnh &ldquo;explain plan&rdquo; và xác nhận rằng kế hoạch được QPM chấp nhận được sử dụng bởi trình tối ưu truy vấn, bạn có thể thực hiện các bước sau:</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 ); 
+</code></pre><p><img alt="QMP" src="/images/4.1/13.png"></p>
+<ol start="7">
+<li>Để tạo một chỉ mục mới trên cột &ldquo;bid&rdquo; trong bảng &ldquo;pgbench_history&rdquo; và thay đổi cấu hình trình tối ưu truy vấn để buộc trình tối ưu truy vấn tạo ra một kế hoạch mới, bạn có thể thực hiện các bước sau:</li>
+</ol>
+<pre tabindex="0"><code>create index pgbench_hist_bid on pgbench_history(bid);
+</code></pre><ol start="8">
+<li>Xem đầu ra của explain plan để thấy rằng QPM phát hiện một kế hoạch mới nhưng vẫn sử dụng kế hoạch đã được phê duyệt và duy trì sự ổn định của kế hoạch. Lưu ý dòng <em><strong>An Approved plan was used instead of the minimum cost plan</strong></em>.</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 );
+</code></pre><p><img alt="QMP" src="/images/4.1/14.png"></p>
+<ol start="9">
+<li>Chạy truy vấn SQL sau để xem kế hoạch mới và trạng thái của kế hoạch. Để đảm bảo sự ổn định của kế hoạch, QPM lưu trữ tất cả các kế hoạch mới được tạo cho truy vấn được quản lý trong QPM dưới dạng các kế hoạch chưa được phê duyệt.</li>
+</ol>
+<ul>
+<li>
+<p>Kết quả đầu ra sau đây cho thấy có hai kế hoạch thực thi khác nhau được lưu trữ cho cùng một câu lệnh được quản lý, được thể hiện bằng hai giá trị plan_hash khác nhau. Mặc dù phương án thực hiện mới có chi phí tối thiểu (thấp hơn kế hoạch được phê duyệt) nhưng QPM vẫn tiếp tục bỏ qua các phương án chưa được phê duyệt để duy trì tính ổn định của kế hoạch.</p>
+</li>
+<li>
+<p>Cột plan_outline trong bảng <code>apg_plan_mgmt.dba_plans</code> hiển thị toàn bộ kế hoạch cho SQL. Để cho ngắn gọn, plan_outline không được hiển thị ở đây.</p>
+</li>
+</ul>
+<pre tabindex="0"><code>SELECT sql_hash,
+                plan_hash,
+               status,
+               estimated_total_cost &#34;cost&#34;,
+               sql_text
+FROM apg_plan_mgmt.dba_plans;
+</code></pre><p><img alt="QMP" src="/images/4.1/15.png"></p>
+<ul>
+<li>Sau đây là ví dụ về khả năng thích ứng của kế hoạch với QPM. Ví dụ này đánh giá kế hoạch chưa được phê duyệt dựa trên hệ số tăng tốc tối thiểu. Nó phê duyệt bất kỳ kế hoạch nào chưa được phê duyệt được ghi lại nhanh hơn ít nhất 10 phần trăm so với kế hoạch được phê duyệt. Để biết thêm thông tin chi tiết, hãy xem <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.Maintenance.html#AuroraPostgreSQL.Optimize.Maintenance.EvaluatingPerformance">Evaluating Plan Performance in the Aurora documentation</a>.</li>
+</ul>
+<pre tabindex="0"><code>SELECT apg_plan_mgmt.Evolve_plan_baselines (sql_hash, plan_hash, 1.1,&#39;approve&#39;)
+FROM   apg_plan_mgmt.dba_plans
+WHERE  status = &#39;Unapproved&#39;; 
+</code></pre><p><img alt="QMP" src="/images/4.1/16.png"></p>
+<ul>
+<li>Sau khi QPM đánh giá kế hoạch dựa trên yếu tố tốc độ, trạng thái kế hoạch sẽ thay đổi từ <strong>không được phê duyệt</strong> thành <strong>được phê duyệt</strong>. Tại thời điểm này, trình tối ưu hóa có thể chọn gói chi phí thấp hơn mới được phê duyệt cho báo cáo được quản lý đó.</li>
+</ul>
+<pre tabindex="0"><code>SELECT sql_hash,
+                plan_hash,
+               status,
+               estimated_total_cost &#34;cost&#34;,
+               sql_text
+FROM apg_plan_mgmt.dba_plans;
+</code></pre><p><img alt="QMP" src="/images/4.1/17.png"></p>
+<ol start="10">
+<li>Xem đầu ra của explain plan để xem liệu truy vấn có đang sử dụng kế hoạch chi phí tối thiểu mới được phê duyệt hay không.</li>
+</ol>
+<pre tabindex="0"><code>explain (analyze, summary, hashes)
+SELECT Sum(delta),
+               Sum(bbalance)
+FROM   pgbench_history h,
+              pgbench_branches b
+WHERE  b.bid = h.bid
+       AND b.bid IN ( 1, 2, 3 );
+</code></pre><p><img alt="QMP" src="/images/4.1/18.png"></p>
 
 
 
@@ -1138,6 +1388,56 @@
 
                     
                     
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
                     
 
                     
@@ -1218,56 +1518,6 @@
                     
                         
                         
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1403,10 +1653,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" title="Database and Schemas"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/" title="Verify DB instance"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/6-databaseactivitystreaming/" title="Import data into PostgreSQl" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/9-testfaulttolerance/" title="Querying data" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1416,19 +1666,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

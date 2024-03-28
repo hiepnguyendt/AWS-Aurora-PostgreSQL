@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Database and Schemas :: AWS System Manager</title>
+    <title>Benchmarking với Cluster Cache management :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711431242" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711431242" rel="stylesheet">
+    <link href="/css/hybrid.css?1711431242" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711431242" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711431242" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711431242" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711431242" rel="stylesheet">
+    <link href="/css/theme.css?1711431242" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711431242" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711431242" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711431242"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711431242"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711431242"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711431242"></script>
 
     
   </div>
@@ -82,13 +82,13 @@
  
   
     
-    <li data-nav-id="/vi/1-introduce/" title="Introduction" class="dd-item 
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/1-introduce/">
-           <b> 1. </b> Introduction
+           <b> 1. </b> Giới thiệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -108,13 +108,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/" title="Các bước chuẩn bị" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/">
-          Preparation Steps
+           <b> 2. </b> Các bước chuẩn bị
           
             <i class="fas fa-check read-icon"></i>
           
@@ -139,13 +139,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Create a VPC" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Tạo VPC" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-1-createvpc/">
-           <b> 2.1. </b> Create a VPC
+           <b> 2.1. </b> Tạo VPC
           
             <i class="fas fa-check read-icon"></i>
           
@@ -167,13 +167,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Create Security Group " class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Tạo Security Group " class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-2-createsg/">
-           <b> 2.2. </b> Create Security Group 
+           <b> 2.2. </b> Tạo Security Group 
           
             <i class="fas fa-check read-icon"></i>
           
@@ -195,13 +195,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Create a EC2 instance" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Tạo EC2 instance" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-3-createec2/">
-           <b> 2.3. </b> Create a EC2 instance
+           <b> 2.3. </b> Tạo EC2 instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -223,13 +223,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Tạo Subnet Group và Parameter Group" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-4-createpgsg/">
-           <b> 2.4. </b> Create Subnet Group and Parameter Group
+           <b> 2.4. </b> Tạo Subnet Group và Parameter Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -279,13 +279,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title=" Create, Configure Cloud9 and Initialize Database" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title="Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">
-           <b> 2.6.</b>  Create, Configure Cloud9 and Initialize Database
+           <b> 2.6.</b> Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -300,32 +300,6 @@
           
         
         </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/3-fastcloning/" title="Start with PostgreSQL" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/3-fastcloning/">
-           <b> 2. </b> Start with PostgreSQL
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
               
     </li>
   
@@ -371,13 +345,13 @@
  
   
     
-    <li data-nav-id="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/" title="Setup cluster cache management" class="dd-item 
+    <li data-nav-id="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/" title="Thiết lập cluster cache management" class="dd-item 
         
         
         
         ">
       <a href="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/">
-           <b> 5.1. </b> Setup cluster cache management
+           <b> 5.1. </b> Thiết lập cluster cache management
           
             <i class="fas fa-check read-icon"></i>
           
@@ -399,13 +373,13 @@
  
   
     
-    <li data-nav-id="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" title="Database and Schemas" class="dd-item 
+    <li data-nav-id="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" title="Benchmarking với Cluster Cache management" class="dd-item 
         
         active
         
         ">
       <a href="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">
-           <b> 2.2. </b> Database and Schemas
+           <b> 5.2. </b> Benchmarking với Cluster Cache management
           
             <i class="fas fa-check read-icon"></i>
           
@@ -434,13 +408,13 @@
  
   
     
-    <li data-nav-id="/vi/4-queryplanmanagement/" title="Create RDS PostgreSQL Database Instance" class="dd-item 
+    <li data-nav-id="/vi/3-fastcloning/" title="Fast Cloning" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-queryplanmanagement/">
-           <b> 3. </b> Create RDS PostgreSQL Database Instance
+      <a href="/vi/3-fastcloning/">
+           <b> 3. </b> Fast Cloning
           
             <i class="fas fa-check read-icon"></i>
           
@@ -540,6 +514,32 @@
           
         
         </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-queryplanmanagement/" title="Query Plan Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-queryplanmanagement/">
+           <b> 4. </b> Query Plan Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
               
     </li>
   
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">English</option>
+                      <option id="en" value="//localhost:1313/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" selected>Tiếng Việt</option>
                     
                   
               
@@ -913,7 +913,7 @@
             
           
           
-            <a href='/vi/'>AWS RDS PostgreSQL</a> > <a href='/vi/5-clustercachemanagement/'>Start with PostgreSQL</a> > Database and Schemas
+            <a href='/vi/'>AWS RDS PostgreSQL</a> > <a href='/vi/5-clustercachemanagement/'>Start with PostgreSQL</a> > Benchmarking với Cluster Cache management
           
         
           
@@ -931,16 +931,8 @@
     <li>
       <ul>
         <li></li>
-      </ul>
-    </li>
-    <li><a href="#pre---b-22-b-">You have learned the basics about PostgreSQL Databases and Schemas.&mdash;
-title : &ldquo;Database and Schemas&rdquo;
-date :  &ldquo;<code>r Sys.Date()</code>&rdquo;
-weight : 2
-chapter : false
-pre : &quot; <!-- raw HTML omitted --> 2.2. <!-- raw HTML omitted --> &quot;</a>
-      <ul>
-        <li></li>
+        <li><a href="#benchmarking-với-ccm-được-kích-hoạt">Benchmarking với CCM được kích hoạt</a></li>
+        <li><a href="#benchmarking-với-ccm-disabled">Benchmarking với CCM disabled</a></li>
       </ul>
     </li>
   </ul>
@@ -960,7 +952,7 @@ pre : &quot; <!-- raw HTML omitted --> 2.2. <!-- raw HTML omitted --> &quot;</a>
           
             <h1>
               
-              Database and Schemas
+              Benchmarking với Cluster Cache management
             </h1>
           
 
@@ -968,27 +960,38 @@ pre : &quot; <!-- raw HTML omitted --> 2.2. <!-- raw HTML omitted --> &quot;</a>
 
 
 
-	<p>Welcome to PostgreSQL! If this is your first time looking at <strong>PostgreSQL</strong>, we encourage you to check out the official <a href="https://www.postgresql.org/about/">About PostgreSQL</a>  webpage.</p>
-<p>In this module, we are going to explore <strong>Databases and Schemas.</strong></p>
+	<h4 id="benchmarking-với-cluster-cache-management">Benchmarking với Cluster Cache management</h4>
+<p>Để xác minh các lợi ích của tính năng của Cluster Cache Management trên cụm Aurora, chúng ta sẽ thực hiện các bước sau. Chúng ta sẽ khám phá các bước này chi tiết hơn trong các phần tương ứng dưới đây.</p>
+<ul>
+<li>Với CCM được kích hoạt, chúng ta sẽ chạy bài đo hiệu năng pgbench trên writer node.</li>
+<li>Chúng ta sẽ kiểm tra các trang được lưu trữ trong bộ nhớ cache trên cả writer node và reader node để xác minh rằng chúng được đồng bộ.</li>
+<li>Sau đó, chúng ta sẽ thực hiện Failover trên cụm Aurora.</li>
+<li>Chúng ta sẽ chạy bài đo hiệu năng pgbench trên writer node mới sau sự cố và xác minh rằng các số liệu TPS (Transaction Per Second) giữa writer node cũ và mới là tương tự.</li>
+<li>Sau đó, chúng ta sẽ tắt CCM.</li>
+<li>Chúng ta sẽ xóa bộ nhớ cache đệm trên cả writer node và reader node bằng cách dừng và khởi động lại cụm.</li>
+<li>Với CCM bị tắt, chúng ta sẽ chạy bài đo hiệu năng trên writer node bằng cách sử dụng pgbench lại</li>
+<li>Chúng ta sẽ kiểm tra các trang được lưu trữ trong bộ nhớ cache trên cả writer node và reader node để xác minh rằng chúng không được đồng bộ.</li>
+<li>Tiếp theo, chúng ta sẽ thực hiện Failover trên cụm Aurora một lần nữa.</li>
+<li>Chúng ta sẽ chạy bài đo hiệu năng pgbench trên writer node mới sau sự cố và xác minh rằng các số liệu TPS giữa writer node cũ và mới biến đổi đáng kể.</li>
+</ul>
+<ol>
+<li>Tải dữ liệu lớn để thực hiện bài đo hiệu năng (benchmarking):
 
-<div class="notices info" ><p>This chapter assumes you have setup and configured pgAdmin. If you haven&rsquo;t, please complete the pgAdmin module before proceeding.</p>
+<div class="notices note" ><p>Để tái tạo bài đo hiệu năng được sử dụng trong lab, chúng ta cần thêm dữ liệu mẫu vào bài đo hiệu năng. Lệnh dưới đây sử dụng yếu tố tỷ lệ (scale factor) là 10000. Bước tùy chọn này có thể mất khoảng 15-20 phút để thêm dữ liệu vào cơ sở dữ liệu, vì vậy hãy đảm bảo bạn có đủ thời gian hoàn thành lab trước khi chạy lệnh dưới đây.</p>
 </div>
-
-<h4 id="explore-databases">Explore Databases</h4>
-<p>1.In your pgAdmin tool, click the <em>&gt;</em> in front of <strong>rdspg-fcj-labs</strong> to expand it.</p>
-<p><img src="/images/2/2-2/1.png" alt="rdspg-fcj-labs">
-
-<div class="notices note" ><p>You see 3 breakouts: Databases, Login/Group Roles, and Tablespaces.<br>
-In this section, we will focus on <strong>Databases</strong>. And we&rsquo;ll cover <strong>Login/Group</strong> Roles in a later section.</p>
-</div>
-</p>
-<p>2.Expand the Databases node.</p>
-<p><img src="/images/2/2-2/2.png" alt="Databases"></p>
-<p>From a terminology standpoint, the PostgreSQL instance <code>(rdspg-fcj-labs)</code> you have created is known as a PostgreSQL <strong>cluster</strong>. A cluster contains one or more <strong>databases</strong>. While the users/roles of a cluster are shared across a cluster, no data is shared across databases. In other words, when a customer connects to a cluster, that connection is required to specify the database it wants to work with and that connection can only work within a single database at a time.<br>
-
-<div class="notices note" ><p>you see a handful of databases within the <code>pglab</code> cluster.</p>
-</div>
-</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Chạy lệnh sau trong terminal Cloud9 của bạn để kết nối với writer node của cụm Aurora bằng pgbench và thêm dữ liệu mẫu với scale factor = 10000</p>
+<pre tabindex="0"><code>pgbench -i --fillfactor=100 --scale=10000
+</code></pre></li>
+<li>
+<p>Kiểm tra kích thước cơ sở dữ liệu aupglab bằng PSQL.</p>
+<pre tabindex="0"><code>psql
+SELECT pg_size_pretty( pg_database_size(&#39;aupglab&#39;));
+</code></pre></li>
+</ul>
 
 <div class="expand">
     <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
@@ -996,109 +999,15 @@ In this section, we will focus on <strong>Databases</strong>. And we&rsquo;ll co
         <span>
         
     	
-    	What is the `rdsadmin` database ?
+    	Nếu bạn đã sử dụng scale factor 100) trong pgbench, bạn sẽ thấy kết quả của chúng ta tương tự như sau:
     	
     	</span>
     </div>
     <div class="expand-content" style="display: none;">
-        The database named rdsadmin is a database that is reserved for use by the RDS/Aurora control plane.
+        <p><img alt="benchmark" src="/images/5/5.2/1.png"></p>
+
     </div>
 </div>
-<p>3.Right-click on the <strong>Databases</strong> node and choose <strong>Create</strong>, then click <strong>Databases</strong></p>
-<p><img src="/images/2/2-2/3.png" alt="Create Databases"></p>
-<p>4.Name the database <code>first_database</code> (but don&rsquo;t save it yet)</p>
-<p><img src="/images/2/2-2/4.png" alt="My Databases"></p>
-
-<div class="notices note" ><p>The database has an owner. This role can control and assign permissions for this database to other roles. The owner defaults to the role you are currently logged in with pgAdmin. Also note that you can alter the owner of most PostgreSQL objects even after they are originally created.</p>
-</div>
-
-<p>5.Now click on the <strong>Definition</strong> tab</p>
-<p><img src="/images/2/2-2/5.png" alt="Definition"></p>
-
-<div class="notices note" ><p>There are <a href="https://www.postgresql.org/docs/11/sql-createdatabase.html">various settings</a>  that can be changed. You don&rsquo;t need to change anything for now.</p>
-</div>
-
-<p>6.Click on the <strong>SQL</strong> tab</p>
-<p><img src="/images/2/2-2/6.png" alt="SQL">
-The SQL tab shows you a preview of the generated SQL command that pgAdmin is going to run.</p>
-<p>7.Click <strong>Save</strong> <br>
-8.Find your new database in the navigator and expand it.
-<img src="/images/2/2-2/7.png" alt="SQL"></p>
-<h4 id="explore-schemas">Explore Schemas</h4>
-<p>A database contains one or more named <strong>schemas</strong>, which in turn contain tables and other objects like views and functions. The objects in a given PostgreSQL schema can be owned by different users and the schema name has no implied correlation to the name of the schema owner.</p>
-<p>As described in the <a href="https://www.postgresql.org/docs/11/ddl-schemas.html">PostgreSQL Documentation</a></p>
-<blockquote>
-<p>&quot; The same object name can be used in different schemas without conflict; for example, both <code>schema1</code> and <code>myschema</code> may contain tables named mytable. Unlike databases, schemas are not rigidly separated: a user may access objects in any of the schemas in the database he is connected to, if he has privileges to do so.</p>
-<p>There are several reasons why one might want to use schemas:</p>
-<ul>
-<li>To allow many users to use one database without interfering with each other.</li>
-<li>To organize database objects into logical groups to make them more manageable.</li>
-<li>Third-party applications can be put into separate schemas so they cannot collide with the names of other objects.</li>
-</ul>
-<p>Schemas are analogous to directories at the operating system level, except that schemas cannot be nested.&quot;</p>
-</blockquote>
-<p>1.Expand the <strong>Schemas</strong> node and see a default <strong>public schema</strong>.</p>
-<p><img src="/images/2/2-2/8.png" alt="Schema"></p>
-<p>2.Right-click on the <strong>Schemas</strong> node and choose <strong>Create</strong>, then click <strong>Schema</strong>.</p>
-<p><img src="/images/2/2-2/9.png" alt="create schema"></p>
-<p>3.Name the schema <code>first_schema</code></p>
-<p><img src="/images/2/2-2/10.png" alt="named schema"></p>
-
-<div class="notices note" ><p>The schemas have an owner and also have security permissions and default privileges for new objects created in the schema (you can click on the Security tab and the Default Permissions tab in the Create Schema dialog if you want).</p>
-</div>
-
-<p>4.Click <strong>Save</strong> to create the new schema.</p>
-
-<div class="notices info" ><p>PostgreSQL <strong>schemas</strong> can be different from how other databases like Oracle implement schemas. In Oracle, schemas are directly mapped 1:1 to users. In PostgreSQL, schemas are not coupled directly to a specific user(role).</p>
-</div>
-
-<p>As discussed in the <a href="https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PORTABILITY">documentation</a> ,</p>
-<blockquote>
-<p>&ldquo;In the SQL standard, the notion of objects in the same schema being owned by different users does not exist. Moreover, some implementations do not allow you to create schemas that have a different name than their owner. In fact, the concepts of schema and user are nearly equivalent in a database system that implements only the basic schema support specified in the standard. Therefore, many users consider qualified names to really consist of username.tablename. This is how PostgreSQL will effectively behave if you create a per-user schema for every user. Also, there is no concept of a public schema in the SQL standard. For maximum conformance to the standard, you should not use (perhaps even remove) the public schema.&rdquo;</p>
-</blockquote>
-<p><strong>A note about the</strong> <code>search_path</code>
-Referencing objects via Qualified names, such as <code>first_schema.first_table</code>, is tedious to write, and hard-coding a particular schema name into an application is not ideal. The solution is to use unqualified names, such as <code>first_table</code> and this is made possible via the PostgreSQL <code>search_path</code>.</p>
-<p>As discussed in the <a href="https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PATH">documentation</a> ,</p>
-<blockquote>
-<p>&ldquo;The system determines which table is meant by following a search_path, which is a list of schemas to look in. The first matching table in the search path is taken to be the one wanted. If there is no match in the search path, an error is reported, even if matching table names exist in other schemas in the database.</p>
-<p>The first schema named in the search path is called the current schema. Aside from being the first schema searched, it is also the schema in which new tables will be created if the CREATE TABLE command does not specify a schema name.&rdquo;</p>
-</blockquote>
-<p>By default, the search_path is set to $user,public. As the documentation states</p>
-<blockquote>
-<p>&ldquo;The first element specifies that a schema with the same name as the current user is to be searched. If no such schema exists, the entry is ignored. The second element refers to the public schema that we have seen already.&rdquo;</p>
-</blockquote>
-
-<div class="notices info" ><p>It should be noted that PostgreSQL does not have the concept of synonyms like certain other databases. You can use the search_path to handle some, but not all, of the capabilities that synonyms offer. For an example of implementing other synonym-like functionality in PostgreSQL, see this <a href="https://www.dbbest.com/blog/convert-oracle-synonyms-to-postgresql/">blog post</a> .</p>
-</div>
-
-<p><strong>Congratulations!</strong></p>
-<h2 id="pre---b-22-b-">You have learned the basics about PostgreSQL Databases and Schemas.&mdash;
-title : &ldquo;Database and Schemas&rdquo;
-date :  &ldquo;<code>r Sys.Date()</code>&rdquo;
-weight : 2
-chapter : false
-pre : &quot; <!-- raw HTML omitted --> 2.2. <!-- raw HTML omitted --> &quot;</h2>
-<p>Welcome to PostgreSQL! If this is your first time looking at <strong>PostgreSQL</strong>, we encourage you to check out the official <a href="https://www.postgresql.org/about/">About PostgreSQL</a>  webpage.</p>
-<p>In this module, we are going to explore <strong>Databases and Schemas.</strong></p>
-
-<div class="notices info" ><p>This chapter assumes you have setup and configured pgAdmin. If you haven&rsquo;t, please complete the pgAdmin module before proceeding.</p>
-</div>
-
-<h4 id="explore-databases-1">Explore Databases</h4>
-<p>1.In your pgAdmin tool, click the <em>&gt;</em> in front of <strong>rdspg-fcj-labs</strong> to expand it.</p>
-<p><img src="/images/2/2-2/1.png" alt="rdspg-fcj-labs">
-
-<div class="notices note" ><p>You see 3 breakouts: Databases, Login/Group Roles, and Tablespaces.<br>
-In this section, we will focus on <strong>Databases</strong>. And we&rsquo;ll cover <strong>Login/Group</strong> Roles in a later section.</p>
-</div>
-</p>
-<p>2.Expand the Databases node.</p>
-<p><img src="/images/2/2-2/2.png" alt="Databases"></p>
-<p>From a terminology standpoint, the PostgreSQL instance <code>(rdspg-fcj-labs)</code> you have created is known as a PostgreSQL <strong>cluster</strong>. A cluster contains one or more <strong>databases</strong>. While the users/roles of a cluster are shared across a cluster, no data is shared across databases. In other words, when a customer connects to a cluster, that connection is required to specify the database it wants to work with and that connection can only work within a single database at a time.<br>
-
-<div class="notices note" ><p>you see a handful of databases within the <code>pglab</code> cluster.</p>
-</div>
-</p>
 
 <div class="expand">
     <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
@@ -1106,83 +1015,335 @@ In this section, we will focus on <strong>Databases</strong>. And we&rsquo;ll co
         <span>
         
     	
-    	What is the `rdsadmin` database ?
+    	Nếu bạn chạy pgbench với hệ số tỷ lệ 10000 ở bước trước, bạn sẽ thấy kết quả đầu ra tương tự như sau:
     	
     	</span>
     </div>
     <div class="expand-content" style="display: none;">
-        The database named rdsadmin is a database that is reserved for use by the RDS/Aurora control plane.
+        <p><img alt="benchmark" src="/images/5/5.2/2.png"></p>
+
     </div>
 </div>
-<p>3.Right-click on the <strong>Databases</strong> node and choose <strong>Create</strong>, then click <strong>Databases</strong></p>
-<p><img src="/images/2/2-2/3.png" alt="Create Databases"></p>
-<p>4.Name the database <code>first_database</code> (but don&rsquo;t save it yet)</p>
-<p><img src="/images/2/2-2/4.png" alt="My Databases"></p>
-
-<div class="notices note" ><p>The database has an owner. This role can control and assign permissions for this database to other roles. The owner defaults to the role you are currently logged in with pgAdmin. Also note that you can alter the owner of most PostgreSQL objects even after they are originally created.</p>
-</div>
-
-<p>5.Now click on the <strong>Definition</strong> tab</p>
-<p><img src="/images/2/2-2/5.png" alt="Definition"></p>
-
-<div class="notices note" ><p>There are <a href="https://www.postgresql.org/docs/11/sql-createdatabase.html">various settings</a>  that can be changed. You don&rsquo;t need to change anything for now.</p>
-</div>
-
-<p>6.Click on the <strong>SQL</strong> tab</p>
-<p><img src="/images/2/2-2/6.png" alt="SQL">
-The SQL tab shows you a preview of the generated SQL command that pgAdmin is going to run.</p>
-<p>7.Click <strong>Save</strong> <br>
-8.Find your new database in the navigator and expand it.
-<img src="/images/2/2-2/7.png" alt="SQL"></p>
-<h4 id="explore-schemas-1">Explore Schemas</h4>
-<p>A database contains one or more named <strong>schemas</strong>, which in turn contain tables and other objects like views and functions. The objects in a given PostgreSQL schema can be owned by different users and the schema name has no implied correlation to the name of the schema owner.</p>
-<p>As described in the <a href="https://www.postgresql.org/docs/11/ddl-schemas.html">PostgreSQL Documentation</a></p>
-<blockquote>
-<p>&quot; The same object name can be used in different schemas without conflict; for example, both <code>schema1</code> and <code>myschema</code> may contain tables named mytable. Unlike databases, schemas are not rigidly separated: a user may access objects in any of the schemas in the database he is connected to, if he has privileges to do so.</p>
-<p>There are several reasons why one might want to use schemas:</p>
+<h3 id="benchmarking-với-ccm-được-kích-hoạt">Benchmarking với CCM được kích hoạt</h3>
+<ol>
+<li>Chạy bài đo hiệu năng trên nút writer bằng pgbench (trước khi thực hiện failover):</li>
+</ol>
 <ul>
-<li>To allow many users to use one database without interfering with each other.</li>
-<li>To organize database objects into logical groups to make them more manageable.</li>
-<li>Third-party applications can be put into separate schemas so they cannot collide with the names of other objects.</li>
+<li>
+<p>Bắt đầu bài đo hiệu năng pgbench trong 600 giây trên writer node của Aurora PostgreSQL với CCM (Continuous Cloud Monitoring) được kích hoạt, hãy sử dụng lệnh sau trong terminal Cloud9 của bạn:</p>
+<pre tabindex="0"><code>pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 &gt; ccm_enable_before_failover.out 
+</code></pre></li>
 </ul>
-<p>Schemas are analogous to directories at the operating system level, except that schemas cannot be nested.&quot;</p>
-</blockquote>
-<p>1.Expand the <strong>Schemas</strong> node and see a default <strong>public schema</strong>.</p>
-<p><img src="/images/2/2-2/8.png" alt="Schema"></p>
-<p>2.Right-click on the <strong>Schemas</strong> node and choose <strong>Create</strong>, then click <strong>Schema</strong>.</p>
-<p><img src="/images/2/2-2/9.png" alt="create schema"></p>
-<p>3.Name the schema <code>first_schema</code></p>
-<p><img src="/images/2/2-2/10.png" alt="named schema"></p>
 
-<div class="notices note" ><p>The schemas have an owner and also have security permissions and default privileges for new objects created in the schema (you can click on the Security tab and the Default Permissions tab in the Create Schema dialog if you want).</p>
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span>
+        
+    	
+    	Giải thích câu lệnh
+    	
+    	</span>
+    </div>
+    <div class="expand-content" style="display: none;">
+        <p><strong>pgbench</strong>: This is a benchmarking tool for PostgreSQL databases.<br>
+<strong>&ndash;progress-timestamp</strong>: Prints a timestamp with each progress report.<br>
+<strong>-M prepared</strong>: Uses prepared transactions for benchmarking.<br>
+<strong>-n</strong>: Specifies a no-vacuum test, which avoids vacuuming during the benchmark.<br>
+<strong>-T 600</strong>: Runs the benchmark for 600 seconds (10 minutes).<br>
+<strong>-P 5</strong>: Populates the database with 5 client sessions before starting the benchmark.<br>
+<strong>-c 50</strong>: Runs the benchmark with 50 concurrent client connections.<br>
+<strong>-j 50</strong>: Specifies 50 threads for multi-threaded operation.<br>
+<strong>-b tpcb-like@1</strong>: Uses the TPC-B-like transaction mix with a weight of 1.<br>
+<strong>-b select-only@20</strong>: Uses a select-only transaction mix with a weight of 20.<br>
+<strong>ccm_enable_before_failover.out</strong>: Redirects the output to a file named &ldquo;ccm_enable_before_failover.out&rdquo;.</p>
+
+    </div>
 </div>
 
-<p>4.Click <strong>Save</strong> to create the new schema.</p>
-
-<div class="notices info" ><p>PostgreSQL <strong>schemas</strong> can be different from how other databases like Oracle implement schemas. In Oracle, schemas are directly mapped 1:1 to users. In PostgreSQL, schemas are not coupled directly to a specific user(role).</p>
+<div class="notices info" ><p>Chúng ta đang sử dụng tùy chọn tpcb-like của pgbench để thực hiện bài đo hiệu năng và sử dụng ký hiệu &ldquo;@&rdquo; để chỉ định xác suất chạy công việc chỉ đọc (read-only) và công việc đọc-ghi (read-write). Trong ví dụ dưới đây, chúng ta đang chạy công việc tpcb-like với 20 lần công việc chỉ đọc và 1 lần công việc đọc-ghi trong 600 giây.</p>
 </div>
 
-<p>As discussed in the <a href="https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PORTABILITY">documentation</a> ,</p>
-<blockquote>
-<p>&ldquo;In the SQL standard, the notion of objects in the same schema being owned by different users does not exist. Moreover, some implementations do not allow you to create schemas that have a different name than their owner. In fact, the concepts of schema and user are nearly equivalent in a database system that implements only the basic schema support specified in the standard. Therefore, many users consider qualified names to really consist of username.tablename. This is how PostgreSQL will effectively behave if you create a per-user schema for every user. Also, there is no concept of a public schema in the SQL standard. For maximum conformance to the standard, you should not use (perhaps even remove) the public schema.&rdquo;</p>
-</blockquote>
-<p><strong>A note about the</strong> <code>search_path</code>
-Referencing objects via Qualified names, such as <code>first_schema.first_table</code>, is tedious to write, and hard-coding a particular schema name into an application is not ideal. The solution is to use unqualified names, such as <code>first_table</code> and this is made possible via the PostgreSQL <code>search_path</code>.</p>
-<p>As discussed in the <a href="https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PATH">documentation</a> ,</p>
-<blockquote>
-<p>&ldquo;The system determines which table is meant by following a search_path, which is a list of schemas to look in. The first matching table in the search path is taken to be the one wanted. If there is no match in the search path, an error is reported, even if matching table names exist in other schemas in the database.</p>
-<p>The first schema named in the search path is called the current schema. Aside from being the first schema searched, it is also the schema in which new tables will be created if the CREATE TABLE command does not specify a schema name.&rdquo;</p>
-</blockquote>
-<p>By default, the search_path is set to $user,public. As the documentation states</p>
-<blockquote>
-<p>&ldquo;The first element specifies that a schema with the same name as the current user is to be searched. If no such schema exists, the entry is ignored. The second element refers to the public schema that we have seen already.&rdquo;</p>
-</blockquote>
+<ul>
+<li>
+<p>Sau 600 giây khi bài đo hiệu năng hoàn tất, bạn có thể xem kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra &ldquo;ccm_enable_before_failover.out&rdquo;. Kết quả tóm tắt sẽ có dạng như sau. Xin lưu ý rằng đầu ra của bạn có thể khác một chút.</p>
+<pre tabindex="0"><code>cat ccm_enable_before_failover.out
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/3.png"></p>
+</li>
+</ul>
+<h4 id="kiểm-tra-số-trang-được-lưu-trữ-trong-bộ-nhớ-cache-trên-cả-writer-node-và-các-reader-node-trong-cụm-aurora-postgresql">Kiểm tra số trang được lưu trữ trong bộ nhớ cache trên cả writer node và các reader node trong cụm Aurora PostgreSQL</h4>
+<ul>
+<li><strong>Pg_buffercache</strong> extension cung cấp một phương tiện để xem nội dung của bộ đệm (buffer cache). Chúng ta sẽ dùng pg_buffercache để xem nội dung của bộ đệm (với CCM được kích hoạt và CCM bị vô hiệu hóa) để minh họa tác động của CCM (Cluster Cache Management). Chúng ta sẽ so sánh nội dung của bộ đệm trên Writer node với Reader node.</li>
+<li>Khi CCM được kích hoạt, nội dung của bộ đệm trên writer node và reader node sẽ tương tự nhau, vì writer node sẽ định kỳ gửi bộ đệm của các bộ đệm được sử dụng thường xuyên (mặc định là số lần sử dụng&gt;3) cho reader node để được đọc từ bộ nhớ lưu trữ.</li>
+</ul>
+<ol>
+<li>Kết nối với Writer node bằng psql sử dụng cluster endpoint</li>
+</ol>
+<ul>
+<li>
+<p>Tạo extension pg_buffercache trên cơ sở dữ liệu.</p>
+<pre tabindex="0"><code>psql
+CREATE EXTENSION pg_buffercache;
+\dx pg_buffercache
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/4.png"></p>
+</li>
+<li>
+<p>Xác nhận rằng bạn đã kết nối với Writer node và truy vấn xem pg_buffercache để xem số trang được lưu trữ trong bộ nhớ cache cho các bảng khác nhau</p>
+<pre tabindex="0"><code>show transaction_read_only;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/5.png"></p>
+<pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
+FROM pg_buffercache b 
+INNER JOIN pg_class c
+ON b.relfilenode = pg_relation_filenode(c.oid) 
+AND b.reldatabase IN (0, (SELECT oid FROM pg_database WHERE datname = current_database()))
+GROUP BY c.relname
+ORDER BY 2 DESC
+LIMIT 10;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/6.png"></p>
+</li>
+</ul>
 
-<div class="notices info" ><p>It should be noted that PostgreSQL does not have the concept of synonyms like certain other databases. You can use the search_path to handle some, but not all, of the capabilities that synonyms offer. For an example of implementing other synonym-like functionality in PostgreSQL, see this <a href="https://www.dbbest.com/blog/convert-oracle-synonyms-to-postgresql/">blog post</a> .</p>
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span>
+        
+    	
+    	Giải thích scripts
+    	
+    	</span>
+    </div>
+    <div class="expand-content" style="display: none;">
+        <table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purposes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT c.relname, count(*) AS buffers</td>
+<td>Queries for the relation name (relname) and the number of buffers used (count(*)), labeling the count as &ldquo;buffers&rdquo;.</td>
+</tr>
+<tr>
+<td>FROM pg_buffercache b</td>
+<td>Accesses data from the pg_buffercache system view, which holds details about buffered pages.</td>
+</tr>
+<tr>
+<td>INNER JOIN pg_class c</td>
+<td>Combines data from pg_buffercache with information about relations from the pg_class system catalog.</td>
+</tr>
+<tr>
+<td>ON b.relfilenode = pg_relation_filenode(c.oid)</td>
+<td>Links entries based on filenodes, associating buffers with their respective relations.</td>
+</tr>
+<tr>
+<td>AND b.reldatabase IN (0, (SELECT oid FROM pg_database WHERE datname = current_database()))</td>
+<td>Includes buffers for both shared system catalogs (database 0) and the current database.</td>
+</tr>
+<tr>
+<td>GROUP BY c.relname</td>
+<td>Aggregates results based on relation names.</td>
+</tr>
+<tr>
+<td>ORDER BY 2 DESC</td>
+<td>Sorts in descending order based on the number of buffers (count(*) in position 2)</td>
+</tr>
+<tr>
+<td>LIMIT 10;</td>
+<td>Restricts output to the top 10 relations.</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
 </div>
-
-<p><strong>Congratulations!</strong></p>
-<p>You have learned the basics about PostgreSQL Databases and Schemas.</p>
+<h4 id="kết-nối-tới-read-replica">Kết nối tới Read replica</h4>
+<ol>
+<li>
+<p>Truy cập giao diện <a href="https://console.aws.amazon.com/rds/home?#database:">Amazon RDS console</a> .</p>
+</li>
+<li>
+<p>Trong ngăn điều hướng, chọn Databases  và nhấp vào tên của cụm Aurora mà bạn đã tạo.</p>
+</li>
+<li>
+<p>Bên dưới <strong>Connectivity and Security</strong>, copy <strong>Endpoint of type Reader</strong>.</p>
+</li>
+<li>
+<p>Thay thế <!-- raw HTML omitted --> bên dưới bằng Aurora reader endpoint mà bạn đã sao chép ở trên và sử dụng dòng lệnh psql để kiểm tra xem extension pg_buffercache đã được cài đặt chưa.</p>
+</li>
+</ol>
+<pre tabindex="0"><code>psql -h &lt;Aurora Reader EndPoint&gt;
+\dx pg_buffercache
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/7.png"></p>
+<ul>
+<li>
+<p>Xác minh xem bạn có được kết nối với Reader node hay không và truy vấn pg_buffercache để xem số trang được lưu trong bộ nhớ đệm cho các bảng khác nhau.</p>
+<pre tabindex="0"><code>show transaction_read_only;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/8.png"></p>
+<pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
+  FROM pg_buffercache b INNER JOIN pg_class c
+  ON b.relfilenode = pg_relation_filenode(c.oid) AND
+  b.reldatabase IN (0, (SELECT oid FROM pg_database
+  WHERE datname = current_database()))
+  GROUP BY c.relname
+  ORDER BY 2 DESC
+  LIMIT 10;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/9.png"></p>
+</li>
+</ul>
+<p><em>Lưu ý rằng, sau khi tắt CCM, số lượng trang đệm trên readeer node sẽ ít hơn nhiều so với writer node đối với các bảng được truy cập thường xuyên.</em></p>
+<h4 id="failover-aurora-cluster">Failover Aurora cluster</h4>
+<ul>
+<li>
+<p>Bây giờ, chúng tôi sẽ bắt đầu quá trình chuyển đổi dự phòng của cụm Aurora và sau khi quá trình chuyển đổi dự phòng hoàn tất, chúng tôi sẽ đo hiệu năng trên writer node mới. Để bắt đầu chuyển đổi dự phòng, hãy chuyển đến RDS console, chọn writer instance của cụm Aurora và nhấp vào <strong>Failover</strong> trong menu <strong>Actions</strong>.
+<img alt="benchmark" src="/images/5/5.2/10.png"></p>
+</li>
+<li>
+<p>Click <strong>Failover</strong> để xác nhận.
+<img alt="benchmark" src="/images/5/5.2/11.png"></p>
+</li>
+<li>
+<p>Sau khi quá trình chuyển giao hoàn tất (sau khoảng ~30 giây), hãy xác minh rằng reader node trước đó đã trở thành writer node mới.
+<img alt="benchmark" src="/images/5/5.2/12.png">
+<img alt="benchmark" src="/images/5/5.2/13.png"></p>
+</li>
+</ul>
+<h4 id="để-chạy-bài-thử-nghiệm-sử-dụng-công-cụ-pgbench-trên-writer-node-mới-sau-quá-trình-failover">Để chạy bài thử nghiệm sử dụng công cụ pgbench trên writer node mới (sau quá trình failover)</h4>
+<ul>
+<li>Bây giờ chúng ta sẽ chạy bài thử nghiệm pgbench tương tự như trước và so sánh trước và sau khi failover.</li>
+</ul>
+<pre tabindex="0"><code>pgbench --progress-timestamp -M prepared -n -T 600 -P 5  -c 50 -j 50 -b tpcb-like@1 -b select-only@20 &gt; ccm_enable_after_failover.out
+</code></pre><ul>
+<li>Sau 600 giây khi bài thử nghiệm hoàn tất, bạn có thể xác minh kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra &ldquo;ccm_enable_after_failover.out&rdquo;. Kết quả tóm tắt sẽ có dạng như sau. Lưu ý rằng kết quả của bạn có thể khác nhau một chút</li>
+</ul>
+<pre tabindex="0"><code>cat ccm_enable_after_failover.out
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/14.png"></p>
+<p><em>Nhận thấy rằng sau khi tắt CCM, số liệu tps trên writer node mới sau quá trình failover ít hơn so với writer node cũ trước khi failover.</em></p>
+<h3 id="benchmarking-với-ccm-disabled">Benchmarking với CCM disabled</h3>
+<p>Bây giờ, chúng ta sẽ tắt CCM và thực hiện các bài thử nghiệm tương tự như trước với CCM đã được kích hoạt.</p>
+<h4 id="tắt-ccm">Tắt CCM</h4>
+<p>Để tắt CCM trên cụm Aurora PostgreSQL, bạn cần chỉnh sửa nhóm tham số của cụm để đặt giá trị của tham số apg_ccm_enabled thành 0.</p>
+<ol>
+<li>
+<p>Truy cập giao diện Amazon RDS console và chọn <a href="https://console.aws.amazon.com/rds/home?#parameter-groups:id=">Parameters groups</a> .</p>
+</li>
+<li>
+<p>Trong danh sách, hãy chọn nhóm tham số cho cụm cơ sở dữ liệu Aurora PostgreSQL của bạn.
+<img alt="benchmark" src="/images/5/5.2/14.png"></p>
+</li>
+<li>
+<p>Hãy nhấp vào nhóm tham số của cụm cơ sở dữ liệu đã được chọn ở trên, sau đó click vào <strong>Edit Parameters</strong>.
+<img alt="benchmark" src="/images/5/5.2/15.png"></p>
+</li>
+<li>
+<p>Đặt giá trị <code>apg_ccm_enabled</code> thành 0 và nhấp vào <strong>Save changes</strong>
+<img alt="benchmark" src="/images/5/5.2/16.png"></p>
+</li>
+<li>
+<p>Để xác minh rằng Cluster Cache Management đã được tắt bằng cách truy vấn hàm aurora_ccm_status(), hãy thực hiện các bước sau:</p>
+</li>
+</ol>
+<pre tabindex="0"><code>psql
+\x
+select * from aurora_ccm_status();
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/17.png"></p>
+<h4 id="xóa-bộ-đệm-buffer-cache-của-cả-writer-node-và-reader-node-trên-cụm-aurora-postgresql">Xóa bộ đệm (buffer cache) của cả writer node và reader node trên cụm Aurora PostgreSQL</h4>
+<p>Vì việc thử nghiệm trước đó với CCM đã làm tăng bộ đệm (buffer cache) của các reader instance và writer instance trên cụm Aurora, chúng ta cần dừng và khởi động lại cụm Aurora để làm trống bộ đệm trước khi chạy bài đo hiệu năng tiếp theo. Bạn cũng có thể khởi động lại cả reader instance và writer instance, nhưng điều này không đảm bảo rằng writer instance và reader instance đọc sẽ khởi động với bộ đệm trống.</p>
+<h5 id="stop-cluster">Stop cluster</h5>
+<ol>
+<li>
+<p>Xác minh rằng trạng thái cụm được hiển thị là “Available”, sau đó nhấp vào menu <strong>Actions</strong> và chọn <strong>Stop temporarily</strong>.
+<img alt="benchmark" src="/images/5/5.2/18.png"></p>
+</li>
+<li>
+<p>Xác nhận hành động bằng cách nhấp vào cơ sở dữ liệu <strong>Stop temporarily</strong>.
+<img alt="benchmark" src="/images/5/5.2/19.png"></p>
+</li>
+</ol>
+<p><em>Sẽ mất vài phút và trạng thái cụm sẽ thay đổi từ Stopping thành Stopped.</em>
+<img alt="benchmark" src="/images/5/5.2/20.png"></p>
+<h5 id="start-cluster">Start cluster</h5>
+<ol>
+<li>Khi trạng thái cụm thay đổi thành <strong>&ldquo;Stopped&rdquo;</strong> (Dừng), hãy nhấp vào menu <strong>Actions</strong> một lần nữa và chọn <strong>Start</strong>.
+<img alt="benchmark" src="/images/5/5.2/21.png"></li>
+</ol>
+<p><em>Quá trình khởi động cụm sẽ mất vài phút và trạng thái của cụm sẽ chuyển từ &ldquo;Starting&rdquo; thành &ldquo;Available&rdquo;.</em></p>
+<h4 id="chạy-bài-đo-hiệu-năng-trên-writer-node-bằng-cách-sử-dụng-công-cụ-pgbench-trước-khi-thực-hiện-failover">Chạy bài đo hiệu năng trên writer node bằng cách sử dụng công cụ pgbench (trước khi thực hiện failover)</h4>
+<ol>
+<li>Hãy chạy bài đo hiệu năng bằng cách sử dụng pgbench trên writer node của cụm Aurora như đã thực hiện trước đó.</li>
+</ol>
+<pre tabindex="0"><code>pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 &gt; ccm_disable_before_failover.out
+</code></pre><ol start="2">
+<li>Sau 600 giây khi bài đo hiệu năng hoàn thành, bạn có thể xác minh kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra &ldquo;ccm_disable_before_failover.out&rdquo;. Đầu ra tóm tắt sẽ có dạng như sau. Lưu ý rằng đầu ra của bạn có thể khác một chút.</li>
+</ol>
+<pre tabindex="0"><code>cat ccm_disable_before_failover.out
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/22.png"></p>
+<h4 id="kiểm-tra-số-trang-được-lưu-trong-bộ-đệm-trên-cả-writer-và-reader-nodes">kiểm tra số trang được lưu trong bộ đệm trên cả writer và reader nodes</h4>
+<ol>
+<li>Kết nối tới writer node bằng cách sử dụng cluster endpoint.</li>
+</ol>
+<pre tabindex="0"><code>psql
+\dx pg_buffercache
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/23.png"></p>
+<ol start="2">
+<li>Để xác minh rằng bạn đã kết nối thành công đến writer node và truy vấn bảng <strong>pg_buffercache</strong> để xem số trang được lưu trong bộ đệm cho các bảng khác nhau,</li>
+</ol>
+<pre tabindex="0"><code>show transaction_read_only;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/24.png"></p>
+<pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
+ FROM pg_buffercache b INNER JOIN pg_class c
+ ON b.relfilenode = pg_relation_filenode(c.oid) AND
+ b.reldatabase IN (0, (SELECT oid FROM pg_database
+ WHERE datname = current_database()))
+ GROUP BY c.relname
+ ORDER BY 2 DESC
+ LIMIT 10;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/25.png"></p>
+<h4 id="kết-nối-đến-read-replica">Kết nối đến read replica</h4>
+<ol>
+<li>Để kết nối tới reader instance bằng cách sử dụng Reader Endpoint của Cụm Aurora PostgreSQL. Thay thế <!-- raw HTML omitted --> bên dưới với Aurora Reader EndPoint của bạn.</li>
+</ol>
+<pre tabindex="0"><code>psql -h  &lt;Aurora Reader EndPoint&gt;
+\dx pg_buffercache
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/26.png"></p>
+<ol start="2">
+<li>Xác minh rằng bạn đã kết nối với Reader node và truy vấn <strong>pg_buffercache</strong> để xem số lượng trang được lưu trong bộ nhớ đệm cho các bảng khác nhau.</li>
+</ol>
+<pre tabindex="0"><code>show transaction_read_only;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/27.png"></p>
+<pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
+ FROM pg_buffercache b INNER JOIN pg_class c
+ ON b.relfilenode = pg_relation_filenode(c.oid) AND
+ b.reldatabase IN (0, (SELECT oid FROM pg_database
+ WHERE datname = current_database()))
+ GROUP BY c.relname
+ ORDER BY 2 DESC
+ LIMIT 10;
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/28.png"></p>
+<p><em>Lưu ý rằng, sau khi tắt CCM, số lượng trang đệm trên reader node sẽ ít hơn nhiều so với writer node đối với các bảng được truy cập thường xuyên.</em></p>
+<h4 id="failover-aurora-cluster-1">Failover Aurora cluster</h4>
+<ol>
+<li>
+<p>Bây giờ, chúng tôi sẽ bắt đầu quá trình chuyển đổi dự phòng của cụm Aurora và sau khi quá trình chuyển đổi dự phòng hoàn tất, chúng tôi sẽ đo hiệu năng trên writer node mới.
+<img alt="benchmark" src="/images/5/5.2/29.png"></p>
+</li>
+<li>
+<p>Click vào <strong>Failover</strong>.</p>
+</li>
+</ol>
+<p><em>Sau khi quá trình chuyển đổi dự phòng hoàn tất (sau khoảng ~30 giây), hãy xác minh rằng reader node trước đó sẽ trở thành writer node mới.</em>
+<img alt="benchmark" src="/images/5/5.2/30.png"></p>
+<h4 id="chạy-benchmark-bằng-công-cụ-pgbench-trên-writer-node-mới-sau-khi-thực-hiện-failover">Chạy benchmark bằng công cụ pgbench trên writer node mới (sau khi thực hiện failover)</h4>
+<ol>
+<li>Bây giờ, chúng ta sẽ chạy benchmark giống như trước đây và so sánh các chỉ số của pgbench trước và sau khi thực hiện failover.</li>
+</ol>
+<pre tabindex="0"><code>pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 &gt; ccm_disable_after_failover.out
+</code></pre><p>Sau 600 giây khi benchmark hoàn thành, bạn có thể xác minh kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra &ldquo;ccm_disable_after_failover.out&rdquo;. Đầu ra tóm tắt sẽ có dạng như sau. Lưu ý rằng đầu ra của bạn có thể khác một chút.</p>
+<pre tabindex="0"><code>cat ccm_disable_after_failover.out
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/31.png"></p>
+<p><em>Lưu ý rằng sau khi tắt CCM, số liệu tps trên writer node mới sau failover thấp hơn so với writer node cũ trước khi xảy ra failover.</em></p>
 
 
 
@@ -1356,22 +1517,6 @@ Referencing objects via Qualified names, such as <code>first_schema.first_table<
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -1487,6 +1632,22 @@ Referencing objects via Qualified names, such as <code>first_schema.first_table<
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
             
         
@@ -1630,10 +1791,10 @@ Referencing objects via Qualified names, such as <code>first_schema.first_table<
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/" title="Setup cluster cache management"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/" title="Thiết lập cluster cache management"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-queryplanmanagement/" title="Create RDS PostgreSQL Database Instance" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/3-fastcloning/" title="Fast Cloning" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1643,19 +1804,19 @@ Referencing objects via Qualified names, such as <code>first_schema.first_table<
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711431242"></script>
+    <script src="/js/jquery.sticky.js?1711431242"></script>
+    <script src="/js/featherlight.min.js?1711431242"></script>
+    <script src="/js/highlight.pack.js?1711431242"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711431242"></script>
+    <script src="/js/learn.js?1711431242"></script>
+    <script src="/js/hugo-learn.js?1711431242"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711431242" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711431242"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

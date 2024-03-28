@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create dataset and Auto Scale :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/8-createdatasetandautoscale/" selected>English</option>
+                      <option id="en" value="//localhost:1313/8-createdatasetandautoscale/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/8-createdatasetandautoscale/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/8-createdatasetandautoscale/">Tiếng Việt</option>
                     
                   
               
@@ -961,18 +961,18 @@
 </li>
 <li>
 <p>Click on the Aurora cluster name and go to <strong>Logs &amp; events</strong> tab. Click on the <strong>Add auto scaling</strong> policy button.</p>
-<p><img src="/images/8/1.png" alt="ACL"></p>
+<p><img alt="ACL" src="/images/8/1.png"></p>
 </li>
 <li>
 <p>Enter <code>auroralab-autoscale-readers</code> as the <strong>Policy Name</strong>. For the <strong>Target metric</strong> choose <strong>Average CPU utilization of Aurora Replicas</strong>. Enter a <strong>Target value of 20%</strong>. In a production use case this value may need to be set much higher, but we are using a lower value for demonstration purposes.</p>
 </li>
 <li>
 <p>Next, expand the <strong>Additional configuration</strong> section, and change both the <strong>Scale in cooldown period</strong> and <strong>Scale out cooldown period</strong> to a value of <strong>180 seconds</strong>. This will reduce the time you have to wait between scaling operations in subsequent labs.</p>
-<p><img src="/images/8/2.png" alt="ACL"></p>
+<p><img alt="ACL" src="/images/8/2.png"></p>
 </li>
 <li>
 <p>In the <strong>Cluster capacity details</strong> section, set the <strong>Minimum capacity</strong> to <strong>1</strong> and <strong>Maximum capacity</strong> to <strong>2</strong>. In a production use case you may need to use different values, but for demonstration purposes, and to limit the cost associated with the labs we limit the number of readers to two.</p>
-<p><img src="/images/8/3.png" alt="ACL"></p>
+<p><img alt="ACL" src="/images/8/3.png"></p>
 </li>
 <li>
 <p>Next click <strong>Add policy</strong>.</p>
@@ -986,7 +986,7 @@
 <p>Open a Cloud9 terminal window by referring <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/098605dc-8eee-4e84-85e9-c5c6c9e43de2/en-US/lab1-5-client/cloud9-terminal/">Open Cloud9 Terminal Window</a> section and initialize pgbench to start the creation of dataset by pasting the command below in your terminal window.</p>
 <pre tabindex="0"><code>pgbench -i --scale=1000
 </code></pre><p>Data loading may take several minutes, you will receive similar output once complete:
-<img src="/images/8/4.png" alt="ACL"></p>
+<img alt="ACL" src="/images/8/4.png"></p>
 </li>
 </ul>
 <ol start="3">
@@ -1012,11 +1012,11 @@
 </li>
 <li>
 <p>After several minutes return to the list of instances and notice that a new reader is being provisioned in your cluster.</p>
-<p><img src="/images/8/5.png" alt="ACL"></p>
+<p><img alt="ACL" src="/images/8/5.png"></p>
 </li>
 <li>
 <p>It will take 5-7 minutes to add a new replica. Once the new replica becomes available, note that the load distributes and stabilizes (it may take a few minutes to stabilize).</p>
-<p><img src="/images/8/6.png" alt="ACL"></p>
+<p><img alt="ACL" src="/images/8/6.png"></p>
 </li>
 <li>
 <p>You can now toggle back to your Cloud9 terminal window, and press CTRL+C to quit the running pgbench job. After a while the additional reader will be removed automatically.</p>
@@ -1478,19 +1478,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

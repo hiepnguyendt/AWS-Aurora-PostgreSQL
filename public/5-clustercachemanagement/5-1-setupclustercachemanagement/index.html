@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Setup cluster cache management :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711431242" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711431242" rel="stylesheet">
+    <link href="/css/hybrid.css?1711431242" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711431242" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711431242" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711431242" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711431242" rel="stylesheet">
+    <link href="/css/theme.css?1711431242" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711431242" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711431242" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711431242"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711431242"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711431242"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711431242"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/5-clustercachemanagement/5-1-setupclustercachemanagement/" selected>English</option>
+                      <option id="en" value="//localhost:1313/5-clustercachemanagement/5-1-setupclustercachemanagement/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/">Tiếng Việt</option>
                     
                   
               
@@ -974,8 +974,8 @@
 <p>Click <strong>Edit</strong> under the <strong>Actions</strong> menu.</p>
 </li>
 <li>
-<p>Set the value of the <code>apg_ccm_enabled</code> cluster parameter to 1 and click on <strong>Save Changes</strong>.</p>
-<p><img src="/images/5/5.1/1.png" alt="CCM"></p>
+<p>Set the value of the <code>apg_ccm_enabled</code> cluster parameter to 1 and click on <strong>Save Changes</strong>.
+<img alt="CCM" src="/images/5/5.1/1.png"></p>
 </li>
 </ul>
 <ol start="2">
@@ -986,21 +986,21 @@
 <p>Select <a href="https://console.aws.amazon.com/rds/home?#databases:">Databases</a>  in the Amazon RDS console.</p>
 </li>
 <li>
-<p>Choose the Writer DB instance of the Aurora PostgreSQL DB cluster and click on <em>Modify</em></p>
-<p><img src="/images/5/5.1/2.png" alt="CCM"></p>
+<p>Choose the Writer DB instance of the Aurora PostgreSQL DB cluster and click on <em>Modify</em>
+<img alt="CCM" src="/images/5/5.1/2.png"></p>
 </li>
 <li>
-<p>The Modify DB Instance page appears. Under <strong>Additional configuration</strong>, choose <strong>tier-0</strong> for Failover Priority.</p>
-<p><img src="/images/5/5.1/3.png" alt="CCM"></p>
+<p>The Modify DB Instance page appears. Under <strong>Additional configuration</strong>, choose <strong>tier-0</strong> for Failover Priority.
+<img alt="CCM" src="/images/5/5.1/3.png"></p>
 </li>
 <li>
 <p>Choose <strong>Continue</strong> and check the summary of modifications.</p>
 </li>
 <li>
 <p>To apply the changes immediately after you save them, choose <strong>Apply immediately</strong> and click <strong>Modify DB Instance</strong> to save your changes. For more information about setting the promotion tier, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Modifying.html#Aurora.Modifying.Instance">Modify a DB Instance in a DB Cluster and the Promotion tier setting</a> . See also <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance">Fault Tolerance for an Aurora DB Cluster</a>.</p>
-<p><img src="/images/5/5.1/4.png" alt="CCM"></p>
 </li>
 </ul>
+<p><img alt="CCM" src="/images/5/5.1/4.png"></p>
 <ol start="3">
 <li>Next, set one reader DB instance for cluster cache management. To do so, choose a reader from the Aurora PostgreSQL cluster that is the same instance class and size as the writer DB instance. For example, if the writer uses db.r5.xlarge, choose a reader that uses this same instance class type and size. Then set its promotion tier priority to <strong>0</strong>. The promotion tier priority is a value that specifies the order in which an Aurora replica is promoted to the primary DB instance after a failure. Valid values are 0 to 15, where 0 is the highest and 15 the lowest priority.</li>
 </ol>
@@ -1009,8 +1009,8 @@
 <p>In the navigation pane, choose <strong>Databases</strong>.</p>
 </li>
 <li>
-<p>Choose the Reader DB instance of the Aurora PostgreSQL DB cluster and click on <strong>Modify</strong></p>
-<p><img src="/images/5/5.1/5.png" alt="CCM"></p>
+<p>Choose the Reader DB instance of the Aurora PostgreSQL DB cluster and click on <strong>Modify</strong>
+<img alt="CCM" src="/images/5/5.1/5.png"></p>
 </li>
 <li>
 <p>The Modify DB Instance page appears. Under <strong>Additional configuration</strong>, choose tier-0 for <strong>Failover Priority</strong>.</p>
@@ -1019,9 +1019,9 @@
 <p>Choose <strong>Continue</strong> and check the summary of modifications.</p>
 </li>
 <li>
-<p>To apply the changes immediately after you save them, choose <strong>Apply immediately</strong> and click <strong>Modify DB Instance</strong> to save your changes.</p>
-<p><img src="/images/5/5.1/6.png" alt="CCM">
-<img src="/images/5/5.1/7.png" alt="CCM"></p>
+<p>To apply the changes immediately after you save them, choose <strong>Apply immediately</strong> and click <strong>Modify DB Instance</strong> to save your changes.
+<img alt="CCM" src="/images/5/5.1/6.png">
+<img alt="CCM" src="/images/5/5.1/7.png"></p>
 </li>
 </ul>
 <h4 id="verifying-if-ccm-is-enabled">Verifying if CCM is enabled</h4>
@@ -1030,23 +1030,23 @@
 <p>Click on the DB identifier with the cluster name you created as a part of the CloudFormation stack or manually.</p>
 </li>
 <li>
-<p>Under <strong>Connectivity and Security</strong> section, you will notice 2 different endpoints. The one with type <strong>Writer</strong> is the cluster endpoint (for read-write connections) and the one with type <strong>Reader</strong> is the reader endpoint (for read-only connections).</p>
-<p><img src="/images/5/5.1/8.png" alt="CCM"></p>
+<p>Under <strong>Connectivity and Security</strong> section, you will notice 2 different endpoints. The one with type <strong>Writer</strong> is the cluster endpoint (for read-write connections) and the one with type <strong>Reader</strong> is the reader endpoint (for read-only connections).
+<img alt="CCM" src="/images/5/5.1/8.png"></p>
 </li>
 <li>
 <p>Open a cloud9 terminal window by referring Open Cloud9 Terminal Window section and using psql command line connect to the Aurora PostgreSQL DB cluster writer end point. Run the following SQL commands to check the cluster cache management status:</p>
+</li>
+</ul>
 <pre tabindex="0"><code>psql 
 \x
 select * from aurora_ccm_status();
-</code></pre><p><img src="/images/5/5.1/9.png" alt="CCM"></p>
-</li>
-</ul>
+</code></pre><p><img alt="CCM" src="/images/5/5.1/9.png"></p>
 
 <div class="notices note" ><p>If the Cluster Cache management is not enabled, querying aurora_ccm_status() will display the below output:
-<strong>aupglab=&gt; \x <br>
-Expanded display is on.<br>
-mylab=&gt; select * from aurora_ccm_status();<br>
-ERROR:  Cluster Cache Manager is disabled</strong></p>
+aupglab=&gt; \x
+Expanded display is on.
+mylab=&gt; select * from aurora_ccm_status();
+ERROR:  Cluster Cache Manager is disabled</p>
 </div>
 
 
@@ -1506,19 +1506,19 @@ ERROR:  Cluster Cache Manager is disabled</strong></p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711431242"></script>
+    <script src="/js/jquery.sticky.js?1711431242"></script>
+    <script src="/js/featherlight.min.js?1711431242"></script>
+    <script src="/js/highlight.pack.js?1711431242"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711431242"></script>
+    <script src="/js/learn.js?1711431242"></script>
+    <script src="/js/hugo-learn.js?1711431242"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711431242" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711431242"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

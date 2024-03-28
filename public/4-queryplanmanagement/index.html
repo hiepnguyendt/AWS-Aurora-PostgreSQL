@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Query Plan Management :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/4-queryplanmanagement/" selected>English</option>
+                      <option id="en" value="//localhost:1313/4-queryplanmanagement/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/4-queryplanmanagement/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/4-queryplanmanagement/">Tiếng Việt</option>
                     
                   
               
@@ -1000,7 +1000,7 @@
 </li>
 <li>
 <p>Click <strong>Save</strong> Changes to save changes</p>
-<p><img src="/images/4.1/4.png" alt="QMP"></p>
+<p><img alt="QMP" src="/images/4.1/4.png"></p>
 </li>
 </ul>
 </li>
@@ -1070,22 +1070,22 @@ SELECT sql_hash,
        enabled, 
        sql_text 
 FROM   apg_plan_mgmt.dba_plans;
-</code></pre><p><img src="/images/4.1/7.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/7.png"></p>
 <ul>
 <li>Turn off automatic capture of query plans. Capturing all plans with automatic capture has little runtime overhead and can be enabled in production. We are turning off the automatic capture to make sure that we don’t capture SQL statements outside the pgbench workload. This can be turned off by setting the <strong>apg_plan_mgmt.capture_plan_baselines</strong> parameter to <code>off</code> from the DB parameter group.</li>
 </ul>
-<p><img src="/images/4.1/8.png" alt="QMP"></p>
+<p><img alt="QMP" src="/images/4.1/8.png"></p>
 <ul>
 <li>Verify parameter settings using PSQL. As <strong>apg_plan_mgmt.capture_plan_baselines</strong> is a dynamic parameter, it doesn&rsquo;t need an instance reboot to take effect. It will take a 5-10 seconds for the parameter value to change.</li>
 </ul>
 <pre tabindex="0"><code>show apg_plan_mgmt.capture_plan_baselines;
-</code></pre><p><img src="/images/4.1/9.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/9.png"></p>
 <ul>
 <li>Let’s verify that the execution plan for one of the managed statements is same as the plan captured by QPM. Execute explain plan on one of the managed statements. The explain plan output shows that the SQL hash and the plan hash matches with the QPM approved plan for that statement.</li>
 </ul>
 <pre tabindex="0"><code>explain (hashes true) UPDATE pgbench_tellers SET tbalance = tbalance + 100 WHERE tid = 200; 
 # (hashes true): This is likely part of a specific testing or benchmarking framework and doesn&#39;t directly affect the UPDATE statement itself. It might indicate a particular flag or configuration within the framework.
-</code></pre><p><img src="/images/4.1/10.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/10.png"></p>
 
 <div class="notices note" ><p>In addition to automatic plan capture, QPM has manual plan capture capability, which offers a mechanism to capture execution plans for known problematic queries. Capturing the plans automatically is recommended generally. However, there are situations where capturing plans manually would be the best option, such as:</p>
 <ul>
@@ -1123,7 +1123,7 @@ FROM   pgbench_history h,
               pgbench_branches b
 WHERE  b.bid = h.bid
        AND b.bid IN ( 1, 2, 3 );
-</code></pre><p><img src="/images/4.1/11.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/11.png"></p>
 <ol start="3">
 <li>Disable manual capture of new SQL statements with their plans after you capture the execution plan for the desired SQL statement.</li>
 </ol>
@@ -1141,7 +1141,7 @@ WHERE  b.bid = h.bid
                estimated_total_cost &#34;cost&#34;,
                sql_text
 FROM apg_plan_mgmt.dba_plans;
-</code></pre><p><img src="/images/4.1/12.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/12.png"></p>
 <ol start="5">
 <li>To instruct the query optimizer to use the approved or preferred captured plans for your managed statements, set the parameter <strong>apg_plan_mgmt.use_plan_baselines</strong> to true.</li>
 </ol>
@@ -1156,7 +1156,7 @@ FROM   pgbench_history h,
               pgbench_branches b
 WHERE  b.bid = h.bid
        AND b.bid IN ( 1, 2, 3 ); 
-</code></pre><p><img src="/images/4.1/13.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/13.png"></p>
 <ol start="7">
 <li>Create a new index on the pgbench_history table column bid to change the planner configuration and force the query optimizer to generate a new plan.</li>
 </ol>
@@ -1171,7 +1171,7 @@ FROM   pgbench_history h,
               pgbench_branches b
 WHERE  b.bid = h.bid
        AND b.bid IN ( 1, 2, 3 );
-</code></pre><p><img src="/images/4.1/14.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/14.png"></p>
 <ol start="9">
 <li>Run the following SQL query to view the new plan and status of the plan. To ensure plan stability, QPM stores all the newly generated plans for a managed query in QPM as unapproved plans.</li>
 </ol>
@@ -1189,14 +1189,14 @@ WHERE  b.bid = h.bid
                estimated_total_cost &#34;cost&#34;,
                sql_text
 FROM apg_plan_mgmt.dba_plans;
-</code></pre><p><img src="/images/4.1/15.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/15.png"></p>
 <ul>
 <li>The following is an example of plan adaptability with QPM. This example evaluates the unapproved plan based on the minimum speedup factor. It approves any captured unapproved plan that is faster by at least 10 percent than the best approved plan for the statement. For additional details, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Optimize.Maintenance.html#AuroraPostgreSQL.Optimize.Maintenance.EvaluatingPerformance">Evaluating Plan Performance in the Aurora documentation</a>.</li>
 </ul>
 <pre tabindex="0"><code>SELECT apg_plan_mgmt.Evolve_plan_baselines (sql_hash, plan_hash, 1.1,&#39;approve&#39;)
 FROM   apg_plan_mgmt.dba_plans
 WHERE  status = &#39;Unapproved&#39;; 
-</code></pre><p><img src="/images/4.1/16.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/16.png"></p>
 <ul>
 <li>After QPM evaluates the plan based on the speed factor, the plan status changes from <strong>unapproved</strong> to <strong>approved</strong>. At this point, the optimizer can choose the newly approved lower cost plan for that managed statement.</li>
 </ul>
@@ -1206,7 +1206,7 @@ WHERE  status = &#39;Unapproved&#39;;
                estimated_total_cost &#34;cost&#34;,
                sql_text
 FROM apg_plan_mgmt.dba_plans;
-</code></pre><p><img src="/images/4.1/17.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/17.png"></p>
 <ol start="10">
 <li>View the explain plan output to see whether the query is using the newly approved minimum cost plan.</li>
 </ol>
@@ -1217,7 +1217,7 @@ FROM   pgbench_history h,
               pgbench_branches b
 WHERE  b.bid = h.bid
        AND b.bid IN ( 1, 2, 3 );
-</code></pre><p><img src="/images/4.1/18.png" alt="QMP"></p>
+</code></pre><p><img alt="QMP" src="/images/4.1/18.png"></p>
 
 
 
@@ -1674,19 +1674,19 @@ WHERE  b.bid = h.bid
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

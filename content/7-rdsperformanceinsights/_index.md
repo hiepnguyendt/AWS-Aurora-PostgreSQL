@@ -25,7 +25,6 @@ This lab contains the following tasks:
     unzip aupg-scripts.zip
 
     ```
-
     ![PI](/images/7/1.png)
 
 2. Create sample HR schema by running the following commands on the Cloud9 terminal window:
@@ -35,7 +34,6 @@ This lab contains the following tasks:
     psql -f postgres-hr.sql # runs a PostgreSQL script named postgres-hr.sql
 
     ```   
-
     ![PI](/images/7/2.png)
 
 #### Understanding the RDS Performance Insights interface
@@ -44,11 +42,9 @@ This lab contains the following tasks:
     ![PI](/images/7/3.png)
 
 2. Next, select the desired **DB instance** to load the performance metrics for. For Aurora DB clusters, performance metrics are exposed on an individual DB instance basis. The different DB instances comprising a cluster may run different workload patterns, and might not all have Performance Insights enabled. For this lab, we are generating load on the **Writer** (Primary) DB instance only. 
-
     ![PI](/images/7/4.png)
 
 3. Once a DB instance is selected, you will see the main dashboard view of RDS Performance Insights. The dashboard is divided into two sections, allowing you to drill down from high level performance indicator metrics down to individual waits, queries, users and hosts generating the load.
-
     ![PI](/images/7/7.png)
      ![PI](/images/7/8.png)
 
@@ -75,7 +71,6 @@ In this exercise, we will learn how to use Performance Insights and PostgreSQL e
 1. Create pg_stat_statements extension
     
      In a new psql session, connect to mylab database and run the following SQL command:
-
     {{% notice note %}}
 Be sure to use a new psql session, otherwise your pg_stat_statements view will be created under the hr schema.
 {{% /notice %}}
@@ -86,8 +81,7 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
     \q
 
     ```
-
-    ![PI](/images/7/6.png)
+![PI](/images/7/6.png)
     Now, we are ready to run some load on the Aurora Instance to understand the capabilities of RDS Performance Insights.
 
 2. High volume insert load on the Aurora DB cluster using pgbench
@@ -100,7 +94,6 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
     The ***hrload1.sql*** SQL script will ingest employee records using PL/pgSQL function ***add_employee_data***. This function uses ***employee_seq*** to generate the next ***employee_id***, randomly generate data including ***first_name***, salary with ***department_id*** from departments table. Each function call will insert 5 records. This test will be executed for 5 minutes with 10 clients.
 
 - Review the PI dashboard and check the top wait events, **AAS (Average Active Sessions)** for the duration.
-
     ![PI](/images/7/7.png)
     ![PI](/images/7/8.png)
 
@@ -117,7 +110,7 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
     cat /tmp/pgload1-run1.log
 
     ```
-     
+    
     ![PI](/images/7/9.png)
 
 - Now, lets check the top 5 queries by execute time and CPU Consumption. Run the below SQL query to understand the load caused by the above pgbench run using pg_stat_statements extension.
@@ -139,8 +132,7 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
 **ORDER BY total_exec_time DESC**: Sorts the results by total execution time in descending order (most resource-intensive queries first).\
 **LIMIT 5**: Restricts the output to the top 5 results.
     {{% /expand%}}
-
-    ![PI](/images/7/10.png)
+ ![PI](/images/7/10.png)
 
 - Lets rerun the same function with 50 inserts per execution and check the impact on wait events. Use hrload2.sql for this run.
 
@@ -152,9 +144,8 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
     {{% notice tip %}}
 If you don't see any new activity in the database load section, change the time range to last **5 minutes** and click **Apply**. Then change it back to last **1 hour** and click **Apply**.
 {{% /notice %}}
-
     ![PI](/images/7/11.png)
-    ![PI](/images/7/12.png)
+   ![PI](/images/7/12.png)
 
 - Rerun the pg_stat_statements query to check resource consumption now.
 
@@ -162,7 +153,6 @@ If you don't see any new activity in the database load section, change the time 
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
     ```
-     
     ![PI](/images/7/13.png)
     
 - If you compare the wait events for the two pgbench runs, you will notice that IO:XactSync related waits have reduced in the latest run
@@ -172,7 +162,6 @@ If you don't see any new activity in the database load section, change the time 
     cat /tmp/pgload1-run2.log
 
     ```
-
     ![PI](/images/7/14.png)
 
 3. High volume update load on the Aurora DB cluster using pgbench
@@ -187,7 +176,6 @@ In this exercise, we will run updates on the employee table using update_employe
     The ***hrupdname.sql*** SQL script will update employee salary details in ***employees*** table using PL/pgSQL function ***update_employee_data_fname***. This function randomly selects the employee records and checks if their salary is within a range (min and max salary of their job), if not updates their salary using their ***first_name***. Each function call will select 5 records randomly. This test will be executed for 3 minutes with 10 clients.
 
 - Go to **RDS PI** dashboard. Check the top wait events and AAS for the run duration.
-     
     ![PI](/images/7/15.png)
     ![PI](/images/7/16.png)
 
@@ -196,11 +184,9 @@ In this exercise, we will run updates on the employee table using update_employe
     **CPU**
 
     Also check the **CPU utilization** Cloudwatch metrics for the Aurora cluster by selecting the **Monitoring** tab, searching for cpu and expanding the **CPUUtilization** graph.
-
     ![PI](/images/7/17.png)
 
     Update the graph to display 1 minute average. As you can see the CPUUtilization reached ~100% during the update load test.
-
     ![PI](/images/7/18.png)
 
 - Let’s look at the performance stats using pg_stat_statements extensions.
@@ -210,7 +196,6 @@ In this exercise, we will run updates on the employee table using update_employe
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
     ```
-
     ![PI](/images/7/19.png)
 
     Let’s look at the explain plan used by the SQL statements in the PL/pgSQL function. In order to capture the explain plan in the logs, set the below DB parameters at your session level.
@@ -230,7 +215,6 @@ In this exercise, we will run updates on the employee table using update_employe
     \q
     # hr.update_employee_data_fname(10): Calls the function update_employee_data_fname within the hr schema, passing the argument 10
     ```
-
     ![PI](/images/7/20.png)
 
 - Now, lets rerun the load using the SQL Script hrupdid.sql to use the employee_id column to update employees table.
@@ -250,7 +234,6 @@ In this exercise, we will run updates on the employee table using update_employe
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
     ```
-
     ![PI](/images/7/22.png)
 
 - Compare the throughput and latencies reported by pgbench between the runs.
@@ -260,5 +243,4 @@ In this exercise, we will run updates on the employee table using update_employe
     cat /tmp/pgload2-run2.log
 
     ```
-
     ![PI](/images/7/23.png)

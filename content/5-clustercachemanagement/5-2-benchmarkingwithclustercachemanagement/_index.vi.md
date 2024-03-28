@@ -1,263 +1,345 @@
 ---
-title : "Database and Schemas"
+title : "Benchmarking với Cluster Cache management"
 date :  "`r Sys.Date()`" 
 weight : 2 
 chapter : false
-pre : " <b> 2.2. </b> "
+pre : " <b> 5.2. </b> "
 ---
-Welcome to PostgreSQL! If this is your first time looking at **PostgreSQL**, we encourage you to check out the official [About PostgreSQL](https://www.postgresql.org/about/)  webpage.
 
-In this module, we are going to explore **Databases and Schemas.**
+#### Benchmarking với Cluster Cache management
 
-{{% notice info %}}
-This chapter assumes you have setup and configured pgAdmin. If you haven't, please complete the pgAdmin module before proceeding.
-{{% /notice %}}
+Để xác minh các lợi ích của tính năng của Cluster Cache Management trên cụm Aurora, chúng ta sẽ thực hiện các bước sau. Chúng ta sẽ khám phá các bước này chi tiết hơn trong các phần tương ứng dưới đây.
+- Với CCM được kích hoạt, chúng ta sẽ chạy bài đo hiệu năng pgbench trên writer node.
+- Chúng ta sẽ kiểm tra các trang được lưu trữ trong bộ nhớ cache trên cả writer node và reader node để xác minh rằng chúng được đồng bộ.
+- Sau đó, chúng ta sẽ thực hiện Failover trên cụm Aurora.
+- Chúng ta sẽ chạy bài đo hiệu năng pgbench trên writer node mới sau sự cố và xác minh rằng các số liệu TPS (Transaction Per Second) giữa writer node cũ và mới là tương tự.
+- Sau đó, chúng ta sẽ tắt CCM.
+- Chúng ta sẽ xóa bộ nhớ cache đệm trên cả writer node và reader node bằng cách dừng và khởi động lại cụm.
+- Với CCM bị tắt, chúng ta sẽ chạy bài đo hiệu năng trên writer node bằng cách sử dụng pgbench lại
+- Chúng ta sẽ kiểm tra các trang được lưu trữ trong bộ nhớ cache trên cả writer node và reader node để xác minh rằng chúng không được đồng bộ.
+- Tiếp theo, chúng ta sẽ thực hiện Failover trên cụm Aurora một lần nữa.
+- Chúng ta sẽ chạy bài đo hiệu năng pgbench trên writer node mới sau sự cố và xác minh rằng các số liệu TPS giữa writer node cũ và mới biến đổi đáng kể.
 
-#### Explore Databases
-
- 1.In your pgAdmin tool, click the *>* in front of **rdspg-fcj-labs** to expand it.
-
- ![rdspg-fcj-labs](/images/2/2-2/1.png)
- {{% notice note %}}
- You see 3 breakouts: Databases, Login/Group Roles, and Tablespaces.\
- In this section, we will focus on **Databases**. And we'll cover **Login/Group** Roles in a later section.
- {{% /notice %}}
-
- 
- 2.Expand the Databases node.
-
- ![Databases](/images/2/2-2/2.png)
-
- From a terminology standpoint, the PostgreSQL instance `(rdspg-fcj-labs)` you have created is known as a PostgreSQL **cluster**. A cluster contains one or more **databases**. While the users/roles of a cluster are shared across a cluster, no data is shared across databases. In other words, when a customer connects to a cluster, that connection is required to specify the database it wants to work with and that connection can only work within a single database at a time.\
- {{% notice note %}}
- you see a handful of databases within the `pglab` cluster.
- {{% /notice %}}
-
-
- {{%expand "What is the `rdsadmin` database ?" %}}The database named rdsadmin is a database that is reserved for use by the RDS/Aurora control plane.{{% /expand%}}
-
- 3.Right-click on the **Databases** node and choose **Create**, then click **Databases**
-
- ![Create Databases](/images/2/2-2/3.png)
-
- 4.Name the database `first_database` (but don't save it yet)
-
- ![My Databases](/images/2/2-2/4.png)
-
- {{% notice note %}}
- The database has an owner. This role can control and assign permissions for this database to other roles. The owner defaults to the role you are currently logged in with pgAdmin. Also note that you can alter the owner of most PostgreSQL objects even after they are originally created.
- {{% /notice %}} 
-
- 5.Now click on the **Definition** tab
-
- ![Definition](/images/2/2-2/5.png)
-
- {{% notice note %}}
- There are [various settings](https://www.postgresql.org/docs/11/sql-createdatabase.html)  that can be changed. You don't need to change anything for now.
- {{% /notice %}}
-
- 6.Click on the **SQL** tab
-
- ![SQL](/images/2/2-2/6.png)
- The SQL tab shows you a preview of the generated SQL command that pgAdmin is going to run.
-
- 7.Click **Save** \
- 8.Find your new database in the navigator and expand it.
- ![SQL](/images/2/2-2/7.png)
-
-#### Explore Schemas
-A database contains one or more named **schemas**, which in turn contain tables and other objects like views and functions. The objects in a given PostgreSQL schema can be owned by different users and the schema name has no implied correlation to the name of the schema owner.
-
-As described in the [PostgreSQL Documentation](https://www.postgresql.org/docs/11/ddl-schemas.html)
-
-
-> " The same object name can be used in different schemas without conflict; for example, both `schema1` and `myschema` may contain tables named mytable. Unlike databases, schemas are not rigidly separated: a user may access objects in any of the schemas in the database he is connected to, if he has privileges to do so.
->
-> There are several reasons why one might want to use schemas:
->
-> - To allow many users to use one database without interfering with each other.
-> - To organize database objects into logical groups to make them more manageable.
-> - Third-party applications can be put into separate schemas so they cannot collide with the names of other objects.
->
-> Schemas are analogous to directories at the operating system level, except that schemas cannot be nested."
-
-1.Expand the **Schemas** node and see a default **public schema**.
-
-![Schema](/images/2/2-2/8.png)
-
-
-
-2.Right-click on the **Schemas** node and choose **Create**, then click **Schema**.
-
-![create schema](/images/2/2-2/9.png)
-
-3.Name the schema `first_schema`
-
-![named schema](/images/2/2-2/10.png)
-
+1. Tải dữ liệu lớn để thực hiện bài đo hiệu năng (benchmarking):
 {{% notice note %}}
- The schemas have an owner and also have security permissions and default privileges for new objects created in the schema (you can click on the Security tab and the Default Permissions tab in the Create Schema dialog if you want).
- {{% /notice %}}
-
-
-4.Click **Save** to create the new schema.
-
-{{% notice info %}}
-PostgreSQL **schemas** can be different from how other databases like Oracle implement schemas. In Oracle, schemas are directly mapped 1:1 to users. In PostgreSQL, schemas are not coupled directly to a specific user(role).
+Để tái tạo bài đo hiệu năng được sử dụng trong lab, chúng ta cần thêm dữ liệu mẫu vào bài đo hiệu năng. Lệnh dưới đây sử dụng yếu tố tỷ lệ (scale factor) là 10000. Bước tùy chọn này có thể mất khoảng 15-20 phút để thêm dữ liệu vào cơ sở dữ liệu, vì vậy hãy đảm bảo bạn có đủ thời gian hoàn thành lab trước khi chạy lệnh dưới đây.
 {{% /notice %}}
 
-As discussed in the [documentation](https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PORTABILITY) ,
+- Chạy lệnh sau trong terminal Cloud9 của bạn để kết nối với writer node của cụm Aurora bằng pgbench và thêm dữ liệu mẫu với scale factor = 10000
 
+  ```
+  pgbench -i --fillfactor=100 --scale=10000
 
-> "In the SQL standard, the notion of objects in the same schema being owned by different users does not exist. Moreover, some implementations do not allow you to create schemas that have a different name than their owner. In fact, the concepts of schema and user are nearly equivalent in a database system that implements only the basic schema support specified in the standard. Therefore, many users consider qualified names to really consist of username.tablename. This is how PostgreSQL will effectively behave if you create a per-user schema for every user. Also, there is no concept of a public schema in the SQL standard. For maximum conformance to the standard, you should not use (perhaps even remove) the public schema."
+  ```
 
-**A note about the** `search_path`
-Referencing objects via Qualified names, such as `first_schema.first_table`, is tedious to write, and hard-coding a particular schema name into an application is not ideal. The solution is to use unqualified names, such as `first_table` and this is made possible via the PostgreSQL `search_path`.
+- Kiểm tra kích thước cơ sở dữ liệu aupglab bằng PSQL.
 
-As discussed in the [documentation](https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PATH) ,
+  ```
+  psql
+  SELECT pg_size_pretty( pg_database_size('aupglab'));
+  ```
 
-> "The system determines which table is meant by following a search_path, which is a list of schemas to look in. The first matching table in the search path is taken to be the one wanted. If there is no match in the search path, an error is reported, even if matching table names exist in other schemas in the database.
->
-> The first schema named in the search path is called the current schema. Aside from being the first schema searched, it is also the schema in which new tables will be created if the CREATE TABLE command does not specify a schema name."
+{{%expand "Nếu bạn đã sử dụng scale factor 100) trong pgbench, bạn sẽ thấy kết quả của chúng ta tương tự như sau:" %}}![benchmark](/images/5/5.2/1.png)
+{{% /expand%}}
 
-By default, the search_path is set to $user,public. As the documentation states
-> "The first element specifies that a schema with the same name as the current user is to be searched. If no such schema exists, the entry is ignored. The second element refers to the public schema that we have seen already."
+{{%expand "Nếu bạn chạy pgbench với hệ số tỷ lệ 10000 ở bước trước, bạn sẽ thấy kết quả đầu ra tương tự như sau:" %}}![benchmark](/images/5/5.2/2.png)
+{{% /expand%}}
 
-{{% notice info %}}
-It should be noted that PostgreSQL does not have the concept of synonyms like certain other databases. You can use the search_path to handle some, but not all, of the capabilities that synonyms offer. For an example of implementing other synonym-like functionality in PostgreSQL, see this [blog post](https://www.dbbest.com/blog/convert-oracle-synonyms-to-postgresql/) .
-{{% /notice %}}
+### Benchmarking với CCM được kích hoạt
+1. Chạy bài đo hiệu năng trên nút writer bằng pgbench (trước khi thực hiện failover):
 
-**Congratulations!**
+- Bắt đầu bài đo hiệu năng pgbench trong 600 giây trên writer node của Aurora PostgreSQL với CCM (Continuous Cloud Monitoring) được kích hoạt, hãy sử dụng lệnh sau trong terminal Cloud9 của bạn:
 
-You have learned the basics about PostgreSQL Databases and Schemas.---
-title : "Database and Schemas"
-date :  "`r Sys.Date()`" 
-weight : 2 
-chapter : false
-pre : " <b> 2.2. </b> "
----
-Welcome to PostgreSQL! If this is your first time looking at **PostgreSQL**, we encourage you to check out the official [About PostgreSQL](https://www.postgresql.org/about/)  webpage.
+  ```
+  pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 > ccm_enable_before_failover.out 
+  ```
 
-In this module, we are going to explore **Databases and Schemas.**
-
-{{% notice info %}}
-This chapter assumes you have setup and configured pgAdmin. If you haven't, please complete the pgAdmin module before proceeding.
-{{% /notice %}}
-
-#### Explore Databases
-
- 1.In your pgAdmin tool, click the *>* in front of **rdspg-fcj-labs** to expand it.
-
- ![rdspg-fcj-labs](/images/2/2-2/1.png)
- {{% notice note %}}
- You see 3 breakouts: Databases, Login/Group Roles, and Tablespaces.\
- In this section, we will focus on **Databases**. And we'll cover **Login/Group** Roles in a later section.
- {{% /notice %}}
-
- 
- 2.Expand the Databases node.
-
- ![Databases](/images/2/2-2/2.png)
-
- From a terminology standpoint, the PostgreSQL instance `(rdspg-fcj-labs)` you have created is known as a PostgreSQL **cluster**. A cluster contains one or more **databases**. While the users/roles of a cluster are shared across a cluster, no data is shared across databases. In other words, when a customer connects to a cluster, that connection is required to specify the database it wants to work with and that connection can only work within a single database at a time.\
- {{% notice note %}}
- you see a handful of databases within the `pglab` cluster.
- {{% /notice %}}
-
-
- {{%expand "What is the `rdsadmin` database ?" %}}The database named rdsadmin is a database that is reserved for use by the RDS/Aurora control plane.{{% /expand%}}
-
- 3.Right-click on the **Databases** node and choose **Create**, then click **Databases**
-
- ![Create Databases](/images/2/2-2/3.png)
-
- 4.Name the database `first_database` (but don't save it yet)
-
- ![My Databases](/images/2/2-2/4.png)
-
- {{% notice note %}}
- The database has an owner. This role can control and assign permissions for this database to other roles. The owner defaults to the role you are currently logged in with pgAdmin. Also note that you can alter the owner of most PostgreSQL objects even after they are originally created.
- {{% /notice %}} 
-
- 5.Now click on the **Definition** tab
-
- ![Definition](/images/2/2-2/5.png)
-
- {{% notice note %}}
- There are [various settings](https://www.postgresql.org/docs/11/sql-createdatabase.html)  that can be changed. You don't need to change anything for now.
- {{% /notice %}}
-
- 6.Click on the **SQL** tab
-
- ![SQL](/images/2/2-2/6.png)
- The SQL tab shows you a preview of the generated SQL command that pgAdmin is going to run.
-
- 7.Click **Save** \
- 8.Find your new database in the navigator and expand it.
- ![SQL](/images/2/2-2/7.png)
-
-#### Explore Schemas
-A database contains one or more named **schemas**, which in turn contain tables and other objects like views and functions. The objects in a given PostgreSQL schema can be owned by different users and the schema name has no implied correlation to the name of the schema owner.
-
-As described in the [PostgreSQL Documentation](https://www.postgresql.org/docs/11/ddl-schemas.html)
-
-
-> " The same object name can be used in different schemas without conflict; for example, both `schema1` and `myschema` may contain tables named mytable. Unlike databases, schemas are not rigidly separated: a user may access objects in any of the schemas in the database he is connected to, if he has privileges to do so.
->
-> There are several reasons why one might want to use schemas:
->
-> - To allow many users to use one database without interfering with each other.
-> - To organize database objects into logical groups to make them more manageable.
-> - Third-party applications can be put into separate schemas so they cannot collide with the names of other objects.
->
-> Schemas are analogous to directories at the operating system level, except that schemas cannot be nested."
-
-1.Expand the **Schemas** node and see a default **public schema**.
-
-![Schema](/images/2/2-2/8.png)
-
-
-
-2.Right-click on the **Schemas** node and choose **Create**, then click **Schema**.
-
-![create schema](/images/2/2-2/9.png)
-
-3.Name the schema `first_schema`
-
-![named schema](/images/2/2-2/10.png)
-
-{{% notice note %}}
- The schemas have an owner and also have security permissions and default privileges for new objects created in the schema (you can click on the Security tab and the Default Permissions tab in the Create Schema dialog if you want).
- {{% /notice %}}
-
-
-4.Click **Save** to create the new schema.
+{{%expand "Giải thích câu lệnh" %}}
+**pgbench**: This is a benchmarking tool for PostgreSQL databases.\
+**--progress-timestamp**: Prints a timestamp with each progress report.\
+**-M prepared**: Uses prepared transactions for benchmarking.\
+**-n**: Specifies a no-vacuum test, which avoids vacuuming during the benchmark.\
+**-T 600**: Runs the benchmark for 600 seconds (10 minutes).\
+**-P 5**: Populates the database with 5 client sessions before starting the benchmark.\
+**-c 50**: Runs the benchmark with 50 concurrent client connections.\
+**-j 50**: Specifies 50 threads for multi-threaded operation.\
+**-b tpcb-like@1**: Uses the TPC-B-like transaction mix with a weight of 1.\
+**-b select-only@20**: Uses a select-only transaction mix with a weight of 20.\
+**ccm_enable_before_failover.out**: Redirects the output to a file named "ccm_enable_before_failover.out".
+{{% /expand%}}
 
 {{% notice info %}}
-PostgreSQL **schemas** can be different from how other databases like Oracle implement schemas. In Oracle, schemas are directly mapped 1:1 to users. In PostgreSQL, schemas are not coupled directly to a specific user(role).
+Chúng ta đang sử dụng tùy chọn tpcb-like của pgbench để thực hiện bài đo hiệu năng và sử dụng ký hiệu "@" để chỉ định xác suất chạy công việc chỉ đọc (read-only) và công việc đọc-ghi (read-write). Trong ví dụ dưới đây, chúng ta đang chạy công việc tpcb-like với 20 lần công việc chỉ đọc và 1 lần công việc đọc-ghi trong 600 giây.
 {{% /notice %}}
 
-As discussed in the [documentation](https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PORTABILITY) ,
+- Sau 600 giây khi bài đo hiệu năng hoàn tất, bạn có thể xem kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra "ccm_enable_before_failover.out". Kết quả tóm tắt sẽ có dạng như sau. Xin lưu ý rằng đầu ra của bạn có thể khác một chút.
+
+  ```
+  cat ccm_enable_before_failover.out
+  ```
+  ![benchmark](/images/5/5.2/3.png)
+
+#### Kiểm tra số trang được lưu trữ trong bộ nhớ cache trên cả writer node và các reader node trong cụm Aurora PostgreSQL
+- **Pg_buffercache** extension cung cấp một phương tiện để xem nội dung của bộ đệm (buffer cache). Chúng ta sẽ dùng pg_buffercache để xem nội dung của bộ đệm (với CCM được kích hoạt và CCM bị vô hiệu hóa) để minh họa tác động của CCM (Cluster Cache Management). Chúng ta sẽ so sánh nội dung của bộ đệm trên Writer node với Reader node.
+- Khi CCM được kích hoạt, nội dung của bộ đệm trên writer node và reader node sẽ tương tự nhau, vì writer node sẽ định kỳ gửi bộ đệm của các bộ đệm được sử dụng thường xuyên (mặc định là số lần sử dụng>3) cho reader node để được đọc từ bộ nhớ lưu trữ.
+
+1. Kết nối với Writer node bằng psql sử dụng cluster endpoint 
+
+- Tạo extension pg_buffercache trên cơ sở dữ liệu.
+
+  ```
+  psql
+  CREATE EXTENSION pg_buffercache;
+  \dx pg_buffercache
+
+  ```
+  ![benchmark](/images/5/5.2/4.png)
+
+- Xác nhận rằng bạn đã kết nối với Writer node và truy vấn xem pg_buffercache để xem số trang được lưu trữ trong bộ nhớ cache cho các bảng khác nhau
+
+  ```
+  show transaction_read_only;
+  ```
+  ![benchmark](/images/5/5.2/5.png)
+
+  ```
+  SELECT c.relname, count(*) AS buffers
+  FROM pg_buffercache b 
+  INNER JOIN pg_class c
+  ON b.relfilenode = pg_relation_filenode(c.oid) 
+  AND b.reldatabase IN (0, (SELECT oid FROM pg_database WHERE datname = current_database()))
+  GROUP BY c.relname
+  ORDER BY 2 DESC
+  LIMIT 10;
+  ```
+  ![benchmark](/images/5/5.2/6.png)
+
+{{%expand "Giải thích scripts" %}}
+|Command| Purposes|
+|-------|--------|
+|SELECT c.relname, count(*) AS buffers|Queries for the relation name (relname) and the number of buffers used (count(*)), labeling the count as "buffers".|
+|FROM pg_buffercache b|Accesses data from the pg_buffercache system view, which holds details about buffered pages.|
+|INNER JOIN pg_class c|Combines data from pg_buffercache with information about relations from the pg_class system catalog.|
+|ON b.relfilenode = pg_relation_filenode(c.oid)|Links entries based on filenodes, associating buffers with their respective relations.|
+|AND b.reldatabase IN (0, (SELECT oid FROM pg_database WHERE datname = current_database()))| Includes buffers for both shared system catalogs (database 0) and the current database.|
+|GROUP BY c.relname|Aggregates results based on relation names.|
+|ORDER BY 2 DESC|Sorts in descending order based on the number of buffers (count(*) in position 2)|
+|LIMIT 10;|Restricts output to the top 10 relations.|
+{{% /expand%}}
+
+#### Kết nối tới Read replica
+1. Truy cập giao diện [Amazon RDS console](https://console.aws.amazon.com/rds/home?#database:) .
+
+2. Trong ngăn điều hướng, chọn Databases  và nhấp vào tên của cụm Aurora mà bạn đã tạo.
+3. Bên dưới **Connectivity and Security**, copy **Endpoint of type Reader**.
+
+4. Thay thế <Aurora Reader EndPoint> bên dưới bằng Aurora reader endpoint mà bạn đã sao chép ở trên và sử dụng dòng lệnh psql để kiểm tra xem extension pg_buffercache đã được cài đặt chưa.
+
+  ```
+  psql -h <Aurora Reader EndPoint>
+  \dx pg_buffercache
+  ```
+  ![benchmark](/images/5/5.2/7.png)
+
+- Xác minh xem bạn có được kết nối với Reader node hay không và truy vấn pg_buffercache để xem số trang được lưu trong bộ nhớ đệm cho các bảng khác nhau.
+
+  ``` 
+  show transaction_read_only;
+  ```
+
+  ![benchmark](/images/5/5.2/8.png)
+
+  ```
+  SELECT c.relname, count(*) AS buffers
+    FROM pg_buffercache b INNER JOIN pg_class c
+    ON b.relfilenode = pg_relation_filenode(c.oid) AND
+    b.reldatabase IN (0, (SELECT oid FROM pg_database
+    WHERE datname = current_database()))
+    GROUP BY c.relname
+    ORDER BY 2 DESC
+    LIMIT 10;
+  ```
+
+  ![benchmark](/images/5/5.2/9.png)
+
+*Lưu ý rằng, sau khi tắt CCM, số lượng trang đệm trên readeer node sẽ ít hơn nhiều so với writer node đối với các bảng được truy cập thường xuyên.*
+#### Failover Aurora cluster
+- Bây giờ, chúng tôi sẽ bắt đầu quá trình chuyển đổi dự phòng của cụm Aurora và sau khi quá trình chuyển đổi dự phòng hoàn tất, chúng tôi sẽ đo hiệu năng trên writer node mới. Để bắt đầu chuyển đổi dự phòng, hãy chuyển đến RDS console, chọn writer instance của cụm Aurora và nhấp vào **Failover** trong menu **Actions**.
+  ![benchmark](/images/5/5.2/10.png)
+
+- Click **Failover** để xác nhận.
+![benchmark](/images/5/5.2/11.png)
+
+- Sau khi quá trình chuyển giao hoàn tất (sau khoảng ~30 giây), hãy xác minh rằng reader node trước đó đã trở thành writer node mới.
+![benchmark](/images/5/5.2/12.png)
+![benchmark](/images/5/5.2/13.png)
 
 
-> "In the SQL standard, the notion of objects in the same schema being owned by different users does not exist. Moreover, some implementations do not allow you to create schemas that have a different name than their owner. In fact, the concepts of schema and user are nearly equivalent in a database system that implements only the basic schema support specified in the standard. Therefore, many users consider qualified names to really consist of username.tablename. This is how PostgreSQL will effectively behave if you create a per-user schema for every user. Also, there is no concept of a public schema in the SQL standard. For maximum conformance to the standard, you should not use (perhaps even remove) the public schema."
+#### Để chạy bài thử nghiệm sử dụng công cụ pgbench trên writer node mới (sau quá trình failover)
 
-**A note about the** `search_path`
-Referencing objects via Qualified names, such as `first_schema.first_table`, is tedious to write, and hard-coding a particular schema name into an application is not ideal. The solution is to use unqualified names, such as `first_table` and this is made possible via the PostgreSQL `search_path`.
+- Bây giờ chúng ta sẽ chạy bài thử nghiệm pgbench tương tự như trước và so sánh trước và sau khi failover.
 
-As discussed in the [documentation](https://www.postgresql.org/docs/11/ddl-schemas.html#DDL-SCHEMAS-PATH) ,
+```
+pgbench --progress-timestamp -M prepared -n -T 600 -P 5  -c 50 -j 50 -b tpcb-like@1 -b select-only@20 > ccm_enable_after_failover.out
 
-> "The system determines which table is meant by following a search_path, which is a list of schemas to look in. The first matching table in the search path is taken to be the one wanted. If there is no match in the search path, an error is reported, even if matching table names exist in other schemas in the database.
->
-> The first schema named in the search path is called the current schema. Aside from being the first schema searched, it is also the schema in which new tables will be created if the CREATE TABLE command does not specify a schema name."
+```
 
-By default, the search_path is set to $user,public. As the documentation states
-> "The first element specifies that a schema with the same name as the current user is to be searched. If no such schema exists, the entry is ignored. The second element refers to the public schema that we have seen already."
+- Sau 600 giây khi bài thử nghiệm hoàn tất, bạn có thể xác minh kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra "ccm_enable_after_failover.out". Kết quả tóm tắt sẽ có dạng như sau. Lưu ý rằng kết quả của bạn có thể khác nhau một chút
 
-{{% notice info %}}
-It should be noted that PostgreSQL does not have the concept of synonyms like certain other databases. You can use the search_path to handle some, but not all, of the capabilities that synonyms offer. For an example of implementing other synonym-like functionality in PostgreSQL, see this [blog post](https://www.dbbest.com/blog/convert-oracle-synonyms-to-postgresql/) .
-{{% /notice %}}
+```
+cat ccm_enable_after_failover.out
 
-**Congratulations!**
+```
+![benchmark](/images/5/5.2/14.png)
 
-You have learned the basics about PostgreSQL Databases and Schemas.
+*Nhận thấy rằng sau khi tắt CCM, số liệu tps trên writer node mới sau quá trình failover ít hơn so với writer node cũ trước khi failover.*
+
+### Benchmarking với CCM disabled
+Bây giờ, chúng ta sẽ tắt CCM và thực hiện các bài thử nghiệm tương tự như trước với CCM đã được kích hoạt.
+
+#### Tắt CCM
+Để tắt CCM trên cụm Aurora PostgreSQL, bạn cần chỉnh sửa nhóm tham số của cụm để đặt giá trị của tham số apg_ccm_enabled thành 0.
+
+1. Truy cập giao diện Amazon RDS console và chọn [Parameters groups](https://console.aws.amazon.com/rds/home?#parameter-groups:id=) .
+
+2. Trong danh sách, hãy chọn nhóm tham số cho cụm cơ sở dữ liệu Aurora PostgreSQL của bạn.
+![benchmark](/images/5/5.2/14.png)
+
+3. Hãy nhấp vào nhóm tham số của cụm cơ sở dữ liệu đã được chọn ở trên, sau đó click vào **Edit Parameters**.
+![benchmark](/images/5/5.2/15.png)
+4. Đặt giá trị ``apg_ccm_enabled`` thành 0 và nhấp vào **Save changes**
+![benchmark](/images/5/5.2/16.png)
+
+5. Để xác minh rằng Cluster Cache Management đã được tắt bằng cách truy vấn hàm aurora_ccm_status(), hãy thực hiện các bước sau:
+
+```
+psql
+\x
+select * from aurora_ccm_status();
+```
+
+![benchmark](/images/5/5.2/17.png)
+
+#### Xóa bộ đệm (buffer cache) của cả writer node và reader node trên cụm Aurora PostgreSQL
+Vì việc thử nghiệm trước đó với CCM đã làm tăng bộ đệm (buffer cache) của các reader instance và writer instance trên cụm Aurora, chúng ta cần dừng và khởi động lại cụm Aurora để làm trống bộ đệm trước khi chạy bài đo hiệu năng tiếp theo. Bạn cũng có thể khởi động lại cả reader instance và writer instance, nhưng điều này không đảm bảo rằng writer instance và reader instance đọc sẽ khởi động với bộ đệm trống.
+
+##### Stop cluster
+1. Xác minh rằng trạng thái cụm được hiển thị là “Available”, sau đó nhấp vào menu **Actions** và chọn **Stop temporarily**.
+![benchmark](/images/5/5.2/18.png)
+
+2. Xác nhận hành động bằng cách nhấp vào cơ sở dữ liệu **Stop temporarily**.
+![benchmark](/images/5/5.2/19.png)
+
+*Sẽ mất vài phút và trạng thái cụm sẽ thay đổi từ Stopping thành Stopped.*
+![benchmark](/images/5/5.2/20.png)
+
+##### Start cluster
+1. Khi trạng thái cụm thay đổi thành **"Stopped"** (Dừng), hãy nhấp vào menu **Actions** một lần nữa và chọn **Start**.
+![benchmark](/images/5/5.2/21.png)
+
+*Quá trình khởi động cụm sẽ mất vài phút và trạng thái của cụm sẽ chuyển từ "Starting" thành "Available".*
+
+#### Chạy bài đo hiệu năng trên writer node bằng cách sử dụng công cụ pgbench (trước khi thực hiện failover)
+1. Hãy chạy bài đo hiệu năng bằng cách sử dụng pgbench trên writer node của cụm Aurora như đã thực hiện trước đó.
+
+```
+pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 > ccm_disable_before_failover.out
+
+```
+
+2. Sau 600 giây khi bài đo hiệu năng hoàn thành, bạn có thể xác minh kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra "ccm_disable_before_failover.out". Đầu ra tóm tắt sẽ có dạng như sau. Lưu ý rằng đầu ra của bạn có thể khác một chút.
+
+```
+cat ccm_disable_before_failover.out
+```
+![benchmark](/images/5/5.2/22.png)
+
+
+#### kiểm tra số trang được lưu trong bộ đệm trên cả writer và reader nodes
+1. Kết nối tới writer node bằng cách sử dụng cluster endpoint.
+```
+psql
+\dx pg_buffercache
+```
+![benchmark](/images/5/5.2/23.png)
+
+2. Để xác minh rằng bạn đã kết nối thành công đến writer node và truy vấn bảng **pg_buffercache** để xem số trang được lưu trong bộ đệm cho các bảng khác nhau,
+```
+show transaction_read_only;
+
+```
+![benchmark](/images/5/5.2/24.png)
+
+
+```
+SELECT c.relname, count(*) AS buffers
+ FROM pg_buffercache b INNER JOIN pg_class c
+ ON b.relfilenode = pg_relation_filenode(c.oid) AND
+ b.reldatabase IN (0, (SELECT oid FROM pg_database
+ WHERE datname = current_database()))
+ GROUP BY c.relname
+ ORDER BY 2 DESC
+ LIMIT 10;
+
+```
+![benchmark](/images/5/5.2/25.png)
+
+
+#### Kết nối đến read replica
+1. Để kết nối tới reader instance bằng cách sử dụng Reader Endpoint của Cụm Aurora PostgreSQL. Thay thế <Aurora Reader EndPoint> bên dưới với Aurora Reader EndPoint của bạn.
+```
+psql -h  <Aurora Reader EndPoint>
+\dx pg_buffercache
+
+```
+![benchmark](/images/5/5.2/26.png)
+
+2. Xác minh rằng bạn đã kết nối với Reader node và truy vấn **pg_buffercache** để xem số lượng trang được lưu trong bộ nhớ đệm cho các bảng khác nhau.
+```
+show transaction_read_only;
+
+```
+![benchmark](/images/5/5.2/27.png)
+
+
+```
+SELECT c.relname, count(*) AS buffers
+ FROM pg_buffercache b INNER JOIN pg_class c
+ ON b.relfilenode = pg_relation_filenode(c.oid) AND
+ b.reldatabase IN (0, (SELECT oid FROM pg_database
+ WHERE datname = current_database()))
+ GROUP BY c.relname
+ ORDER BY 2 DESC
+ LIMIT 10;
+
+```
+![benchmark](/images/5/5.2/28.png)
+
+
+*Lưu ý rằng, sau khi tắt CCM, số lượng trang đệm trên reader node sẽ ít hơn nhiều so với writer node đối với các bảng được truy cập thường xuyên.*
+
+#### Failover Aurora cluster
+1. Bây giờ, chúng tôi sẽ bắt đầu quá trình chuyển đổi dự phòng của cụm Aurora và sau khi quá trình chuyển đổi dự phòng hoàn tất, chúng tôi sẽ đo hiệu năng trên writer node mới.
+![benchmark](/images/5/5.2/29.png)
+
+2. Click vào **Failover**.
+
+*Sau khi quá trình chuyển đổi dự phòng hoàn tất (sau khoảng ~30 giây), hãy xác minh rằng reader node trước đó sẽ trở thành writer node mới.*
+![benchmark](/images/5/5.2/30.png)
+
+#### Chạy benchmark bằng công cụ pgbench trên writer node mới (sau khi thực hiện failover)
+1. Bây giờ, chúng ta sẽ chạy benchmark giống như trước đây và so sánh các chỉ số của pgbench trước và sau khi thực hiện failover.
+```
+pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 > ccm_disable_after_failover.out
+
+```
+
+Sau 600 giây khi benchmark hoàn thành, bạn có thể xác minh kết quả đầu ra của pgbench trên màn hình hoặc tham khảo tệp đầu ra "ccm_disable_after_failover.out". Đầu ra tóm tắt sẽ có dạng như sau. Lưu ý rằng đầu ra của bạn có thể khác một chút.
+
+```
+cat ccm_disable_after_failover.out
+
+```
+![benchmark](/images/5/5.2/31.png)
+
+*Lưu ý rằng sau khi tắt CCM, số liệu tps trên writer node mới sau failover thấp hơn so với writer node cũ trước khi xảy ra failover.*

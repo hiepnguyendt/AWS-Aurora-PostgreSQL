@@ -1,36 +1,31 @@
 ---
-title : "Create a EC2 instance"
+title : "Tạo EC2 instance"
 date :  "`r Sys.Date()`" 
 weight : 3
 chapter : false
 pre : " <b> 2.3. </b> "
 ---
-#### To create an EC2 instance for an Cloud9 enviroment, follow these steps:
+#### Để tạo phiên bản EC2 cho môi trường Cloud9, hãy làm theo các bước sau:
 
-1. Open the **Amazon EC2** [console](https://console.aws.amazon.com/ec2/).
-2. Click **Launch Instance**.
+1. Truy cập giao diện [Amazon EC2 console](https://console.aws.amazon.com/ec2/).
+2. Chọn **Launch Instance**.
+    ![Create EC2 instance](/images/1/8.png)
 
-![Create EC2 instance](/images/1/8.png)
+3. Đặt tên cho EC2. Chọn **AMI**. Bạn có thể chọn**Linux AMI**, chẳng hạn như **Amazon Linux 2** cho app server.
+4. Chọn **instance type**. Instance type bạn chọn sẽ tùy thuộc vào yêu cầu của app server. Ví dụ: nếu bạn đang chạy một trang web có lưu lượng truy cập cao, bạn sẽ cần loại phiên bản lớn hơn với nhiều CPU và bộ nhớ hơn.
+    ![Create EC2 instance](/images/1/9.png)
+    ![Create EC2 instance](/images/1/10.png)
+    ![Create EC2 instance](/images/1/11.png)
+5. Tại mục **Key Pair**,chọn keypair bạn đã tạo hoặc nhấp vào **Create new key pair** để tạo 1 keypair mới
+    ![Create EC2 instance](/images/1/12.png)
 
-3. Enter name your EC2 instance. Choose an **AMI**. For an app server, you can choose a **Linux AMI**, such as **Amazon Linux 2**.
-4. Choose an **instance type**. The instance type that you choose will depend on the requirements of your app server. For example, if you are running a high-traffic website, you will need a larger instance type with more CPU and memory.
-
-![Create EC2 instance](/images/1/9.png)
-![Create EC2 instance](/images/1/10.png)
-![Create EC2 instance](/images/1/11.png)
-5. For **Key Pair**,choose your keypair you have created or click **Create new key pair** 
-
-![Create EC2 instance](/images/1/12.png)
-Configure the instance details. This includes things like the number of instances to launch, the network configuration, and the storage configuration.
-
-7.  For **Network settings**
-- Choose **VPC** which contains EC2 app server
-- Choose **Subnet**
+6.  Tại mục **Network settings**
+- Chọn **VPC** chứa EC2 app server
+- Chọn **Subnet**
 - **Enable** Auto-assign public IP
-- Add a **security group** for EC2 app server that you have created easier step . *A security group is a firewall that controls incoming and outgoing traffic to your instance.* 
+- Thêm **security group** cho EC2 app server.  
+    ![Create EC2 instance](/images/1/13.png)
 
-![Create EC2 instance](/images/1/13.png)
+7. **Review** và **launch** instance
 
-8. **Review** and **launch** the instance
-
-*Once the instance is launched, you can connect to it using an SSH client, such as MobaXterm or Putty. Once you are connected, you can install your app server and deploy your application.*
+*Sau khi khởi chạy instance, bạn có thể kết nối với instance đó bằng ứng dụng SSH client, chẳng hạn như MobaXterm hoặc PuTTY. Sau khi kết nối, bạn có thể cài đặt app server và triển khai ứng dụng của mình.*

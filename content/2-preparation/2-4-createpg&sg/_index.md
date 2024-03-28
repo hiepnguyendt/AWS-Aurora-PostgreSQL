@@ -11,16 +11,13 @@ pre : " <b> 2.4. </b> "
 
 1. Open the Amazon RDS [console](https://console.aws.amazon.com/rds/)
 2. In the navigation pane, choose **Subnet groups** and click on **Create DB Subnet Group**.
-
     ![Create SG](/images/1/1.1/1.1.png)
 
 3. For **Name** and **Description**, type in a name and description for your DB subnet group.
 4. For **VPC**, select the VPC in which you want to create your DB subnet group.
-
     ![Create SG](/images/1/1.1/1.2.png)
 
 5. Select the subnets that you want to include in your DB subnet group. Make sure to select subnets in at least two different Availability Zones (AZs).
-
     ![Create SG](/images/1/1.1/1.3.png)
 
 6. Click **Create**.
@@ -38,7 +35,6 @@ Your DB subnet group will be created and will be displayed in the list of DB sub
 
 #### To create a Database Parameter Group 
 1. Go to the [AWS RDS console](https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1), select **Parameter Group**, choose **Create parameter group**.
-
     ![Create PG](/images/1/1.1/00.png)
 
 2. In the **Parameter group details** section
@@ -46,17 +42,14 @@ Your DB subnet group will be created and will be displayed in the list of DB sub
 - For **Type**, select **DB Parameter Group**
 - For **Group Name**, type your parameter group name
 - For **Description**, type your description
-
     ![Create PG](/images/1/1.1/0.3.png)
 - Click **Create**
 
 3. Change and enable some configurations in the parameter group
 - Go to Parameter Group console, click **Action**, choose **Edit**
-
     ![Create PG](/images/1/1.1/000.png)
 
 - Fill ``shared_preload_libraries`` parameter in the search bar, then select **shared_preload_libraries**
-
     ![Create PG](/images/1/1.1/0.4.png)
 - Click **Save Changes**
 
@@ -69,19 +62,18 @@ This parameter specifies which shared libraries are preloaded when your Aurora P
 **What libraries are preloaded?**
 
 **Built-in libraries**: Certain core PostgreSQL functionalities rely on shared libraries that are automatically preloaded by default. You don't need to configure them in shared_preload_libraries.
-Custom libraries: You can specify additional shared libraries to be preloaded for specific needs. These could be:
-PostgreSQL extensions: For features like full-text search or geospatial data handling.
-Custom modules: Developed by you or third-party vendors for unique functionalities.
+**Custom libraries**: You can specify additional shared libraries to be preloaded for specific needs. These could be:
+**PostgreSQL extensions**: For features like full-text search or geospatial data handling.
+**Custom modules**: Developed by you or third-party vendors for unique functionalities.
 Important Notes:
 
 **Performance impact**: Preloading unnecessary libraries can consume memory and negatively affect startup times. Only preload libraries actively used by your applications.
-Security considerations: Be cautious when adding custom libraries due to potential security vulnerabilities. Ensure they are from trusted sources and vetted carefully.
-Restart requirement: Modifying shared_preload_libraries requires restarting your Aurora PostgreSQL instance for the changes to take effect.{{% /expand%}}
+**Security considerations**: Be cautious when adding custom libraries due to potential security vulnerabilities. Ensure they are from trusted sources and vetted carefully.
+**Restart requirement**: Modifying shared_preload_libraries requires restarting your Aurora PostgreSQL instance for the changes to take effect.{{% /expand%}}
 
 
 #### To create a Database Cluster Parameter Group 
 1. Go to the [AWS RDS console](https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1), select **Parameter Group**, choose **Create parameter group**.
-
     ![Create PG](/images/1/1.1/00.png)
 
 2. In the **Parameter group details** section
@@ -89,12 +81,10 @@ Restart requirement: Modifying shared_preload_libraries requires restarting your
 - For **Type**, select **DB Cluster Parameter Group**
 - For **Group Name**, type your parameter group name
 - For **Description**, type your description
-
     ![Create PG](/images/1/1.1/0.png)
 - Click **Create**
 3. Change and enable some configurations in the parameter group
 - Go to Parameter Group console, click **Action**, choose **Edit**
-
     ![Create PG](/images/1/1.1/0001.png)
 
 - Fill ``log_rotation`` parameter in the search bar, 

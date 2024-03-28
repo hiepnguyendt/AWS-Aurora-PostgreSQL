@@ -6,59 +6,54 @@ chapter : false
 pre : " <b> 7. </b> "
 ---
 
-This lab will demonstrate the use of Amazon RDS Performance Insights . Amazon RDS Performance Insights (RDS PI) monitors your Amazon RDS DB instance load so that you can analyze and troubleshoot your database performance.
+Phần thực hành này sẽ thể hiện việc sử dụng Amazon RDS Performance Insights. Amazon RDS Performance Insights (RDS PI) giám sát tải của các Amazon RDS DB instance của bạn để bạn có thể phân tích và khắc phục sự cố về hiệu suất cơ sở dữ liệu.
 
-This lab contains the following tasks:
+Lab này bao gồm các tasks sau:
 
-- Load sample data to the Aurora PostgreSQL DB cluster
-- Understand the RDS Performance Insights interface
-- Use RDS Performance Insights to identify performance issue
-    - High volume insert load on the Aurora DB cluster using pgbench
-    - High volume update load on the Aurora DB cluster using pgbench
+- Tải dữ liệu mẫu vào cụm cơ sở dữ liệu Aurora PostgreSQL
+- Tìm hiểu giao diện RDS Performance Insights
+- Sử dụng RDS Performance Insights để xác định vấn đề về hiệu suất
+    - Insert một lượng lớn dữ liệu vào cụm Aurora DB bằng cách sử dụng pgbench
+    - Update một lượng lớn dữ liệu vào cụm Aurora DB bằng cách sử dụng pgbench
 
-#### Load sample data to the Aurora PostgreSQL DB cluster
-1. First, download all the required scripts used in this lab. Open a cloud9 terminal window by referring Open Cloud9 Terminal Window section and paste the commands below.
-
+#### Tải dữ liệu mẫu vào cụm cơ sở dữ liệu Aurora PostgreSQL
+1. Đầu tiên, tải về tất cả các script cần thiết được sử dụng trong lab này. Mở một terminal Cloud9 và dán các lệnh dưới đây.
     ```
     cd
     wget wget https://aupg-fcj-assets.s3.us-west-2.amazonaws.com/lab-scripts/aupg-scripts.zip
     unzip aupg-scripts.zip
 
     ```
-
     ![PI](/images/7/1.png)
 
-2. Create sample HR schema by running the following commands on the Cloud9 terminal window:
+2. Tạo một schema HR mẫu bằng cách chạy các lệnh sau trên terminal Cloud9:
 
     ```
     cd /home/ec2-user/aupg-scripts/scripts
     psql -f postgres-hr.sql # runs a PostgreSQL script named postgres-hr.sql
 
     ```   
-
     ![PI](/images/7/2.png)
 
-#### Understanding the RDS Performance Insights interface
-1. While the command is running, open the Amazon RDS service [console](https://console.aws.amazon.com/rds/)  in a new tab, if not already open.
+#### Tìm hiểu giao diện RDS Performance Insights
+1. Trong khi lệnh đang chạy, hãy mở Amazon RDS service [console](https://console.aws.amazon.com/rds/)  trên một tab mới, nếu chưa mở trước đó.
 
     ![PI](/images/7/3.png)
 
-2. Next, select the desired **DB instance** to load the performance metrics for. For Aurora DB clusters, performance metrics are exposed on an individual DB instance basis. The different DB instances comprising a cluster may run different workload patterns, and might not all have Performance Insights enabled. For this lab, we are generating load on the **Writer** (Primary) DB instance only. 
-
+2. Tiếp theo, chọn **DB instance** mong muốn để tải các chỉ số hiệu suất. Đối với các cụm Aurora DB, các chỉ số hiệu suất được đưa ra dựa trên từng DB instance cụ thể. Các DB instance khác nhau trong cụm có thể chạy các mẫu công việc khác nhau và có thể không có Performance Insights được kích hoạt cho tất cả các DB instance. Trong lab này, chúng ta chỉ tạo tải trên DB instance Writer (Primary) duy nhất.
     ![PI](/images/7/4.png)
 
-3. Once a DB instance is selected, you will see the main dashboard view of RDS Performance Insights. The dashboard is divided into two sections, allowing you to drill down from high level performance indicator metrics down to individual waits, queries, users and hosts generating the load.
-
+3. Sau khi chọn một DB instance, bạn sẽ thấy giao diện chính của bảng điều khiển RDS Performance Insights. Bảng điều khiển được chia thành hai phần, cho phép bạn điều chỉnh từ các chỉ số hiệu suất cấp cao xuống đến từng individual waits, queries, users và hosts generating load.
     ![PI](/images/7/7.png)
      ![PI](/images/7/8.png)
 
-4. The performance metrics displayed by the dashboard are a moving time window. You can adjust the size of the time window by clicking the displayed time duration at the top right hand corner of the interface and selecting a relative range **(5m, 1h, 5h, 24h, 1w, custom range)** or specifying an absolute range. You can also zoom into a specific period of time by selecting with your mouse pointer and dragging across the graph
+4. Các chỉ số hiệu suất được hiển thị trên bảng điều khiển là một cửa sổ thời gian thay đổi. Bạn có thể điều chỉnh kích thước của cửa sổ thời gian bằng cách nhấp vào thời gian hiển thị ở góc trên bên phải của giao diện và chọn một khoảng thời gian tương đối (5m, 1h, 5h, 24h, 1w, custom range) hoặc chỉ định một khoảng thời gian tuyệt đối. Bạn cũng có thể phóng to vào một khoảng thời gian cụ thể bằng cách chọn và kéo chuột qua đồ thị.
 
 {{% notice note %}}
-All dashboard views are time synchronized. Zooming in will adjust all views, including the detailed drill-down section at the bottom.
+Tất cả các chế độ xem trên bảng điều khiển được đồng bộ hóa theo thời gian. Phóng to sẽ điều chỉnh tất cả các chế độ xem, bao gồm cả phần chi tiết tìm hiểu chi tiết ở phía dưới.
 {{% /notice %}}
 
-***Here is a summary of all the sections of RDS Performance Insights console.***
+***Dưới đây là một tóm tắt về tất cả các phần của RDS Performance Insights console:***
 
 |Section|Filters|Description|
 |-------|-------|-----------|
@@ -66,18 +61,17 @@ All dashboard views are time synchronized. Zooming in will adjust all views, inc
 |Granular Session Activity|Sort by **Waits, SQL (default), Hosts, Users, Session types, applications and databases**|Drill down capability that allows you to get detailed performance data down to the individual commands. Amazon Aurora PostgreSQL specific wait events are documented in the Amazon Aurora PostgreSQL Reference [guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Reference.html#AuroraPostgreSQL.Reference.Waitevents).|
 |Metrics Dashboard|Click **Metrics-new** tab beside **Dimensions** to view counter metrics|This section plots OS metrics, database metrics and CloudWatch metrics all in one place, such as number of rows read or written, transactions committed, etc. These metrics are useful to identify causes of abnormal behavior.|
 
-5. This is how the new metrics dashboard looks like.
+5. Giao diện của metric dashboard.
 
     ![PI](/images/7/5.png)
 
-#### Use RDS Performance Insights to identify performance issue
-In this exercise, we will learn how to use Performance Insights and PostgreSQL extensions to analyze the top wait events and performance issues. We will run some insert and update load test cases using pgbench utility on employees table in the HR schema.
-1. Create pg_stat_statements extension
+#### Sử dụng RDS Performance Insights để xác định vấn đề về hiệu suất
+Trong phần này, chúng ta sẽ tìm hiểu cách sử dụng Performance Insights và các PostgreSQL extension để phân tích các top wait events và vấn đề hiệu suất. Chúng ta sẽ chạy một số trường hợp thử nghiệm tải ghi và cập nhật bằng cách sử dụng tiện ích pgbench trên bảng employees trong schema HR.
+1. Tạo pg_stat_statements extension
     
-     In a new psql session, connect to mylab database and run the following SQL command:
-
+     Trong một session psql mới, kết nối vào cơ sở dữ liệu "mylab" và chạy lệnh SQL sau:
     {{% notice note %}}
-Be sure to use a new psql session, otherwise your pg_stat_statements view will be created under the hr schema.
+Hãy chắc chắn sử dụng một session psql mới, nếu không, view pg_stat_statements của bạn sẽ được tạo trong schema hr.
 {{% /notice %}}
  
     ```
@@ -86,42 +80,38 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
     \q
 
     ```
+![PI](/images/7/6.png)
+    Bây giờ, chúng ta đã sẵn sàng để chạy một số tải lên Aurora Instance để hiểu về khả năng của RDS Performance Insights.
 
-    ![PI](/images/7/6.png)
-    Now, we are ready to run some load on the Aurora Instance to understand the capabilities of RDS Performance Insights.
-
-2. High volume insert load on the Aurora DB cluster using pgbench
-- On the cloud9 terminal window, run pgbench workload using the below command:
+2. Insert một lượng lớn dữ liệu vào cụm Aurora DB bằng cách sử dụng pgbench
+- Trên cửa sổ terminal của Cloud9, chạy lệnh pgbench workload bằng câu lệnh dưới đây:
     ```
     pgbench -n -c 10 -T 300 -f /home/ec2-user/aupg-scripts/scripts/hrload1.sql  > /tmp/pgload1-run1.log
 
     ```
 
-    The ***hrload1.sql*** SQL script will ingest employee records using PL/pgSQL function ***add_employee_data***. This function uses ***employee_seq*** to generate the next ***employee_id***, randomly generate data including ***first_name***, salary with ***department_id*** from departments table. Each function call will insert 5 records. This test will be executed for 5 minutes with 10 clients.
+    Tập lệnh SQL **hrload1.sql** sẽ đưa vào cơ sở dữ liệu các bản ghi nhân viên bằng cách sử dụng hàm **PL/pgSQL add_employee_data**. Hàm này sử dụng **employee_seq** để tạo ra **employee_id** tiếp theo, tạo dữ liệu ngẫu nhiên bao gồm **first_name**, mức lương với **department_id** từ bảng departments. Mỗi lần gọi hàm sẽ chèn vào 5 bản ghi. Thử nghiệm này sẽ được thực hiện trong vòng 5 phút với 10 client.
 
-- Review the PI dashboard and check the top wait events, **AAS (Average Active Sessions)** for the duration.
-
+- Xem xét PI dashboard (Performance Insights) và kiểm tra các top wait events, AAS (Average Active Sessions) trong suốt thời gian.
     ![PI](/images/7/7.png)
     ![PI](/images/7/8.png)
 
-    You will find below top 3 wait events:
+    Dưới đây là danh sách top 3 wait events:
 
-    - **IO:XactSync** - In this wait event, a session is issuing a COMMIT or ROLLBACK, requiring the current transaction’s changes to be persisted. Aurora is waiting for Aurora storage to acknowledge persistence.
+    - **IO:XactSync** - Trong sự kiện chờ này, một phiên đang thực hiện lệnh **COMMIT** hoặc **ROLLBACK**, đòi hỏi các thay đổi của giao dịch hiện tại được lưu trữ. Aurora đang chờ đợi Aurora storage xác nhận việc lưu trữ.
 
     - **CPU**
 
-    - **LWLock:Buffer_content** - In this wait event, a session is waiting to read or write a data page in memory while another session has that page locked for writing.
-- Note down the key metrics in the pgbench output such as latency average and tps.
-
+    - **LWLock:Buffer_content** - Trong sự kiện chờ này, một phiên đang chờ đợi để đọc hoặc ghi một trang dữ liệu trong bộ nhớ trong khi phiên khác đang khóa trang đó để ghi.
+- Ghi lại các chỉ số chính trong kết quả pgbench như độ trễ trung bình (latency average) và tps (số giao dịch trên giây).
     ```
     cat /tmp/pgload1-run1.log
 
     ```
-     
+    
     ![PI](/images/7/9.png)
 
-- Now, lets check the top 5 queries by execute time and CPU Consumption. Run the below SQL query to understand the load caused by the above pgbench run using pg_stat_statements extension.
-
+- Bây giờ, hãy kiểm tra 5 truy vấn hàng đầu theo thời gian thực thi và CPU tiêu thụ. Chạy câu lệnh SQL dưới đây để hiểu tải công việc do pgbench trên gây ra bằng cách sử dụng pg_stat_statements extension.
     ```
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
@@ -139,55 +129,49 @@ Be sure to use a new psql session, otherwise your pg_stat_statements view will b
 **ORDER BY total_exec_time DESC**: Sorts the results by total execution time in descending order (most resource-intensive queries first).\
 **LIMIT 5**: Restricts the output to the top 5 results.
     {{% /expand%}}
+ ![PI](/images/7/10.png)
 
-    ![PI](/images/7/10.png)
-
-- Lets rerun the same function with 50 inserts per execution and check the impact on wait events. Use hrload2.sql for this run.
+- Hãy chạy lại hàm tương tự nhưng với 50 lệnh INSERT trong mỗi lần thực thi và kiểm tra ảnh hưởng lên các sự kiện chờ. Sử dụng tập lệnh **hrload2.sql** cho lần chạy này.
 
     ```
     pgbench -n -c 10 -T 300 -f /home/ec2-user/aurora-scripts/scripts/hrload2.sql >  /tmp/pgload1-run2.log
 
     ```
-- Go to PI dashboard and check the top wait events and top SQLs now and see if there are any changes.
-    {{% notice tip %}}
-If you don't see any new activity in the database load section, change the time range to last **5 minutes** and click **Apply**. Then change it back to last **1 hour** and click **Apply**.
+- Hãy truy cập vào PI dashboard (Performance Insights) và kiểm tra lại các top wait events và các truy vấn SQL hàng đầu hiện tại để xem có sự thay đổi nào không.
+{{% notice tip %}}
+Nếu bạn không thấy hoạt động mới nào trong phần tải cơ sở dữ liệu, hãy thay đổi khoảng thời gian thành **5 phút** và nhấp vào **Apply**. Sau đó, đổi lại thành **1 giờ** và nhấp vào **Apply** một lần nữa.
 {{% /notice %}}
-
     ![PI](/images/7/11.png)
-    ![PI](/images/7/12.png)
+   ![PI](/images/7/12.png)
 
-- Rerun the pg_stat_statements query to check resource consumption now.
-
+- Hãy chạy lại truy vấn **pg_stat_statements** để kiểm tra sự tiêu thụ tài nguyên hiện tại.
     ```
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
     ```
-     
     ![PI](/images/7/13.png)
     
-- If you compare the wait events for the two pgbench runs, you will notice that IO:XactSync related waits have reduced in the latest run
-- Can you verify whether the overall throughput (in terms of number of inserts) has increased by comparing the throughput and latencies reported by pgbench between the runs?
+- Nếu bạn so sánh các sự kiện chờ hàng giữa hai lần chạy pgbench, bạn sẽ nhận thấy rằng các sự kiện chờ liên quan đến IO:XactSync đã giảm trong lần chạy mới nhất.
+- Bạn có thể xác minh xem thông lượng tổng thể (về số lần inserts) có tăng hay không bằng cách so sánh thông lượng và độ trễ được báo cáo bởi pgbench giữa các lần chạy?
 
     ```
     cat /tmp/pgload1-run2.log
 
     ```
-
     ![PI](/images/7/14.png)
 
-3. High volume update load on the Aurora DB cluster using pgbench
-In this exercise, we will run updates on the employee table using update_employee_data_fname and update_employee_data_empid functions.
+3. Update một lượng lớn dữ liệu vào cụm Aurora DB bằng cách sử dụng pgbench
+Trong phần này, chúng ta sẽ chạy các câu lệnh UPDATE trên bảng employee bằng cách sử dụng các hàm **update_employee_data_fname** và **update_employee_data_empid**.
 
-- On the cloud9 terminal window, run pgbench update workload using the below command:
+- Trên terminal của Cloud9, hãy chạy pgbench update workload bằng cách sử dụng lệnh dưới đây:
 
     ```
     pgbench -n -c 10  -T 180 -f /home/ec2-user/aurora-scripts/scripts/hrupdname.sql > /tmp/pgload2-run1.log
     ```
 
-    The ***hrupdname.sql*** SQL script will update employee salary details in ***employees*** table using PL/pgSQL function ***update_employee_data_fname***. This function randomly selects the employee records and checks if their salary is within a range (min and max salary of their job), if not updates their salary using their ***first_name***. Each function call will select 5 records randomly. This test will be executed for 3 minutes with 10 clients.
+    Tập lệnh SQL **hrupdname.sql** sẽ cập nhật thông tin lương của nhân viên trong bảng employees bằng cách sử dụng hàm **PL/pgSQL update_employee_data_fname**. Hàm này sẽ ngẫu nhiên chọn các bản ghi nhân viên và kiểm tra xem mức lương của họ có nằm trong khoảng (mức lương tối thiểu và tối đa của công việc của họ) hay không. Nếu không, hàm sẽ cập nhật mức lương của nhân viên bằng cách sử dụng **first_name** của họ. Mỗi lần gọi hàm sẽ chọn ngẫu nhiên 5 bản ghi. Thử nghiệm này sẽ được thực hiện trong 3 phút với 10 clients.
 
-- Go to **RDS PI** dashboard. Check the top wait events and AAS for the run duration.
-     
+- Hãy truy cập vào RDS PI dashboard (Performance Insights). Kiểm tra các top wait events và AAS (Average Active Sessions) trong suốt thời gian chạy của quá trình
     ![PI](/images/7/15.png)
     ![PI](/images/7/16.png)
 
@@ -195,25 +179,22 @@ In this exercise, we will run updates on the employee table using update_employe
 
     **CPU**
 
-    Also check the **CPU utilization** Cloudwatch metrics for the Aurora cluster by selecting the **Monitoring** tab, searching for cpu and expanding the **CPUUtilization** graph.
-
+    Hãy kiểm tra các chỉ số sử dụng CPU (CPU utilization) trên các đồ thị CloudWatch cho cụm Aurora bằng cách thực hiện các bước sau:
     ![PI](/images/7/17.png)
 
-    Update the graph to display 1 minute average. As you can see the CPUUtilization reached ~100% during the update load test.
-
+    Hãy cập nhật đồ thị để hiển thị giá trị trung bình trong 1 phút. Như bạn có thể thấy, CPUUtilization đạt đến khoảng ~100% trong suốt quá trình thử nghiệm tải cập nhật.
     ![PI](/images/7/18.png)
 
-- Let’s look at the performance stats using pg_stat_statements extensions.
+- Hãy xem xét các thống kê hiệu suất bằng cách sử dụng pg_stat_statements extension.
 
-    Run the below command and observe the top 5 queries consuming CPU.
+    Hãy chạy lệnh dưới đây và quan sát 5 câu truy vấn hàng đầu tiêu thụ CPU.
     ```
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
     ```
-
     ![PI](/images/7/19.png)
 
-    Let’s look at the explain plan used by the SQL statements in the PL/pgSQL function. In order to capture the explain plan in the logs, set the below DB parameters at your session level.
+    Hãy xem explain plan được sử dụng bởi các câu lệnh SQL trong hàm PL/pgSQL. Để ghi lại explain plan trong nhật ký (logs), hãy thiết lập các thông số cơ sở dữ liệu (DB parameters) dưới đây ở mức phiên làm việc của bạn.
 
     ```
     psql
@@ -221,44 +202,39 @@ In this exercise, we will run updates on the employee table using update_employe
     set auto_explain.log_min_duration=10;  
 
     ```
-    This will log any SQL statement including nested SQL statements which are taking more than 10ms in error/postgres.log with their corresponding explain plan.
+    Điều này sẽ ghi lại bất kỳ câu lệnh SQL nào, bao gồm cả các câu lệnh SQL lồng nhau, mà mất nhiều hơn 10ms trong tệp error/postgres.log cùng với explain plan tương ứng.
 
-- Run EXPLAIN ANALYZE to capture the explain plan as well as execute the query.
+- Hãy chạy lệnh EXPLAIN ANALYZE để ghi lại explain plan cũng như thực thi câu truy vấn.
 
     ```
     EXPLAIN ANALYZE SELECT  hr.update_employee_data_fname(10);
     \q
     # hr.update_employee_data_fname(10): Calls the function update_employee_data_fname within the hr schema, passing the argument 10
     ```
-
     ![PI](/images/7/20.png)
 
-- Now, lets rerun the load using the SQL Script hrupdid.sql to use the employee_id column to update employees table.
-
-- On the cloud9 terminal window, run pgbench workload using the below command.
+- Bây giờ, hãy chạy lại tải công việc bằng cách sử dụng Tập lệnh SQL **hrupdid.sql** để sử dụng cột **employee_id** để cập nhật bảng employees.
+- Trên terminal của Cloud9, hãy chạy pgbench workload bằng cách sử dụng lệnh dưới đây.
 
     ```
     pgbench -n -c 10  -T 180 -f /home/ec2-user/aurora-scripts/scripts/hrupdid.sql > /tmp/pgload2-run2.log
 
     ```
 
-    This will update employee salary details of employees using PL/pgSQL function ***update_employee_data_empid***. This function randomly selects the employee records and checks if their salary is within a range (min and max salary of their job), if not updates their salary using their ***employee_id***. Each function call will execute 5 records randomly. This test will be executed for 3 minutes with 10 clients.
+    Điều này sẽ cập nhật thông tin lương của nhân viên trong bảng employees bằng cách sử dụng hàm PL/pgSQL update_employee_data_empid. Hàm này sẽ ngẫu nhiên chọn các bản ghi nhân viên và kiểm tra xem mức lương của họ có nằm trong khoảng (mức lương tối thiểu và tối đa công việc của họ) hay không. Nếu không, hàm sẽ cập nhật mức lương của nhân viên bằng cách sử dụng employee_id của họ. Mỗi lần gọi hàm sẽ chọn ngẫu nhiên 5 bản ghi. Thử nghiệm này sẽ được thực hiện trong 3 phút với 10 clients.
 
-- Compare the execution results using pg_stat_statements query again.
+- So sánh kết quả thực thi bằng cách sử dụng câu truy vấn pg_stat_statements.
 
     ```
     psql -c "SELECT  substring(query, 1, 50) AS short_query, round(total_exec_time::numeric, 2) AS total_exec_time, calls, round(mean_exec_time::numeric, 2) AS mean_exec_time, round((100 * total_exec_time / sum(total_exec_time::numeric) OVER ())::numeric, 2) AS percentage_cpu FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;"
 
     ```
-
     ![PI](/images/7/22.png)
 
-- Compare the throughput and latencies reported by pgbench between the runs.
-
+- So sánh thống kê về throughput và độ trễ được báo cáo bởi pgbench giữa các lần chạy.
     ```
     cat /tmp/pgload2-run1.log
     cat /tmp/pgload2-run2.log
 
     ```
-
     ![PI](/images/7/23.png)

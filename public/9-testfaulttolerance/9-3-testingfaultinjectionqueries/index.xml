@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testing fault injection queries on AWS RDS PostgreSQL</title>
-    <link>/9-testfaulttolerance/9-3-testingfaultinjectionqueries/</link>
+    <link>//localhost:1313/9-testfaulttolerance/9-3-testingfaultinjectionqueries/</link>
     <description>Recent content in Testing fault injection queries on AWS RDS PostgreSQL</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/9-testfaulttolerance/9-3-testingfaultinjectionqueries/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="//localhost:1313/9-testfaulttolerance/9-3-testingfaultinjectionqueries/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

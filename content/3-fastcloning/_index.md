@@ -7,7 +7,7 @@ pre : " <b> 3. </b> "
 ---
 
 **What's the Fast Cloning ?**
-{{%expand "The Fast Cloning" %}}
+{{%expand "Fast Cloning" %}}
 
 **Fast cloning** refers to a feature that allows you to quickly and efficiently create an exact copy of your database. This clone shares the same underlying storage with the original database initially, making the process much faster and more cost-effective than traditional methods like full database backups or restoring snapshots.
 
@@ -66,7 +66,6 @@ Lets review the tables we have created in the **Create, Configure Cloud9 and Ini
     select cloneeventproc();
 
     ```
-
     ![FC](/images/3.1/2.png)
 
     At this time (we call as time “T1”), the pgbench workload is running on the source DB cluster and also, we are adding sample data to the table on the primary cluster every 10 seconds.
@@ -88,7 +87,6 @@ Lets review the tables we have created in the **Create, Configure Cloud9 and Ini
     select cloneeventproc();
 
     ```
-
     ![FC](/images/3.1/3.png)
 
 - Let’s check the number of rows in the table cloneeventtest. We should see 5 or more rows in the table:
@@ -107,7 +105,6 @@ Lets review the tables we have created in the **Create, Configure Cloud9 and Ini
     select * from cloneeventtest;
 
     ```
-
     ![FC](/images/3.1/5.png)
 
 
@@ -130,30 +127,23 @@ c. Enter ``aupglabs-clone`` as **DB Instance Identifier** and Capacity type **Pr
 - For **Cluster storage configuration** select **Aurora Standard**.
 
 - In **Instance configuration** select **Memory optimized classes** and **db.r6g.large**.
-
     ![FC](/images/3/10.png)
-
     ![FC](/images/3/11.png)
-
     ![FC](/images/3/12.png)
 
 
 - In the **Connectivity** section, leave with default setting
 
 - In **Additional Configuration**, pick the **DB cluster parameter group** and **DB parameter groups created** in DB cluster parameter group and DB parameter group drop down menus.
-
     ![FC](/images/3/14.png)
 
 - Enable auto minor version upgrade.
 
 - Leave rest of the input fields at their default value and click Create clone.
-
     ![FC](/images/3/15.png)
-
     ![FC](/images/3/16.png)
 
 - Once you click on the “Create Clone” the status column will show status as “Creating”.
-
     ![FC](/images/3/17.png)
 
 - The clone cluster should be ready after about 10-15 minutes or so. The status column will show as “Available” once the cloned cluster is ready.
@@ -173,7 +163,6 @@ c. Enter ``aupglabs-clone`` as **DB Instance Identifier** and Capacity type **Pr
     select cloneeventproc();
 
     ```
-
     ![FC](/images/3.1/6.png)
 
 6. Verify the data divergence on the Clone Cluster
@@ -191,7 +180,6 @@ c. Enter ``aupglabs-clone`` as **DB Instance Identifier** and Capacity type **Pr
     psql -h <Cloned Cluster Writer Endpoint>
 
     ```
-
     ![FC](/images/3.1/7.png)
 
 
@@ -203,7 +191,6 @@ c. Enter ``aupglabs-clone`` as **DB Instance Identifier** and Capacity type **Pr
     select * from cloneeventtest;
 
     ```
-
     ![FC](/images/3.1/8.png)
 
 -  Stop the function run on Primary aurora cluster that is currently running (follow step **Stop the sample data generation** ) and select data from cloneeventtest table. We will see more rows, as expected.
@@ -220,7 +207,5 @@ c. Enter ``aupglabs-clone`` as **DB Instance Identifier** and Capacity type **Pr
 8. Verify the pgbench metrics on the primary and the clone cluster.
 
 - Once the pgbench workload completes on both the primary and the clone cluster, we can verify the TPS metrics from both the clusters by looking at the output file.
-
     ![FC](/images/3.1/9.png)
-
     ![FC](/images/3.1/10.png)

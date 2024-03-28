@@ -9,15 +9,12 @@ pre : " <b> 2.6.</b> "
 #### To create a Cloud9 enviroment, follow these steps:
 
 1. Open the **Amazon Cloud9** [console](https://console.aws.amazon.com/cloud9/), then click **Create enviroment**
-
     ![Create Cloud9 instance](/images/1/14.png)
 
 2. Enter a name for your environment and select the **Existing compute** option for enviroment type.
-
     ![Create Cloud9 instance](/images/1/15.png)
 
 3. Under the Existing compute, click on button **Copy key to clipboard**
-
     ![Create Cloud9 instance](/images/1/16.png)
 
 4. Connect to EC2 instance via MobaXterm
@@ -28,7 +25,6 @@ pre : " <b> 2.6.</b> "
     nano authorized_keys
 
     ```
-
     ![Create Cloud9 instance](/images/1/17.1.png)
     ![Create Cloud9 instance](/images/1/17.2.png)
 -  Install Nodejs with command below
@@ -39,7 +35,6 @@ pre : " <b> 2.6.</b> "
     nvm install 16
 
     ```
-
     ![Create Cloud9 instance](/images/1/17.png)
 
 - Create folder ``cloud9_env``
@@ -55,7 +50,6 @@ pre : " <b> 2.6.</b> "
     ```
     which node
     ```
-
     ![Create Cloud9 instance](/images/1/19.png)
 
 
@@ -63,7 +57,6 @@ pre : " <b> 2.6.</b> "
     ```
     sudo yum install jq
     ```
-
     ![Create Cloud9 instance](/images/1/17.3.png)
 
 5. Go back step **Create Cloud9 instance**
@@ -80,20 +73,16 @@ pre : " <b> 2.6.</b> "
 
 7. Then click **Create**
 8. After **Successfully create Cloud9**, click **Open**
-
     ![Create Cloud9 instance](/images/1/20.png)
 
 9. C9 install
 - Click **Next** 
-
     ![Create Cloud9 instance](/images/1/21.png)
 
 - Click **Next** and leave everything ticked
-
     ![Create Cloud9 instance](/images/1/22.png)
 
 - Click **Finish**
-
     ![Create Cloud9 instance](/images/1/24.png)
 
 Now, you have successfully **created Cloud9 instance with existing compute** 
@@ -138,7 +127,6 @@ Now, you have successfully **created Cloud9 instance with existing compute**
     echo DBUSER: $DBUSER
 
     ```
-
     ![Configure Cloud9](/images/2/1.png)
 
     {{% notice note %}}
@@ -163,7 +151,6 @@ A notice disclaimerConfirm that you have output for the DBENDP and DBUSER variab
     echo "export PGDATABASE=aupglab" >> /home/ec2-user/.bashrc
 
     ```
-
     ![Configure Cloud9](/images/2/2.png)
 
 ***Now, you have saved the PostgreSQL specific environment variables in your Cloud9 Bash startup file which will make it convenient to login to Aurora PostgreSQL Cluster using psql.***
@@ -194,7 +181,6 @@ Let's make sure your Cloud9 environment and Aurora PostgreSQL database has been 
     \q
 
     ```
-
     ![Initialize db](/images/2/4.png)
 
 
@@ -208,7 +194,6 @@ Let's make sure your Cloud9 environment and Aurora PostgreSQL database has been 
     ```
     
     Ignore the table doesn't exist error messages below:
-
     ![Initialize db](/images/2/5.png)
 
 ***pgbench will take a minute or so to initialize the database. Once it completes, you are good to proceed to the next lab.***

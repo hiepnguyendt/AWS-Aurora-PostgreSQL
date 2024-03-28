@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Create Security Group  on AWS RDS PostgreSQL</title>
-    <link>/2-preparation/2-2-createsg/</link>
+    <link>//localhost:1313/2-preparation/2-2-createsg/</link>
     <description>Recent content in Create Security Group  on AWS RDS PostgreSQL</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/2-preparation/2-2-createsg/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="//localhost:1313/2-preparation/2-2-createsg/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

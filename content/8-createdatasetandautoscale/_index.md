@@ -26,11 +26,9 @@ This lab contains the following tasks:
 - Enter ``auroralab-autoscale-readers`` as the **Policy Name**. For the **Target metric** choose **Average CPU utilization of Aurora Replicas**. Enter a **Target value of 20%**. In a production use case this value may need to be set much higher, but we are using a lower value for demonstration purposes.
 
 - Next, expand the **Additional configuration** section, and change both the **Scale in cooldown period** and **Scale out cooldown period** to a value of **180 seconds**. This will reduce the time you have to wait between scaling operations in subsequent labs.
-
     ![ACL](/images/8/2.png)
 
 - In the **Cluster capacity details** section, set the **Minimum capacity** to **1** and **Maximum capacity** to **2**. In a production use case you may need to use different values, but for demonstration purposes, and to limit the cost associated with the labs we limit the number of readers to two.
-
     ![ACL](/images/8/3.png)
 
 - Next click **Add policy**.
@@ -65,11 +63,9 @@ This lab contains the following tasks:
 - Take note that the reader node is currently receiving load. It may take a minute or more for the metrics to fully reflect the incoming load.
 
 - After several minutes return to the list of instances and notice that a new reader is being provisioned in your cluster.
-
     ![ACL](/images/8/5.png)
 
 - It will take 5-7 minutes to add a new replica. Once the new replica becomes available, note that the load distributes and stabilizes (it may take a few minutes to stabilize).
-
     ![ACL](/images/8/6.png)
 
 - You can now toggle back to your Cloud9 terminal window, and press CTRL+C to quit the running pgbench job. After a while the additional reader will be removed automatically.

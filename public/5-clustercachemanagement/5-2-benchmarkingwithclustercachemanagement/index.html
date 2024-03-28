@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Benchmarking with Cluster Cache management :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711431242" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711431242" rel="stylesheet">
+    <link href="/css/hybrid.css?1711431242" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711431242" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711431242" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711431242" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711431242" rel="stylesheet">
+    <link href="/css/theme.css?1711431242" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711431242" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711431242" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711431242"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711431242"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711431242"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711431242"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" selected>English</option>
+                      <option id="en" value="//localhost:1313/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/">Tiếng Việt</option>
                     
                   
               
@@ -1004,7 +1004,7 @@ SELECT pg_size_pretty( pg_database_size(&#39;aupglab&#39;));
     	</span>
     </div>
     <div class="expand-content" style="display: none;">
-        <p><img src="/images/5/5.2/1.png" alt="benchmark"></p>
+        <p><img alt="benchmark" src="/images/5/5.2/1.png"></p>
 
     </div>
 </div>
@@ -1020,7 +1020,7 @@ SELECT pg_size_pretty( pg_database_size(&#39;aupglab&#39;));
     	</span>
     </div>
     <div class="expand-content" style="display: none;">
-        <p><img src="/images/5/5.2/2.png" alt="benchmark"></p>
+        <p><img alt="benchmark" src="/images/5/5.2/2.png"></p>
 
     </div>
 </div>
@@ -1068,7 +1068,7 @@ SELECT pg_size_pretty( pg_database_size(&#39;aupglab&#39;));
 <li>
 <p>After 600 seconds when benchmark is complete, you can verify the pgbench output on the screen or refer the output file “ccm_enable_before_failover.out”. The summary output will look like below. Please note that your output may look a little different.</p>
 <pre tabindex="0"><code>cat ccm_enable_before_failover.out
-</code></pre><p><img src="/images/5/5.2/3.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/3.png"></p>
 </li>
 </ul>
 <h4 id="check-cached-pages-on-both-writer-and-reader-nodes">Check cached pages on both writer and reader nodes</h4>
@@ -1089,12 +1089,12 @@ SELECT pg_size_pretty( pg_database_size(&#39;aupglab&#39;));
 <pre tabindex="0"><code>psql
 CREATE EXTENSION pg_buffercache;
 \dx pg_buffercache
-</code></pre><p><img src="/images/5/5.2/4.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/4.png"></p>
 </li>
 <li>
 <p>Verify that you are connected to the Writer node and query pg_buffercache to see number of cached pages for various tables.</p>
 <pre tabindex="0"><code>show transaction_read_only;
-</code></pre><p><img src="/images/5/5.2/5.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/5.png"></p>
 <pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
 FROM pg_buffercache b 
 INNER JOIN pg_class c
@@ -1103,7 +1103,7 @@ AND b.reldatabase IN (0, (SELECT oid FROM pg_database WHERE datname = current_da
 GROUP BY c.relname
 ORDER BY 2 DESC
 LIMIT 10;
-</code></pre><p><img src="/images/5/5.2/6.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/6.png"></p>
 </li>
 </ul>
 
@@ -1180,12 +1180,12 @@ LIMIT 10;
 </ol>
 <pre tabindex="0"><code>psql -h &lt;Aurora Reader EndPoint&gt;
 \dx pg_buffercache
-</code></pre><p><img src="/images/5/5.2/7.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/7.png"></p>
 <ul>
 <li>
 <p>Verify if you are connected to the Reader node and query pg_buffercache to see number of cached pages for various tables.</p>
 <pre tabindex="0"><code>show transaction_read_only;
-</code></pre><p><img src="/images/5/5.2/8.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/8.png"></p>
 <pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
   FROM pg_buffercache b INNER JOIN pg_class c
   ON b.relfilenode = pg_relation_filenode(c.oid) AND
@@ -1194,26 +1194,26 @@ LIMIT 10;
   GROUP BY c.relname
   ORDER BY 2 DESC
   LIMIT 10;
-</code></pre><p><img src="/images/5/5.2/9.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/9.png"></p>
 </li>
 </ul>
 <p><em>Notice that, after disabling CCM the buffer page count on the reader node is much less compared to the writer node for the frequently accessed tables.</em></p>
 <h4 id="failover-aurora-cluster">Failover Aurora cluster</h4>
 <ul>
 <li>
-<p>Now, we will initiate a failover of the Aurora cluster and after the failover is complete, we’ll run the same benchmark on the new writer node. For initiating failover go to the RDS console, select the writer instance of your Aurora cluster and click <strong>Failover</strong> in the <strong>Actions</strong> menu.</p>
-<p><img src="/images/5/5.2/10.png" alt="benchmark"></p>
+<p>Now, we will initiate a failover of the Aurora cluster and after the failover is complete, we’ll run the same benchmark on the new writer node. For initiating failover go to the RDS console, select the writer instance of your Aurora cluster and click <strong>Failover</strong> in the <strong>Actions</strong> menu.
+<img alt="benchmark" src="/images/5/5.2/10.png"></p>
 </li>
 <li>
-<p>Click <strong>Failover</strong> to confirm.</p>
+<p>Click <strong>Failover</strong> to confirm.
+<img alt="benchmark" src="/images/5/5.2/11.png"></p>
+</li>
+<li>
+<p>Once the failover is complete (after about ~30 seconds), verify that the previous reader node becomes the new writer.
+<img alt="benchmark" src="/images/5/5.2/12.png">
+<img alt="benchmark" src="/images/5/5.2/13.png"></p>
 </li>
 </ul>
-<p><img src="/images/5/5.2/11.png" alt="benchmark"></p>
-<ul>
-<li>Once the failover is complete (after about ~30 seconds), verify that the previous reader node becomes the new writer.</li>
-</ul>
-<p><img src="/images/5/5.2/12.png" alt="benchmark"></p>
-<p><img src="/images/5/5.2/13.png" alt="benchmark"></p>
 <h4 id="run-benchmark-using-pgbench-on-new-writer-node-after-failover">Run benchmark using pgbench on new writer node (after failover)</h4>
 <ul>
 <li>Now we’ll run the same pgbench benchmark as we did earlier and we will compare the metrics observed before and after the failover.</li>
@@ -1223,7 +1223,7 @@ LIMIT 10;
 <li>After 600 seconds when benchmark is complete, you can verify the pgbench output on the screen or refer the output file “ccm_enable_after_failover.out”. The summary output will look like below. Please note that your output may look a little different.</li>
 </ul>
 <pre tabindex="0"><code>cat ccm_enable_after_failover.out
-</code></pre><p><img src="/images/5/5.2/14.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/14.png"></p>
 <p><em>Notice that after disabling CCM, the tps numbers on the new writer node after failover is significantly less compared to the old writer node before the failover.</em></p>
 <h3 id="benchmarking-with-ccm-disabled">Benchmarking with CCM disabled</h3>
 <p>Now, we will disable CCM and perform similar tests as we did above with CCM enabled.</p>
@@ -1234,41 +1234,45 @@ LIMIT 10;
 <p>Open the Amazon RDS console and select <a href="https://console.aws.amazon.com/rds/home?#parameter-groups:id=">Parameters groups</a> .</p>
 </li>
 <li>
-<p>In the list, choose the parameter group for your Aurora PostgreSQL DB cluster. ]</p>
+<p>In the list, choose the parameter group for your Aurora PostgreSQL DB cluster. ]
+<img alt="benchmark" src="/images/5/5.2/14.png"></p>
 </li>
-</ol>
-<p><img src="/images/5/5.2/14.png" alt="benchmark"></p>
-<ol start="3">
-<li>Click on the DB cluster parameter group selected above and then click on <strong>Edit Parameters</strong>.</li>
-</ol>
-<p><img src="/images/5/5.2/15.png" alt="benchmark">
-4. Set the value of the <code>apg_ccm_enabled</code> cluster parameter to 0 and click on <strong>Save changes</strong>.</p>
-<p><img src="/images/5/5.2/16.png" alt="benchmark"></p>
-<ol start="5">
-<li>Verify Cluster Cache Management is disabled by querying the function aurora_ccm_status() as shown below:</li>
+<li>
+<p>Click on the DB cluster parameter group selected above and then click on <strong>Edit Parameters</strong>.
+<img alt="benchmark" src="/images/5/5.2/15.png"></p>
+</li>
+<li>
+<p>Set the value of the <code>apg_ccm_enabled</code> cluster parameter to 0 and click on <strong>Save changes</strong>.
+<img alt="benchmark" src="/images/5/5.2/16.png"></p>
+</li>
+<li>
+<p>Verify Cluster Cache Management is disabled by querying the function aurora_ccm_status() as shown below:</p>
+</li>
 </ol>
 <pre tabindex="0"><code>psql
 \x
 select * from aurora_ccm_status();
-</code></pre><p><img src="/images/5/5.2/17.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/17.png"></p>
 <h4 id="clear-buffer-cache-of-both-writer-and-reader-nodes">Clear buffer cache of both writer and reader nodes</h4>
 <p>Since earlier testing with CCM already warmed the buffer cache of the reader and writer instances, we need to stop and start the Aurora cluster to empty the buffer caches before running the next benchmarking. We could also reboot both the reader and the writer instances, but this may not guarantee that the writer and reader will come up with empty buffer cache.</p>
 <h5 id="to-stop-the-cluster">To stop the cluster</h5>
 <ol>
-<li>Verify that the cluster status is shown as “Available”, then click on the <strong>Actions</strong> menu and choose <strong>Stop temporarily</strong>.</li>
+<li>
+<p>Verify that the cluster status is shown as “Available”, then click on the <strong>Actions</strong> menu and choose <strong>Stop temporarily</strong>.
+<img alt="benchmark" src="/images/5/5.2/18.png"></p>
+</li>
+<li>
+<p>Confirm the action by clicking <strong>Stop temporarily</strong> database.
+<img alt="benchmark" src="/images/5/5.2/19.png"></p>
+</li>
 </ol>
-<p><img src="/images/5/5.2/18.png" alt="benchmark"></p>
-<ol start="2">
-<li>Confirm the action by clicking <strong>Stop temporarily</strong> database.</li>
-</ol>
-<p><img src="/images/5/5.2/19.png" alt="benchmark"></p>
-<p><em>It will take several minutes and the cluster status will change from Stopping to Stopped.</em></p>
-<p><img src="/images/5/5.2/20.png" alt="benchmark"></p>
+<p><em>It will take several minutes and the cluster status will change from Stopping to Stopped.</em>
+<img alt="benchmark" src="/images/5/5.2/20.png"></p>
 <h5 id="to-start-the-cluster">To start the cluster</h5>
 <ol>
-<li>Once the cluster status changes to ”Stopped”, click on the <strong>Actions</strong> menu again and choose <strong>Start</strong>.</li>
+<li>Once the cluster status changes to ”Stopped”, click on the <strong>Actions</strong> menu again and choose <strong>Start</strong>.
+<img alt="benchmark" src="/images/5/5.2/21.png"></li>
 </ol>
-<p><img src="/images/5/5.2/21.png" alt="benchmark"></p>
 <p><em>It will take several minutes and the cluster status will change from &ldquo;Starting&rdquo; to &ldquo;Available&rdquo;.</em></p>
 <h4 id="run-benchmark-on-writer-node-using-pgbench-before-failover">Run benchmark on writer node using pgbench (before failover)</h4>
 <ol>
@@ -1279,19 +1283,19 @@ select * from aurora_ccm_status();
 <li>After 600 seconds when benchmark is complete, you can verify the pgbench output on the screen or refer the output file “ccm_disable_before_failover.out”. The summary output will look like below. Please note that your output may look a little different.</li>
 </ol>
 <pre tabindex="0"><code>cat ccm_disable_before_failover.out
-</code></pre><p><img src="/images/5/5.2/22.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/22.png"></p>
 <h4 id="check-cached-pages-on-both-writer-and-reader-nodes-1">Check cached pages on both writer and reader nodes</h4>
 <ol>
 <li>Connect to the Writer node using the cluster endpoint of your cluster</li>
 </ol>
 <pre tabindex="0"><code>psql
 \dx pg_buffercache
-</code></pre><p><img src="/images/5/5.2/23.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/23.png"></p>
 <ol start="2">
 <li>Verify that you are connected to the Writer node and query <strong>pg_buffercache</strong> to see number of cached pages for various tables.</li>
 </ol>
 <pre tabindex="0"><code>show transaction_read_only;
-</code></pre><p><img src="/images/5/5.2/24.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/24.png"></p>
 <pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
  FROM pg_buffercache b INNER JOIN pg_class c
  ON b.relfilenode = pg_relation_filenode(c.oid) AND
@@ -1300,19 +1304,19 @@ select * from aurora_ccm_status();
  GROUP BY c.relname
  ORDER BY 2 DESC
  LIMIT 10;
-</code></pre><p><img src="/images/5/5.2/25.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/25.png"></p>
 <h4 id="connect-to-the-read-replica-1">Connect to the read replica</h4>
 <ol>
 <li>Connect to the reader instance using the Reader Endpoint of the Aurora PostgreSQL Cluster. Replace <!-- raw HTML omitted --> below with your Aurora reader endpoint by referring the step Connect to the Read replica.</li>
 </ol>
 <pre tabindex="0"><code>psql -h  &lt;Aurora Reader EndPoint&gt;
 \dx pg_buffercache
-</code></pre><p><img src="/images/5/5.2/26.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/26.png"></p>
 <ol start="2">
 <li>Verify that you are connected to the Reader node and query <strong>pg_buffercache</strong> to see number of cached pages for various tables.</li>
 </ol>
 <pre tabindex="0"><code>show transaction_read_only;
-</code></pre><p><img src="/images/5/5.2/27.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/27.png"></p>
 <pre tabindex="0"><code>SELECT c.relname, count(*) AS buffers
  FROM pg_buffercache b INNER JOIN pg_class c
  ON b.relfilenode = pg_relation_filenode(c.oid) AND
@@ -1321,18 +1325,18 @@ select * from aurora_ccm_status();
  GROUP BY c.relname
  ORDER BY 2 DESC
  LIMIT 10;
-</code></pre><p><img src="/images/5/5.2/28.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/28.png"></p>
 <p><em>Notice that, after disabling CCM the buffer page count on the reader node is much less compared to the writer node for the frequently accessed tables.</em></p>
 <h4 id="failover-aurora-cluster-1">Failover Aurora cluster</h4>
 <ol>
 <li>Now, we will initiate a failover of the Aurora cluster and after the failover is complete, we’ll run the same benchmark on the new writer node.</li>
 </ol>
-<p><img src="/images/5/5.2/29.png" alt="benchmark"></p>
+<p><img alt="benchmark" src="/images/5/5.2/29.png"></p>
 <ol start="2">
 <li>Confirm the action by clicking <strong>Failover</strong>.</li>
 </ol>
 <p><em>Once the failover is complete (after about ~30 seconds), verify that the previous reader node becomes the new writer.</em></p>
-<p><img src="/images/5/5.2/30.png" alt="benchmark"></p>
+<p><img alt="benchmark" src="/images/5/5.2/30.png"></p>
 <h4 id="run-benchmark-using-pgbench-on-new-writer-node-after-failover-1">Run benchmark using pgbench on new writer node (after failover)</h4>
 <ol>
 <li>Now, we’ll run the same benchmarking as we did earlier and we will compare the pgbench metrics observed before and after the failover.</li>
@@ -1340,7 +1344,7 @@ select * from aurora_ccm_status();
 <pre tabindex="0"><code>pgbench --progress-timestamp -M prepared -n -T 600 -P 5 -c 50 -j 50 -b tpcb-like@1 -b select-only@20 &gt; ccm_disable_after_failover.out
 </code></pre><p>After 600 seconds when benchmark is complete, you can verify the pgbench output on the screen or refer the output file “ccm_disable_after_failover.out”. The summary output will look like below. Please note that your output may look a little different.</p>
 <pre tabindex="0"><code>cat ccm_disable_after_failover.out
-</code></pre><p><img src="/images/5/5.2/31.png" alt="benchmark"></p>
+</code></pre><p><img alt="benchmark" src="/images/5/5.2/31.png"></p>
 <p><em>Notice that after disabling CCM, the tps numbers on the new writer node after failover is significantly less compared to the old writer node before the failover.</em></p>
 
 
@@ -1802,19 +1806,19 @@ select * from aurora_ccm_status();
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711431242"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711431242"></script>
+    <script src="/js/jquery.sticky.js?1711431242"></script>
+    <script src="/js/featherlight.min.js?1711431242"></script>
+    <script src="/js/highlight.pack.js?1711431242"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711431242"></script>
+    <script src="/js/learn.js?1711431242"></script>
+    <script src="/js/hugo-learn.js?1711431242"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711431242" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711431242"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

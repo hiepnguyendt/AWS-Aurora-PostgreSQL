@@ -7,37 +7,34 @@ pre : " <b> 9.2. </b> "
 ---
 
 
-In this test, we will use a Python script to connect to the cluster endpoint and continuously run a monitoring query.
+Trong lab này, chúng ta sẽ sử dụng một script Python để kết nối tới cluster endpoint và liên tục thực thi một truy vấn giám sát..
 
-1. You will need to open an additional Cloud9 terminal window as shown below. You will execute commands in one and see the results in the other session.
+1. Bạn sẽ cần mở một terminal Cloud9. Bạn sẽ thực thi các lệnh và xem kết quả.
 
-2. Download the failover test script with command below:
+2. Tải failover test script, sử dụng lệnh sau:
 
     ```
     wget https://aupg-fcj-assets.s3.us-west-2.amazonaws.com/lab-scripts/simple_failover.py
     ```
-3. In one of the two terminal windows, run the failover test script using the following command:
+3. TỊ một trong hai terminal, hãy chạy script kiểm tra failover bằng lệnh sau:
 
     ```
      python /home/ec2-user/simple_failover.py -e $DBENDP -u $DBUSER -p $DBPASS -d $PGDATABASE
     ```
 
-4. In the second cloud9 window, execute the command to initiate the failover
+4. Trong terminal Cloud9 thứ hai, hãy thực thi lệnh để bắt đầu quá trình failover.
 
     ```
     aws rds failover-db-cluster --db-cluster-identifier aupg-fcj-labs
 
     ```
 
-5. Initially the script would be connecting to the writer node and executing the query. You will see a slight pause and a message "waiting for failover" when the failover is initiated. Subsequently the time elapsed to re-connect and the new writer node information is printed.
-
+5. Ban đầu, script sẽ kết nối tới writer node và thực thi truy vấn. Bạn sẽ thấy một dừng nhẹ và một thông báo "đang chờ failover" khi quá trình failover được khởi tạo. Sau đó, thời gian mất để kết nối lại và thông tin về nút ghi mới sẽ được in ra.
     ![test](/images/9/9.2/2.png)
 
-    Since we are using the cluster endpoint for the connection, there is a slight delay to propagate the DNS record changes for the new writer node. You will see that for a few seconds after the failover, we are still connected to the old writer node which is now the new reader node. Once the DNS record change for the cluster endpoint is propagated to the client machine (in this case the Cloud9 workstation), the script will indicate that it is connected to the Writer node.
+    Vì chúng ta đang sử dụng cluster endpoint để kết nối, sẽ có một độ trễ nhỏ để truyền các thay đổi bản ghi DNS cho writer node mới. Bạn sẽ thấy rằng trong vài giây sau failover, chúng ta vẫn đang kết nối với writer node cũ, hiện nay là reader node mới. Khi thay đổi bản ghi DNS cho cluster endpoint được truyền đến máy khách (trong trường hợp này là máy làm việc Cloud9), script sẽ cho biết nó đang kết nối với writer node.
 
-
-6. You will receive two event notification emails for each failover you initiate, one indicating that a failover has started, and one indicating that it has completed.
-
+6. Bạn sẽ nhận được hai email thông báo sự kiện cho mỗi failover mà bạn khởi tạo, một email cho biết rằng quá trình failover đã bắt đầu và một email cho biết rằng quá trình đã hoàn thành.
     ![test](/images/9/9.2/4.png)
     ![test](/images/9/9.2/5.png)
 

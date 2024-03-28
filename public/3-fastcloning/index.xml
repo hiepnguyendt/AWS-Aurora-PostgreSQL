@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fast Cloning on AWS RDS PostgreSQL</title>
-    <link>/3-fastcloning/</link>
+    <link>//localhost:1313/3-fastcloning/</link>
     <description>Recent content in Fast Cloning on AWS RDS PostgreSQL</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/3-fastcloning/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="//localhost:1313/3-fastcloning/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

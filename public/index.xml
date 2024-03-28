@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AWS Aurora PostgreSQL on AWS RDS PostgreSQL</title>
-    <link>/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content in AWS Aurora PostgreSQL on AWS RDS PostgreSQL</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

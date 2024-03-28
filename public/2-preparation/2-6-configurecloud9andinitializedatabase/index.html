@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title> Create, Configure Cloud9 and Initialize Database :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/2-preparation/2-6-configurecloud9andinitializedatabase/" selected>English</option>
+                      <option id="en" value="//localhost:1313/2-preparation/2-6-configurecloud9andinitializedatabase/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">Tiếng Việt</option>
                     
                   
               
@@ -961,16 +961,16 @@
 	<h4 id="to-create-a-cloud9-enviroment-follow-these-steps">To create a Cloud9 enviroment, follow these steps:</h4>
 <ol>
 <li>
-<p>Open the <strong>Amazon Cloud9</strong> <a href="https://console.aws.amazon.com/cloud9/">console</a>, then click <strong>Create enviroment</strong></p>
-<p><img src="/images/1/14.png" alt="Create Cloud9 instance"></p>
+<p>Open the <strong>Amazon Cloud9</strong> <a href="https://console.aws.amazon.com/cloud9/">console</a>, then click <strong>Create enviroment</strong>
+<img alt="Create Cloud9 instance" src="/images/1/14.png"></p>
 </li>
 <li>
-<p>Enter a name for your environment and select the <strong>Existing compute</strong> option for enviroment type.</p>
-<p><img src="/images/1/15.png" alt="Create Cloud9 instance"></p>
+<p>Enter a name for your environment and select the <strong>Existing compute</strong> option for enviroment type.
+<img alt="Create Cloud9 instance" src="/images/1/15.png"></p>
 </li>
 <li>
-<p>Under the Existing compute, click on button <strong>Copy key to clipboard</strong></p>
-<p><img src="/images/1/16.png" alt="Create Cloud9 instance"></p>
+<p>Under the Existing compute, click on button <strong>Copy key to clipboard</strong>
+<img alt="Create Cloud9 instance" src="/images/1/16.png"></p>
 </li>
 <li>
 <p>Connect to EC2 instance via MobaXterm</p>
@@ -981,30 +981,30 @@
 <p>Following command below to save <strong>Public SSH key</strong> into file <strong>authorized_keys</strong></p>
 <pre tabindex="0"><code>cd .ssh
 nano authorized_keys
-</code></pre><p><img src="/images/1/17.1.png" alt="Create Cloud9 instance">
-<img src="/images/1/17.2.png" alt="Create Cloud9 instance"></p>
+</code></pre><p><img alt="Create Cloud9 instance" src="/images/1/17.1.png">
+<img alt="Create Cloud9 instance" src="/images/1/17.2.png"></p>
 </li>
 <li>
 <p>Install Nodejs with command below</p>
 <pre tabindex="0"><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh
 nvm install 16
-</code></pre><p><img src="/images/1/17.png" alt="Create Cloud9 instance"></p>
+</code></pre><p><img alt="Create Cloud9 instance" src="/images/1/17.png"></p>
 </li>
 <li>
 <p>Create folder <code>cloud9_env</code></p>
 <pre tabindex="0"><code>mkdir cloud9_env
-</code></pre><p><img src="/images/1/18.png" alt="Create Cloud9 instance"></p>
+</code></pre><p><img alt="Create Cloud9 instance" src="/images/1/18.png"></p>
 </li>
 <li>
 <p>Check path of Nodejs</p>
 <pre tabindex="0"><code>which node
-</code></pre><p><img src="/images/1/19.png" alt="Create Cloud9 instance"></p>
+</code></pre><p><img alt="Create Cloud9 instance" src="/images/1/19.png"></p>
 <ul>
 <li>Install <strong>jq</strong> packages</li>
 </ul>
 <pre tabindex="0"><code>sudo yum install jq
-</code></pre><p><img src="/images/1/17.3.png" alt="Create Cloud9 instance"></p>
+</code></pre><p><img alt="Create Cloud9 instance" src="/images/1/17.3.png"></p>
 </li>
 </ul>
 <ol start="5">
@@ -1016,7 +1016,7 @@ nvm install 16
 </li>
 <li>
 <p>For <strong>Host</strong>, enter your EC2 host</p>
-<p><img src="/images/1/16.png" alt="Create Cloud9 instance"></p>
+<p><img alt="Create Cloud9 instance" src="/images/1/16.png"></p>
 </li>
 </ul>
 <ol start="6">
@@ -1031,8 +1031,8 @@ nvm install 16
 <p>Then click <strong>Create</strong></p>
 </li>
 <li>
-<p>After <strong>Successfully create Cloud9</strong>, click <strong>Open</strong></p>
-<p><img src="/images/1/20.png" alt="Create Cloud9 instance"></p>
+<p>After <strong>Successfully create Cloud9</strong>, click <strong>Open</strong>
+<img alt="Create Cloud9 instance" src="/images/1/20.png"></p>
 </li>
 <li>
 <p>C9 install</p>
@@ -1040,20 +1040,20 @@ nvm install 16
 </ol>
 <ul>
 <li>
-<p>Click <strong>Next</strong></p>
-<p><img src="/images/1/21.png" alt="Create Cloud9 instance"></p>
+<p>Click <strong>Next</strong>
+<img alt="Create Cloud9 instance" src="/images/1/21.png"></p>
 </li>
 <li>
-<p>Click <strong>Next</strong> and leave everything ticked</p>
-<p><img src="/images/1/22.png" alt="Create Cloud9 instance"></p>
+<p>Click <strong>Next</strong> and leave everything ticked
+<img alt="Create Cloud9 instance" src="/images/1/22.png"></p>
 </li>
 <li>
-<p>Click <strong>Finish</strong></p>
-<p><img src="/images/1/24.png" alt="Create Cloud9 instance"></p>
+<p>Click <strong>Finish</strong>
+<img alt="Create Cloud9 instance" src="/images/1/24.png"></p>
 </li>
 </ul>
 <p>Now, you have successfully <strong>created Cloud9 instance with existing compute</strong></p>
-<p><img src="/images/1/25.png" alt="CreateCloud9instance"></p>
+<p><img alt="CreateCloud9instance" src="/images/1/25.png"></p>
 <h4 id="configure-the-cloud9-workstation">Configure the Cloud9 workstation</h4>
 <ol>
 <li>Configure your AWS CLI with command below:
@@ -1087,7 +1087,7 @@ export DBPASS=&#34;`echo $CREDS | jq -r &#39;.password&#39;`&#34;
 
 echo DBENDP: $DBENDP
 echo DBUSER: $DBUSER
-</code></pre><p><img src="/images/2/1.png" alt="Configure Cloud9"></p>
+</code></pre><p><img alt="Configure Cloud9" src="/images/2/1.png"></p>
 
 <div class="notices note" ><p>A notice disclaimerConfirm that you have output for the DBENDP and DBUSER variables. If not, you may not have named your Aurora cluster aupg-fcj-labs or tagged your Secret with Key:Name and Value: aupg-fcj-labs-DBMasterUser-secret. In that case, please set the DBENDP, DBUSER, and DBPASS variables manually in your terminal window before continuing.</p>
 </div>
@@ -1108,7 +1108,7 @@ echo &#34;export PGUSER=$DBUSER&#34; &gt;&gt; /home/ec2-user/.bashrc
 echo &#34;export PGPASSWORD=\&#34;$DBPASS\&#34;&#34; &gt;&gt; /home/ec2-user/.bashrc
 echo &#34;export PGHOST=$DBENDP&#34; &gt;&gt; /home/ec2-user/.bashrc
 echo &#34;export PGDATABASE=aupglab&#34; &gt;&gt; /home/ec2-user/.bashrc
-</code></pre><p><img src="/images/2/2.png" alt="Configure Cloud9"></p>
+</code></pre><p><img alt="Configure Cloud9" src="/images/2/2.png"></p>
 </li>
 </ol>
 <p><em><strong>Now, you have saved the PostgreSQL specific environment variables in your Cloud9 Bash startup file which will make it convenient to login to Aurora PostgreSQL Cluster using psql.</strong></em></p>
@@ -1123,22 +1123,22 @@ echo &#34;export PGDATABASE=aupglab&#34; &gt;&gt; /home/ec2-user/.bashrc
 <p>Connect to the <strong>aupglab</strong> database that was setup in the Aurora PostgreSQL cluster and verify the version of the database engine by running the following command in your Cloud9 terminal window.</p>
 <pre tabindex="0"><code>psql -c &#39;select version(),AURORA_VERSION();&#39;
 </code></pre><p>If you had setup your Cloud9 environment correctly, you should see output similar to the following:</p>
-<p><img src="/images/2/3.png" alt="Initialize db"></p>
+<p><img alt="Initialize db" src="/images/2/3.png"></p>
 </li>
 <li>
 <p>Now lets verify the user, database, host and port we are connecting to using the following command:</p>
 <pre tabindex="0"><code>psql
 select current_user, current_database(), :&#39;HOST&#39; host, inet_server_port() port;
 \q
-</code></pre><p><img src="/images/2/4.png" alt="Initialize db"></p>
+</code></pre><p><img alt="Initialize db" src="/images/2/4.png"></p>
 </li>
 <li>
 <p>Since we are using the Aurora cluster endpoint to connect, we are connecting to the primary/writer DB instance of the Aurora PostgreSQL Cluster. Run the following commands in your Cloud9 terminal window to initialize the PostgreSQL database and make it ready for subsequent labs.</p>
 <pre tabindex="0"><code># Ignore the ERROR messages below.
 psql aupglab -f /home/ec2-user/clone_setup.sql &gt; /home/ec2-user/clone_setup.output
 nohup pgbench -i --fillfactor=100 --scale=100 mylab &amp;&gt;&gt; /tmp/nohup.out
-</code></pre><p>Ignore the table doesn&rsquo;t exist error messages below:</p>
-<p><img src="/images/2/5.png" alt="Initialize db"></p>
+</code></pre><p>Ignore the table doesn&rsquo;t exist error messages below:
+<img alt="Initialize db" src="/images/2/5.png"></p>
 </li>
 </ol>
 <p><em><strong>pgbench will take a minute or so to initialize the database. Once it completes, you are good to proceed to the next lab.</strong></em></p>
@@ -1602,19 +1602,19 @@ nohup pgbench -i --fillfactor=100 --scale=100 mylab &amp;&gt;&gt; /tmp/nohup.out
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

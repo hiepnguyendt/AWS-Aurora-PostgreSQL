@@ -15,11 +15,9 @@ pre : " <b> 2.2. </b> "
 4. For **VPC**, choose the VPC where you want to create the security group.
 5. For **Security group name**, enter a descriptive name for the security group.
 6. For **Description**, enter a description for the security group.
-
     ![Create EC2 SG](/images/1/4.png)
 
 7. Modify Inbound Rule & Outbound Rule
-
     ![Create EC2 SG](/images/1/5.png)
 
 9. Click **Create**.
@@ -33,11 +31,9 @@ Once you have created the security group for EC2 instances
 4. For **VPC**, choose the VPC where you want to create the security group.
 5. For **Security group name**, enter a descriptive name for the security group.
 6. For **Description**, enter a description for the security group.
-
     ![Create EC2 SG](/images/1/6.png)
 
 7. Modify Inbound Rule & Outbound Rule
-
     ![Create EC2 SG](/images/1/7.png)
 
 9. Click **Create**.

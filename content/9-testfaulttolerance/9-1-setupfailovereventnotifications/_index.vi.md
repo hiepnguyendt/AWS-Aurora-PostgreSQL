@@ -1,27 +1,25 @@
 ---
-title : "Set up failover event notifications"
+title : "Thiết lập thông báo sự kiện failover"
 date :  "`r Sys.Date()`" 
 weight : 1
 chapter : false
-pre : " <b> 9.1 </b> "
+pre : " <b> 9.1. </b> "
 ---
 
 
-To receive notifications when failover events occur with your DB cluster, you will create an Amazon Simple Notification Service (SNS) topic, subscribe your email address to the SNS topic, create an RDS event subscription publishing events to the SNS topic and registering the DB cluster as an event source.
+Để nhận thông báo khi xảy ra sự cố chuyển giao tự động với cụm DB của bạn, bạn sẽ tạo một chủ đề Amazon Simple Notification Service (SNS), đăng ký địa chỉ email của bạn vào chủ đề SNS, tạo một đăng ký sự kiện RDS xuất bản sự kiện vào chủ đề SNS và đăng ký cụm DB làm nguồn sự kiện.
 
-1. Open a Cloud9 terminal window by referring [Open Cloud9 Terminal](https://catalog.us-east-1.prod.workshops.aws/workshops/098605dc-8eee-4e84-85e9-c5c6c9e43de2/en-US/lab1-5-client/cloud9-terminal/) Window section and paste the following command to create an SNS topic.
+1. Vui lòng mở một terminal Cloud9, sau đó dán lệnh sau để tạo một SNS Topic.
 
     ```
     aws sns create-topic \
     --name auroralab-cluster-failovers
 
     ```
-    If successful, the command will respond back with a TopicArn identifier, you will need this value in the next command.
-
+    Nếu thành công, lệnh sẽ phản hồi lại với một định danh TopicArn, bạn sẽ cần giá trị này trong lệnh tiếp theo.
     ![failover](/images/9/9.1/1.png)
 
-2. Next, subscribe your email address to the SNS topic using the command below, changing the placeholder [YourEmail] with your email address:
-
+2. Tiếp theo, đăng ký địa chỉ email của bạn vào SNS Topic bằng lệnh dưới đây, thay thế giá trị [YourEmail] bằng địa chỉ email của bạn:
     ```
     aws sns subscribe \
     --topic-arn $(aws sns list-topics --query 'Topics[?contains(TopicArn,`auroralab-cluster-failovers`)].TopicArn' --output text) \
@@ -30,22 +28,18 @@ To receive notifications when failover events occur with your DB cluster, you wi
 
     ```
 
-    You should see Output similar to the following:
-
+    Bạn sẽ thấy đầu ra tương tự như sau:
     ![failover](/images/9/9.1/2.png)
 
-3. You will receive a verification email on that address, please confirm the subscription by following the instructions in the email.
-
+3. Bạn sẽ nhận được một email xác minh tại địa chỉ đó, vui lòng xác nhận đăng ký bằng cách làm theo hướng dẫn trong email.
     ![failover](/images/9/9.1/3.png)
 
-    Once you click **Confirm subscription** in the email, you'll see a browser window with a confirmation message as follows:
-
+    Sau khi bạn nhấp vào **Confirm subscription** trong email, bạn sẽ thấy một cửa sổ trình duyệt với thông báo xác nhận như sau:
     ![failover](/images/9/9.1/4.png)
 
-4. Once confirmed, or while you are waiting for the verification email to arrive, create an RDS event subscription and register the DB cluster as an event source using the command below:
-
+4. Sau khi xác nhận hoặc trong khi bạn đang chờ email xác minh đến, hãy tạo một đăng ký sự kiện RDS và đăng ký cụm DB làm nguồn sự kiện bằng lệnh dưới đây:
     {{% notice note %}}
-If your Aurora cluster name is different than aupg-labs-cluster, update the command below accordingly.
+Nếu tên cụm Aurora của bạn khác với "aupg-labs-cluster", hãy cập nhật lệnh dưới đây tương ứng
 {{% /notice %}}
 
     ```
@@ -56,16 +50,16 @@ If your Aurora cluster name is different than aupg-labs-cluster, update the comm
     --event-categories '["failover"]' \
     --enabled
     ```
+![failover](/images/9/9.1/5.png)
 
-    ![failover](/images/9/9.1/5.png)
+![failover](/images/9/9.1/6.png)  
     ```
     aws rds add-source-identifier-to-subscription \
     --subscription-name auroralab-cluster-failovers \
     --source-identifier aupg-fcj-labs
 
     ```
+    
 
-    ![failover](/images/9/9.1/6.png)
 
-
-At this time the event notifications have been configured. Ensure you have verified your email address before proceeding to the next section.
+Lúc này, các thông báo sự kiện đã được cấu hình. Hãy đảm bảo rằng bạn đã xác minh địa chỉ email của mình trước khi tiếp tục sang phần tiếp theo.

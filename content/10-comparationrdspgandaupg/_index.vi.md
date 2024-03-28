@@ -1,39 +1,39 @@
 ---
-title : "Comparison RDS PostgreSQL and Aurora PostgreSQL"
+title : "So sánh giữa RDS PostgreSQL và Aurora PostgreSQL"
 date :  "`r Sys.Date()`" 
 weight : 10
 chapter : false
 pre : " <b> 10. </b> "
 ---
 
-{{%expand "What is AWS RDS PostgreSQL ?" %}}
+{{%expand "AWS RDS PostgreSQL là gì ?" %}}
 
-**RDS PostgreSQL** is a managed database service offered by Amazon Web Services (AWS) that makes it easy to set up, operate, and scale PostgreSQL deployments in the cloud. It handles many of the complex administrative tasks involved in managing a PostgreSQL database, allowing you to focus on developing and using your applications.
+**RDS PostgreSQL** là một dịch vụ cơ sở dữ liệu quản lý được cung cấp bởi Amazon Web Services (AWS) giúp việc thiết lập, vận hành và mở rộng các phiên bản PostgreSQL trên nền tảng đám mây trở nên dễ dàng. Nó xử lý nhiều nhiệm vụ quản trị phức tạp liên quan đến việc quản lý cơ sở dữ liệu PostgreSQL, cho phép bạn tập trung vào việc phát triển và sử dụng ứng dụng của mình.
 
-Here's how it works:
+Dưới đây là cách hoạt động:
 
-- **Deployment**: You choose the desired PostgreSQL version, instance size (compute and memory resources), storage type, and other configuration options.
-- **Provisioning**: AWS handles the provisioning of the database instance, including installation, setup, and configuration.
-- **Management**: RDS PostgreSQL automatically manages tasks like:
+- **Deployment**: Bạn có thể lựa chọn phiên bản PostgreSQL mong muốn, kích thước instance (tài nguyên tính toán và bộ nhớ), loại lưu trữ và các tùy chọn cấu hình khác.
+- **Provisioning**: AWS xử lý việc cung cấp các instance cơ sở dữ liệu, bao gồm cài đặt, thiết lập và cấu hình.
+- **Management**: RDS PostgreSQL tự động quản lý các nhiệm vụ như:
     - Software patching and updates
     - Backups and recovery
     - Storage management
     - Replication for high availability and read scaling
     - Monitoring and performance tuning
-- **Access**: You connect to your RDS PostgreSQL database using standard PostgreSQL clients and tools.
-- **Scaling**: You can easily scale your database instance up or down as your needs change, without downtime.
+- **Access**: Bạn có thể kết nối đến cơ sở dữ liệu RDS PostgreSQL của mình bằng cách sử dụng các công cụ thông thường của PostgreSQL.
+- **Scaling**: Bạn có thể dễ dàng thay đổi kích thước của instance cơ sở dữ liệu mà không gây gián đoạn dịch vụ khi nhu cầu của bạn thay đổi.
 
-Key benefits of using RDS PostgreSQL:
+Các lợi ích chính khi sử dụng RDS PostgreSQL là:
 
-- **Ease of use**: Sets up in minutes with simple configuration options.
-- **Managed operations**: Automates time-consuming administrative tasks.
-- **Cost-effectiveness**: Offers pay-as-you-go pricing with no upfront costs.
-- **Scalability**: Easily scales up or down to meet changing demands.
-- **High availability**: Provides replication for failover and read scaling.
-- **Security**: Secures data with encryption at rest and in transit.
-- **Compatibility**: Works with standard PostgreSQL tools and applications.
+- **Ease of use**: Cài đặt trong vài phút với các tùy chọn cấu hình đơn giản.
+- **Managed operations**: Tự động hóa các tác vụ quản trị tốn thời gian.
+- **Cost-effectiveness**: Cung cấp mô hình giá theo nhu cầu sử dụng với không có chi phí ban đầu.
+- **Scalability**: Dễ dàng mở rộng hoặc thu nhỏ để đáp ứng nhu cầu thay đổi.
+- **High availability**: Cung cấp sao chép (replication) để đảm bảo hoạt động không bị gián đoạn và mở rộng đọc.
+- **Security**: Bảo mật dữ liệu bằng mã hóa khi lưu trữ và truyền tải.
+- **Compatibility**: RDS PostgreSQL hoạt động với các công cụ và ứng dụng tiêu chuẩn của PostgreSQL.
 
-Common use cases for RDS PostgreSQL:
+Các trường hợp sử dụng phổ biến cho RDS PostgreSQL!
 
 - Web and mobile applications
 - Data warehousing and analytics
@@ -43,44 +43,43 @@ Common use cases for RDS PostgreSQL:
 - Internet of Things (IoT) applications
 {{% /expand%}}
 
-{{%expand "What is AWS Aurora PostgreSQL ?" %}}
+{{%expand "AWS Aurora PostgreSQL là gì ?" %}}
 
 
-**Aurora PostgreSQL**, offered by Amazon Web Services (AWS), is a fully managed, highly scalable, and high-performance relational database service that's fully compatible with PostgreSQL. It combines the best of both worlds: the simplicity and cost-effectiveness of open-source PostgreSQL with the speed, reliability, and advanced features of high-end commercial databases.
+**Aurora PostgreSQL** là một dịch vụ cơ sở dữ liệu quan hệ được quản lý hoàn toàn, có khả năng mở rộng cao và hiệu suất cao, hoàn toàn tương thích với PostgreSQL. Nó kết hợp những ưu điểm tốt nhất: sự đơn giản và hiệu quả về chi phí của PostgreSQL mã nguồn mở với tốc độ, độ tin cậy và tính năng tiên tiến của các cơ sở dữ liệu thương mại cao cấp
 
-Here's a breakdown of its key features:
-
+Đây là bảng phân tích các tính năng chính của nó:
 - **Scalability**:
 
-    - Scales virtually infinitely for both storage and compute capacity, unlike RDS PostgreSQL which has limitations.
-    - Automatically scales in increments of 10 GB for optimal performance.
-    - Read replicas are near real-time and minimize impact on the primary instance.
+    - Quy mô gần như vô hạn cho cả khả năng lưu trữ và tính toán, không giống như RDS PostgreSQL có những hạn chế.
+    - Tự động chia tỷ lệ theo mức tăng 10 GB để có hiệu suất tối ưu.
+    - Read replicas gần như theo thời gian thực và giảm thiểu tác động đến instance chính.
 - **Performance**:
 
-    - Up to 5x faster than standard PostgreSQL, especially for read-heavy workloads.
-    - Offers low latency read replicas across multiple Availability Zones.
-    - Features like global database and cluster cache further boost performance.
+    - Nhanh hơn tới 5 lần so với PostgreSQL, đặc biệt đối với khối lượng công việc đọc nhiều.
+    - Cung cấp bản sao đọc có độ trễ thấp trên nhiều Availability Zones.
+    - Các tính năng như cơ sở dữ liệu toàn cầu và bộ đệm cụm tăng thêm hiệu suất.
 - **Durability and Availability**:
 
-    - Highly durable with automatic backups and continuous replication.
-    - Automated failover to replicas in case of primary instance failure.
-    - Global database allows automatic failover across regions for disaster recovery.
-- **Other Features**:
+    - Độ bền cao với khả năng sao lưu tự động và sao chép liên tục.
+    - Tự động chuyển đổi dự phòng sang bản sao trong trường hợp phiên bản chính bị lỗi
+    - Global database cho phép tự động chuyển đổi dự phòng giữa các vùng để khắc phục thảm họa.
+- **Tính năng khác**:
 
-    - Serverless compute allows paying only for what you use.
-    - Up to 15 read replicas can be attached for increased read scalability.
-    - Integrates with other AWS services for simplified data management.
-    - Enhanced security features like encryption at rest and in transit.
+    - Serverless compute cho phép trả tiền cho những gì bạn sử dụng.
+    - Có thể đính kèm tối đa 15 read replica để tăng khả năng mở rộng đọc.
+    - Tích hợp với các dịch vụ AWS khác để đơn giản hóa việc quản lý dữ liệu
+    - Các tính năng bảo mật nâng cao như mã hóa at rest and in transit.
 
 {{% /expand%}}
 
-#### Performance:
+#### Hiệu năng:
 
-**Aurora PostgreSQL**: Up to 5x faster than traditional PostgreSQL and 3x faster than RDS PostgreSQL. Scales seamlessly without downtime.
-**RDS PostgreSQL**: Good performance for smaller workloads, but can struggle with high traffic or complex queries. Scaling requires downtime.
+**Aurora PostgreSQL**: Nhanh hơn tới 5 lần so với PostgreSQL truyền thống và nhanh hơn 3 lần so với RDS PostgreSQL. Scale liên tục mà không có downtime.
+**RDS PostgreSQL**: Hiệu suất tốt cho khối lượng công việc nhỏ hơn nhưng có thể gặp khó khăn với lưu lượng truy cập cao hoặc các truy vấn phức tạp. Mở rộng quy mô đòi hỏi downtime.
 
 #### Benchmarks
-1. Configure
+1. Cấu hình
 |    |Aurora PostgreSQL|RDS PostgreSQL|
 |---|:--:|:--:|
 |Instance type	| db.m1.lar5ge (2vCPU + 7.5Gb)|db.m1.lar5ge (2vCPU + 7.5Gb)|
@@ -101,21 +100,21 @@ Here's a breakdown of its key features:
 
 #### Scalability:
 
-- **Aurora PostgreSQL**: Scales automatically and continuously, without performance impact. Can handle massive datasets and millions of concurrent connections.
-- **RDS PostgreSQL**: Requires manual scaling with limited options, leading to downtime and performance bottlenecks.
+- **Aurora PostgreSQL**: Scale tự động và liên tục, không ảnh hưởng đến hiệu suất. Có thể xử lý các bộ dữ liệu lớn và hàng triệu kết nối đồng thời.
+- **RDS PostgreSQL**: Yêu cầu mở rộng quy mô thủ công với các tùy chọn hạn chế, dẫn đến downtime và ảnh hưởng đến hiệu suất.
 #### Availability and Durability:
 
-- **Aurora PostgreSQL**: Extremely high availability with automatic failover and multi-AZ backups. Provides point-in-time recovery up to the last five minutes.
-- **RDS PostgreSQL**: Offers single-AZ deployments and manual backups. Failover requires configuration and potential data loss.
+- **Aurora PostgreSQL**: Tính sẵn sàng cực cao với khả năng chuyển đổi dự phòng tự động và sao lưu đa AZ. Cung cấp khả năng phục hồi tại thời điểm tối đa năm phút cuối cùng.
+- **RDS PostgreSQL**: Cung cấp triển khai một AZ và sao lưu thủ công. Chuyển đổi dự phòng yêu cầu cấu hình và có khả năng mất dữ liệu.
 #### Cost:
 
-- **Aurora PostgreSQL**: Can be more expensive than RDS PostgreSQL, especially for low-traffic applications. However, cost savings can come from improved performance and reduced scaling needs.
-- **RDS PostgreSQL**: Generally cheaper than Aurora PostgreSQL, but costs can quickly increase as you scale or require higher performance.
+- **Aurora PostgreSQL**: Có thể đắt hơn RDS PostgreSQL, đặc biệt đối với các ứng dụng có lưu lượng truy cập thấp. Tuy nhiên, tiết kiệm chi phí có thể đến từ hiệu suất được cải thiện và giảm nhu cầu mở rộng quy mô.
+- **RDS PostgreSQL**: Thường rẻ hơn Aurora PostgreSQL nhưng chi phí có thể tăng nhanh khi bạn mở rộng quy mô hoặc yêu cầu hiệu suất cao hơn.
 #### Additional Factors:
 
-- **Features**: Aurora PostgreSQL supports some features not available in **RDS PostgreSQL**, such as Babelfish for database migration and global databases.
-- **Compatibility**: Both are compatible with PostgreSQL applications, but Aurora PostgreSQL has limitations on supported versions.
-- **Management**: Both are fully managed services, but Aurora PostgreSQL handles more tasks automatically.
+- **Features**: Aurora PostgreSQL hỗ trợ một số tính năng không có trong **RDS PostgreSQL**, chẳng hạn như Babelfish để di chuyển cơ sở dữ liệu và global databases..
+- **Compatibility**: Cả hai đều tương thích với các ứng dụng PostgreSQL, nhưng Aurora PostgreSQL có những hạn chế về các phiên bản được hỗ trợ.
+- **Management**: Cả hai đều là dịch vụ được quản lý hoàn toàn nhưng Aurora PostgreSQL tự động xử lý nhiều tác vụ hơn.
 
 
 #### Best practices

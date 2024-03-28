@@ -2,328 +2,328 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/vi/</loc>
+    <loc>//localhost:1313/vi/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/"
+                href="//localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/"
+                href="//localhost:1313/vi/"
                 />
   </url><url>
-    <loc>/vi/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/</loc>
+    <loc>//localhost:1313/vi/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/"
+                href="//localhost:1313/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/"
+                href="//localhost:1313/vi/6-databaseactivitystreaming/6-1-setupkmsfordatabaseactivitystreamsinaction/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/2-1-createvpc/</loc>
+    <loc>//localhost:1313/vi/1-introduce/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/2-1-createvpc/"
+                href="//localhost:1313/1-introduce/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/2-1-createvpc/"
+                href="//localhost:1313/vi/1-introduce/"
                 />
   </url><url>
-    <loc>/vi/1-introduce/</loc>
+    <loc>//localhost:1313/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-introduce/"
+                href="//localhost:1313/9-testfaulttolerance/9-1-setupfailovereventnotifications/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-introduce/"
+                href="//localhost:1313/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/</loc>
+    <loc>//localhost:1313/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/"
+                href="//localhost:1313/5-clustercachemanagement/5-1-setupclustercachemanagement/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/"
+                href="//localhost:1313/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/"
                 />
   </url><url>
-    <loc>/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/</loc>
+    <loc>//localhost:1313/vi/2-preparation/2-1-createvpc/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/9-testfaulttolerance/9-1-setupfailovereventnotifications/"
+                href="//localhost:1313/2-preparation/2-1-createvpc/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/9-testfaulttolerance/9-1-setupfailovereventnotifications/"
+                href="//localhost:1313/vi/2-preparation/2-1-createvpc/"
                 />
   </url><url>
-    <loc>/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/</loc>
+    <loc>//localhost:1313/vi/2-preparation/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/5-clustercachemanagement/5-1-setupclustercachemanagement/"
+                href="//localhost:1313/2-preparation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/5-clustercachemanagement/5-1-setupclustercachemanagement/"
+                href="//localhost:1313/vi/2-preparation/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/2-2-createsg/</loc>
+    <loc>//localhost:1313/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/2-2-createsg/"
+                href="//localhost:1313/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/2-2-createsg/"
+                href="//localhost:1313/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/"
                 />
   </url><url>
-    <loc>/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/</loc>
+    <loc>//localhost:1313/vi/5-clustercachemanagement/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/"
+                href="//localhost:1313/5-clustercachemanagement/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/5-clustercachemanagement/5-2-benchmarkingwithclustercachemanagement/"
+                href="//localhost:1313/vi/5-clustercachemanagement/"
                 />
   </url><url>
-    <loc>/vi/3-fastcloning/</loc>
+    <loc>//localhost:1313/vi/2-preparation/2-2-createsg/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/3-fastcloning/"
+                href="//localhost:1313/2-preparation/2-2-createsg/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/3-fastcloning/"
+                href="//localhost:1313/vi/2-preparation/2-2-createsg/"
                 />
   </url><url>
-    <loc>/vi/5-clustercachemanagement/</loc>
+    <loc>//localhost:1313/vi/9-testfaulttolerance/9-2-testamanualdbclusterfailover/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/5-clustercachemanagement/"
+                href="//localhost:1313/9-testfaulttolerance/9-2-testamanualdbclusterfailover/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/5-clustercachemanagement/"
+                href="//localhost:1313/vi/9-testfaulttolerance/9-2-testamanualdbclusterfailover/"
                 />
   </url><url>
-    <loc>/vi/9-testfaulttolerance/9-2-testamanualdbclusterfailover/</loc>
+    <loc>//localhost:1313/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/9-testfaulttolerance/9-2-testamanualdbclusterfailover/"
+                href="//localhost:1313/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/9-testfaulttolerance/9-2-testamanualdbclusterfailover/"
+                href="//localhost:1313/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/"
                 />
   </url><url>
-    <loc>/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/</loc>
+    <loc>//localhost:1313/vi/3-fastcloning/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/"
+                href="//localhost:1313/3-fastcloning/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/6-databaseactivitystreaming/6-2-dbactivitystreamsinaction/"
+                href="//localhost:1313/vi/3-fastcloning/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/2-3-createec2/</loc>
+    <loc>//localhost:1313/vi/2-preparation/2-3-createec2/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/2-3-createec2/"
+                href="//localhost:1313/2-preparation/2-3-createec2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/2-3-createec2/"
+                href="//localhost:1313/vi/2-preparation/2-3-createec2/"
                 />
   </url><url>
-    <loc>/vi/4-queryplanmanagement/</loc>
+    <loc>//localhost:1313/vi/9-testfaulttolerance/9-3-testingfaultinjectionqueries/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/4-queryplanmanagement/"
+                href="//localhost:1313/9-testfaulttolerance/9-3-testingfaultinjectionqueries/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/4-queryplanmanagement/"
+                href="//localhost:1313/vi/9-testfaulttolerance/9-3-testingfaultinjectionqueries/"
                 />
   </url><url>
-    <loc>/vi/9-testfaulttolerance/9-3-testingfaultinjectionqueries/</loc>
+    <loc>//localhost:1313/vi/6-databaseactivitystreaming/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/9-testfaulttolerance/9-3-testingfaultinjectionqueries/"
+                href="//localhost:1313/6-databaseactivitystreaming/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/9-testfaulttolerance/9-3-testingfaultinjectionqueries/"
+                href="//localhost:1313/vi/6-databaseactivitystreaming/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/2-4-createpgsg/</loc>
+    <loc>//localhost:1313/vi/4-queryplanmanagement/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/2-4-createpgsg/"
+                href="//localhost:1313/4-queryplanmanagement/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/2-4-createpgsg/"
+                href="//localhost:1313/vi/4-queryplanmanagement/"
                 />
   </url><url>
-    <loc>/vi/6-databaseactivitystreaming/</loc>
+    <loc>//localhost:1313/vi/2-preparation/2-4-createpgsg/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/6-databaseactivitystreaming/"
+                href="//localhost:1313/2-preparation/2-4-createpgsg/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/6-databaseactivitystreaming/"
+                href="//localhost:1313/vi/2-preparation/2-4-createpgsg/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/2-5-createaupg/</loc>
+    <loc>//localhost:1313/vi/2-preparation/2-5-createaupg/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/2-5-createaupg/"
+                href="//localhost:1313/2-preparation/2-5-createaupg/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/2-5-createaupg/"
+                href="//localhost:1313/vi/2-preparation/2-5-createaupg/"
                 />
   </url><url>
-    <loc>/vi/9-testfaulttolerance/</loc>
+    <loc>//localhost:1313/vi/9-testfaulttolerance/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/9-testfaulttolerance/"
+                href="//localhost:1313/9-testfaulttolerance/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/9-testfaulttolerance/"
+                href="//localhost:1313/vi/9-testfaulttolerance/"
                 />
   </url><url>
-    <loc>/vi/2-preparation/2-6-configurecloud9andinitializedatabase/</loc>
+    <loc>//localhost:1313/vi/11-cleanup/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-preparation/2-6-configurecloud9andinitializedatabase/"
+                href="//localhost:1313/11-cleanup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/"
+                href="//localhost:1313/vi/11-cleanup/"
                 />
   </url><url>
-    <loc>/vi/11-cleanup/</loc>
+    <loc>//localhost:1313/vi/2-preparation/2-6-configurecloud9andinitializedatabase/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/11-cleanup/"
+                href="//localhost:1313/2-preparation/2-6-configurecloud9andinitializedatabase/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/11-cleanup/"
+                href="//localhost:1313/vi/2-preparation/2-6-configurecloud9andinitializedatabase/"
                 />
   </url><url>
-    <loc>/vi/7-rdsperformanceinsights/</loc>
+    <loc>//localhost:1313/vi/7-rdsperformanceinsights/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/7-rdsperformanceinsights/"
+                href="//localhost:1313/7-rdsperformanceinsights/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/7-rdsperformanceinsights/"
+                href="//localhost:1313/vi/7-rdsperformanceinsights/"
                 />
   </url><url>
-    <loc>/vi/8-createdatasetandautoscale/</loc>
+    <loc>//localhost:1313/vi/8-createdatasetandautoscale/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/8-createdatasetandautoscale/"
+                href="//localhost:1313/8-createdatasetandautoscale/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/8-createdatasetandautoscale/"
+                href="//localhost:1313/vi/8-createdatasetandautoscale/"
                 />
   </url><url>
-    <loc>/vi/10-comparationrdspgandaupg/</loc>
+    <loc>//localhost:1313/vi/10-comparationrdspgandaupg/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/10-comparationrdspgandaupg/"
+                href="//localhost:1313/10-comparationrdspgandaupg/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/10-comparationrdspgandaupg/"
+                href="//localhost:1313/vi/10-comparationrdspgandaupg/"
                 />
   </url><url>
-    <loc>/vi/categories/</loc>
+    <loc>//localhost:1313/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/categories/"
+                href="//localhost:1313/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/categories/"
+                href="//localhost:1313/vi/categories/"
                 />
   </url><url>
-    <loc>/vi/tags/</loc>
+    <loc>//localhost:1313/vi/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/tags/"
+                href="//localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/tags/"
+                href="//localhost:1313/vi/tags/"
                 />
   </url>
 </urlset>

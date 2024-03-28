@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create a EC2 instance :: AWS System Manager</title>
+    <title>Tạo EC2 instance :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711418202" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711418202" rel="stylesheet">
+    <link href="/css/hybrid.css?1711418202" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711418202" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711418202" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711418202" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711418202" rel="stylesheet">
+    <link href="/css/theme.css?1711418202" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711418202" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711418202" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711418202"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711418202"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711418202"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711418202"></script>
 
     
   </div>
@@ -82,13 +82,13 @@
  
   
     
-    <li data-nav-id="/vi/1-introduce/" title="Introduction" class="dd-item 
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/1-introduce/">
-           <b> 1. </b> Introduction
+           <b> 1. </b> Giới thiệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -108,13 +108,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/" title="Các bước chuẩn bị" class="dd-item 
         parent
         
         
         ">
       <a href="/vi/2-preparation/">
-          Preparation Steps
+           <b> 2. </b> Các bước chuẩn bị
           
             <i class="fas fa-check read-icon"></i>
           
@@ -139,13 +139,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Create a VPC" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-1-createvpc/" title="Tạo VPC" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-1-createvpc/">
-           <b> 2.1. </b> Create a VPC
+           <b> 2.1. </b> Tạo VPC
           
             <i class="fas fa-check read-icon"></i>
           
@@ -167,13 +167,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Create Security Group " class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-2-createsg/" title="Tạo Security Group " class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-2-createsg/">
-           <b> 2.2. </b> Create Security Group 
+           <b> 2.2. </b> Tạo Security Group 
           
             <i class="fas fa-check read-icon"></i>
           
@@ -195,13 +195,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Create a EC2 instance" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-3-createec2/" title="Tạo EC2 instance" class="dd-item 
         
         active
         
         ">
       <a href="/vi/2-preparation/2-3-createec2/">
-           <b> 2.3. </b> Create a EC2 instance
+           <b> 2.3. </b> Tạo EC2 instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -223,13 +223,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-4-createpgsg/" title="Tạo Subnet Group và Parameter Group" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-4-createpgsg/">
-           <b> 2.4. </b> Create Subnet Group and Parameter Group
+           <b> 2.4. </b> Tạo Subnet Group và Parameter Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -279,13 +279,13 @@
  
   
     
-    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title=" Create, Configure Cloud9 and Initialize Database" class="dd-item 
+    <li data-nav-id="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/" title="Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-preparation/2-6-configurecloud9andinitializedatabase/">
-           <b> 2.6.</b>  Create, Configure Cloud9 and Initialize Database
+           <b> 2.6.</b> Tạo, cấu hình Cloud9 và khởi tạo cơ sở dữ liệu
           
             <i class="fas fa-check read-icon"></i>
           
@@ -300,32 +300,6 @@
           
         
         </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/3-fastcloning/" title="Start with PostgreSQL" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/3-fastcloning/">
-           <b> 2. </b> Start with PostgreSQL
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
               
     </li>
   
@@ -434,13 +408,13 @@
  
   
     
-    <li data-nav-id="/vi/4-queryplanmanagement/" title="Create RDS PostgreSQL Database Instance" class="dd-item 
+    <li data-nav-id="/vi/3-fastcloning/" title="Fast Cloning" class="dd-item 
         
         
         
         ">
-      <a href="/vi/4-queryplanmanagement/">
-           <b> 3. </b> Create RDS PostgreSQL Database Instance
+      <a href="/vi/3-fastcloning/">
+           <b> 3. </b> Fast Cloning
           
             <i class="fas fa-check read-icon"></i>
           
@@ -540,6 +514,32 @@
           
         
         </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-queryplanmanagement/" title="Query Plan Management" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-queryplanmanagement/">
+           <b> 4. </b> Query Plan Management
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
               
     </li>
   
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/2-preparation/2-3-createec2/">English</option>
+                      <option id="en" value="//localhost:1313/2-preparation/2-3-createec2/">English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/2-preparation/2-3-createec2/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/2-preparation/2-3-createec2/" selected>Tiếng Việt</option>
                     
                   
               
@@ -913,7 +913,7 @@
             
           
           
-            <a href='/vi/'>AWS RDS PostgreSQL</a> > <a href='/vi/2-preparation/'>Preparation Steps</a> > Create a EC2 instance
+            <a href='/vi/'>AWS RDS PostgreSQL</a> > <a href='/vi/2-preparation/'>Các bước chuẩn bị</a> > Tạo EC2 instance
           
         
           
@@ -950,7 +950,7 @@
           
             <h1>
               
-              Create a EC2 instance
+              Tạo EC2 instance
             </h1>
           
 
@@ -958,36 +958,43 @@
 
 
 
-	<h4 id="to-create-an-ec2-instance-for-an-cloud9-enviroment-follow-these-steps">To create an EC2 instance for an Cloud9 enviroment, follow these steps:</h4>
+	<h4 id="để-tạo-phiên-bản-ec2-cho-môi-trường-cloud9-hãy-làm-theo-các-bước-sau">Để tạo phiên bản EC2 cho môi trường Cloud9, hãy làm theo các bước sau:</h4>
 <ol>
-<li>Open the <strong>Amazon EC2</strong> <a href="https://console.aws.amazon.com/ec2/">console</a>.</li>
-<li>Click <strong>Launch Instance</strong>.</li>
-</ol>
-<p><img src="/images/1/8.png" alt="Create EC2 instance"></p>
-<ol start="3">
-<li>Enter name your EC2 instance. Choose an <strong>AMI</strong>. For an app server, you can choose a <strong>Linux AMI</strong>, such as <strong>Amazon Linux 2</strong>.</li>
-<li>Choose an <strong>instance type</strong>. The instance type that you choose will depend on the requirements of your app server. For example, if you are running a high-traffic website, you will need a larger instance type with more CPU and memory.</li>
-</ol>
-<p><img src="/images/1/9.png" alt="Create EC2 instance">
-<img src="/images/1/10.png" alt="Create EC2 instance">
-<img src="/images/1/11.png" alt="Create EC2 instance">
-5. For <strong>Key Pair</strong>,choose your keypair you have created or click <strong>Create new key pair</strong></p>
-<p><img src="/images/1/12.png" alt="Create EC2 instance">
-Configure the instance details. This includes things like the number of instances to launch, the network configuration, and the storage configuration.</p>
-<ol start="7">
-<li>For <strong>Network settings</strong></li>
+<li>
+<p>Truy cập giao diện <a href="https://console.aws.amazon.com/ec2/">Amazon EC2 console</a>.</p>
+</li>
+<li>
+<p>Chọn <strong>Launch Instance</strong>.
+<img alt="Create EC2 instance" src="/images/1/8.png"></p>
+</li>
+<li>
+<p>Đặt tên cho EC2. Chọn <strong>AMI</strong>. Bạn có thể chọn<strong>Linux AMI</strong>, chẳng hạn như <strong>Amazon Linux 2</strong> cho app server.</p>
+</li>
+<li>
+<p>Chọn <strong>instance type</strong>. Instance type bạn chọn sẽ tùy thuộc vào yêu cầu của app server. Ví dụ: nếu bạn đang chạy một trang web có lưu lượng truy cập cao, bạn sẽ cần loại phiên bản lớn hơn với nhiều CPU và bộ nhớ hơn.
+<img alt="Create EC2 instance" src="/images/1/9.png">
+<img alt="Create EC2 instance" src="/images/1/10.png">
+<img alt="Create EC2 instance" src="/images/1/11.png"></p>
+</li>
+<li>
+<p>Tại mục <strong>Key Pair</strong>,chọn keypair bạn đã tạo hoặc nhấp vào <strong>Create new key pair</strong> để tạo 1 keypair mới
+<img alt="Create EC2 instance" src="/images/1/12.png"></p>
+</li>
+<li>
+<p>Tại mục <strong>Network settings</strong></p>
+</li>
 </ol>
 <ul>
-<li>Choose <strong>VPC</strong> which contains EC2 app server</li>
-<li>Choose <strong>Subnet</strong></li>
+<li>Chọn <strong>VPC</strong> chứa EC2 app server</li>
+<li>Chọn <strong>Subnet</strong></li>
 <li><strong>Enable</strong> Auto-assign public IP</li>
-<li>Add a <strong>security group</strong> for EC2 app server that you have created easier step . <em>A security group is a firewall that controls incoming and outgoing traffic to your instance.</em></li>
+<li>Thêm <strong>security group</strong> cho EC2 app server.<br>
+<img alt="Create EC2 instance" src="/images/1/13.png"></li>
 </ul>
-<p><img src="/images/1/13.png" alt="Create EC2 instance"></p>
-<ol start="8">
-<li><strong>Review</strong> and <strong>launch</strong> the instance</li>
+<ol start="7">
+<li><strong>Review</strong> và <strong>launch</strong> instance</li>
 </ol>
-<p><em>Once the instance is launched, you can connect to it using an SSH client, such as MobaXterm or Putty. Once you are connected, you can install your app server and deploy your application.</em></p>
+<p><em>Sau khi khởi chạy instance, bạn có thể kết nối với instance đó bằng ứng dụng SSH client, chẳng hạn như MobaXterm hoặc PuTTY. Sau khi kết nối, bạn có thể cài đặt app server và triển khai ứng dụng của mình.</em></p>
 
 
 
@@ -1174,22 +1181,6 @@ Configure the instance details. This includes things like the number of instance
 
                     
                     
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
                         
                     
                     
@@ -1292,6 +1283,22 @@ Configure the instance details. This includes things like the number of instance
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
             
         
@@ -1435,10 +1442,10 @@ Configure the instance details. This includes things like the number of instance
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/2-preparation/2-2-createsg/" title="Create Security Group "> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/2-preparation/2-2-createsg/" title="Tạo Security Group "> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/2-preparation/2-4-createpgsg/" title="Create Subnet Group and Parameter Group" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/2-preparation/2-4-createpgsg/" title="Tạo Subnet Group và Parameter Group" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1448,19 +1455,19 @@ Configure the instance details. This includes things like the number of instance
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711418202"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711418202"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711418202"></script>
+    <script src="/js/jquery.sticky.js?1711418202"></script>
+    <script src="/js/featherlight.min.js?1711418202"></script>
+    <script src="/js/highlight.pack.js?1711418202"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711418202"></script>
+    <script src="/js/learn.js?1711418202"></script>
+    <script src="/js/hugo-learn.js?1711418202"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711418202" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711418202"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.123.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Fast Cloning :: AWS RDS PostgreSQL</title>
 
     
-    <link href="/css/nucleus.css?1703602489" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1703602489" rel="stylesheet">
-    <link href="/css/hybrid.css?1703602489" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1703602489" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1703602489" rel="stylesheet">
-    <link href="/css/auto-complete.css?1703602489" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1703602489" rel="stylesheet">
-    <link href="/css/theme.css?1703602489" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1703602489" rel="stylesheet">
+    <link href="/css/nucleus.css?1711417761" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711417761" rel="stylesheet">
+    <link href="/css/hybrid.css?1711417761" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711417761" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711417761" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711417761" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711417761" rel="stylesheet">
+    <link href="/css/theme.css?1711417761" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711417761" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1703602489" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711417761" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1703602489"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711417761"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1703602489"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1703602489"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711417761"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711417761"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1703602489"></script>
+<script type="text/javascript" src="/js/search.js?1711417761"></script>
 
     
   </div>
@@ -807,7 +807,7 @@
                   
                     
                     
-                      <option id="en" value="/3-fastcloning/" selected>English</option>
+                      <option id="en" value="//localhost:1313/3-fastcloning/" selected>English</option>
                     
                   
               
@@ -821,7 +821,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/3-fastcloning/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/3-fastcloning/">Tiếng Việt</option>
                     
                   
               
@@ -960,7 +960,7 @@
         <span>
         
     	
-    	The Fast Cloning
+    	Fast Cloning
     	
     	</span>
     </div>
@@ -1032,7 +1032,7 @@ Amazon Aurora <a href="https://aws.amazon.com/blogs/aws/amazon-aurora-fast-datab
 select * from statusflag;
 select * from cloneeventtest;
 select cloneeventproc();
-</code></pre><p><img src="/images/3.1/2.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/2.png"></p>
 <p>At this time (we call as time “T1”), the pgbench workload is running on the source DB cluster and also, we are adding sample data to the table on the primary cluster every 10 seconds.</p>
 </li>
 </ul>
@@ -1048,18 +1048,18 @@ update statusflag set delflag=&#39;Y&#39;;
 <li>
 <p>Go back to terminal #2 where we ran cloneeventproc function. Wait for ~60sec until you see the function complete its execution:</p>
 <pre tabindex="0"><code>select cloneeventproc();
-</code></pre><p><img src="/images/3.1/3.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/3.png"></p>
 </li>
 <li>
 <p>Let’s check the number of rows in the table cloneeventtest. We should see 5 or more rows in the table:</p>
 <pre tabindex="0"><code>select count(*) from cloneeventtest;
-</code></pre><p><img src="/images/3.1/4.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/4.png"></p>
 </li>
 <li>
 <p>Let&rsquo;s set proper timezone and check rows in cloneeventtest table:</p>
 <pre tabindex="0"><code>SET timezone = &#39;Asia/Ho_Chi_Minh&#39;;
 select * from cloneeventtest;
-</code></pre><p><img src="/images/3.1/5.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/5.png"></p>
 </li>
 </ul>
 <ol start="4">
@@ -1086,33 +1086,33 @@ select * from cloneeventtest;
 <p>For <strong>Cluster storage configuration</strong> select <strong>Aurora Standard</strong>.</p>
 </li>
 <li>
-<p>In <strong>Instance configuration</strong> select <strong>Memory optimized classes</strong> and <strong>db.r6g.large</strong>.</p>
-<p><img src="/images/3/10.png" alt="FC"></p>
-<p><img src="/images/3/11.png" alt="FC"></p>
-<p><img src="/images/3/12.png" alt="FC"></p>
+<p>In <strong>Instance configuration</strong> select <strong>Memory optimized classes</strong> and <strong>db.r6g.large</strong>.
+<img alt="FC" src="/images/3/10.png">
+<img alt="FC" src="/images/3/11.png">
+<img alt="FC" src="/images/3/12.png"></p>
 </li>
 <li>
 <p>In the <strong>Connectivity</strong> section, leave with default setting</p>
 </li>
 <li>
-<p>In <strong>Additional Configuration</strong>, pick the <strong>DB cluster parameter group</strong> and <strong>DB parameter groups created</strong> in DB cluster parameter group and DB parameter group drop down menus.</p>
-<p><img src="/images/3/14.png" alt="FC"></p>
+<p>In <strong>Additional Configuration</strong>, pick the <strong>DB cluster parameter group</strong> and <strong>DB parameter groups created</strong> in DB cluster parameter group and DB parameter group drop down menus.
+<img alt="FC" src="/images/3/14.png"></p>
 </li>
 <li>
 <p>Enable auto minor version upgrade.</p>
 </li>
 <li>
-<p>Leave rest of the input fields at their default value and click Create clone.</p>
-<p><img src="/images/3/15.png" alt="FC"></p>
-<p><img src="/images/3/16.png" alt="FC"></p>
+<p>Leave rest of the input fields at their default value and click Create clone.
+<img alt="FC" src="/images/3/15.png">
+<img alt="FC" src="/images/3/16.png"></p>
 </li>
 <li>
-<p>Once you click on the “Create Clone” the status column will show status as “Creating”.</p>
-<p><img src="/images/3/17.png" alt="FC"></p>
+<p>Once you click on the “Create Clone” the status column will show status as “Creating”.
+<img alt="FC" src="/images/3/17.png"></p>
 </li>
 <li>
 <p>The clone cluster should be ready after about 10-15 minutes or so. The status column will show as “Available” once the cloned cluster is ready.</p>
-<p><img src="/images/3/18.png" alt="FC"></p>
+<p><img alt="FC" src="/images/3/18.png"></p>
 </li>
 </ul>
 <ol start="5">
@@ -1126,7 +1126,7 @@ truncate cloneeventtest; # This will empty the cloneeventtest table, removing al
 update statusflag set delflag=0; 
 select count(*) from cloneeventtest;
 select cloneeventproc();
-</code></pre><p><img src="/images/3.1/6.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/6.png"></p>
 </li>
 </ul>
 <ol start="6">
@@ -1141,19 +1141,19 @@ select cloneeventproc();
 </li>
 <li>
 <p>Copy the Writer Endpoint for your cloned aurora cluster by clicking the cluster name and going to the <strong>Connectivity &amp; security</strong> tab.</p>
-<p><img src="/images/3/20.png" alt="FC"></p>
+<p><img alt="FC" src="/images/3/20.png"></p>
 </li>
 <li>
 <p>Connect to Aurora cloned cluster from session#3 window. Replace <!-- raw HTML omitted --> below with the Writer endpoint for your Cloned Aurora cluster you copied above.</p>
 <pre tabindex="0"><code>psql -h &lt;Cloned Cluster Writer Endpoint&gt;
-</code></pre><p><img src="/images/3.1/7.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/7.png"></p>
 </li>
 <li>
 <p>And run the sql commands to check the content of the data:</p>
 <pre tabindex="0"><code>select count(*) from cloneeventtest;
 SET timezone = &#39;Asia/Ho_Chi_Minh&#39;;
 select * from cloneeventtest;
-</code></pre><p><img src="/images/3.1/8.png" alt="FC"></p>
+</code></pre><p><img alt="FC" src="/images/3.1/8.png"></p>
 </li>
 <li>
 <p>Stop the function run on Primary aurora cluster that is currently running (follow step <strong>Stop the sample data generation</strong> ) and select data from cloneeventtest table. We will see more rows, as expected.</p>
@@ -1172,11 +1172,9 @@ select * from cloneeventtest;
 <li>Verify the pgbench metrics on the primary and the clone cluster.</li>
 </ol>
 <ul>
-<li>
-<p>Once the pgbench workload completes on both the primary and the clone cluster, we can verify the TPS metrics from both the clusters by looking at the output file.</p>
-<p><img src="/images/3.1/9.png" alt="FC"></p>
-<p><img src="/images/3.1/10.png" alt="FC"></p>
-</li>
+<li>Once the pgbench workload completes on both the primary and the clone cluster, we can verify the TPS metrics from both the clusters by looking at the output file.
+<img alt="FC" src="/images/3.1/9.png">
+<img alt="FC" src="/images/3.1/10.png"></li>
 </ul>
 
 
@@ -1634,19 +1632,19 @@ select * from cloneeventtest;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.min.js?1703602489"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1703602489"></script>
-    <script src="/js/jquery.sticky.js?1703602489"></script>
-    <script src="/js/featherlight.min.js?1703602489"></script>
-    <script src="/js/highlight.pack.js?1703602489"></script>
+    <script src="/js/clipboard.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711417761"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711417761"></script>
+    <script src="/js/jquery.sticky.js?1711417761"></script>
+    <script src="/js/featherlight.min.js?1711417761"></script>
+    <script src="/js/highlight.pack.js?1711417761"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1703602489"></script>
-    <script src="/js/learn.js?1703602489"></script>
-    <script src="/js/hugo-learn.js?1703602489"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711417761"></script>
+    <script src="/js/learn.js?1711417761"></script>
+    <script src="/js/hugo-learn.js?1711417761"></script>
 
-    <link href="/mermaid/mermaid.css?1703602489" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1703602489"></script>
+    <link href="/mermaid/mermaid.css?1711417761" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711417761"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

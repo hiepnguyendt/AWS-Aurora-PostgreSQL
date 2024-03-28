@@ -78,7 +78,6 @@ We are using pgbench  benchmarking option tpcb-like and using “@” to specify
   ```
   cat ccm_enable_before_failover.out
   ```
-
   ![benchmark](/images/5/5.2/3.png)
 
 #### Check cached pages on both writer and reader nodes
@@ -96,7 +95,6 @@ We are using pgbench  benchmarking option tpcb-like and using “@” to specify
   \dx pg_buffercache
 
   ```
-
   ![benchmark](/images/5/5.2/4.png)
 
 - Verify that you are connected to the Writer node and query pg_buffercache to see number of cached pages for various tables.
@@ -104,7 +102,6 @@ We are using pgbench  benchmarking option tpcb-like and using “@” to specify
   ```
   show transaction_read_only;
   ```
-
   ![benchmark](/images/5/5.2/5.png)
 
   ```
@@ -153,7 +150,6 @@ We are using pgbench  benchmarking option tpcb-like and using “@” to specify
   ``` 
   show transaction_read_only;
   ```
-
   ![benchmark](/images/5/5.2/8.png)
 
   ```
@@ -172,17 +168,13 @@ We are using pgbench  benchmarking option tpcb-like and using “@” to specify
 *Notice that, after disabling CCM the buffer page count on the reader node is much less compared to the writer node for the frequently accessed tables.*
 #### Failover Aurora cluster
 - Now, we will initiate a failover of the Aurora cluster and after the failover is complete, we’ll run the same benchmark on the new writer node. For initiating failover go to the RDS console, select the writer instance of your Aurora cluster and click **Failover** in the **Actions** menu.
-
   ![benchmark](/images/5/5.2/10.png)
 
 - Click **Failover** to confirm.
-
 ![benchmark](/images/5/5.2/11.png)
 
 - Once the failover is complete (after about ~30 seconds), verify that the previous reader node becomes the new writer.
-
 ![benchmark](/images/5/5.2/12.png)
-
 ![benchmark](/images/5/5.2/13.png)
 
 
@@ -201,7 +193,6 @@ pgbench --progress-timestamp -M prepared -n -T 600 -P 5  -c 50 -j 50 -b tpcb-lik
 cat ccm_enable_after_failover.out
 
 ```
-
 ![benchmark](/images/5/5.2/14.png)
 
 *Notice that after disabling CCM, the tps numbers on the new writer node after failover is significantly less compared to the old writer node before the failover.*
@@ -215,14 +206,11 @@ Disable CCM on the Aurora PostgreSQL cluster by modifying the cluster parameter 
 1. Open the Amazon RDS console and select [Parameters groups](https://console.aws.amazon.com/rds/home?#parameter-groups:id=) .
 
 2. In the list, choose the parameter group for your Aurora PostgreSQL DB cluster. ]
-
 ![benchmark](/images/5/5.2/14.png)
 
 3. Click on the DB cluster parameter group selected above and then click on **Edit Parameters**.
-
 ![benchmark](/images/5/5.2/15.png)
 4. Set the value of the ``apg_ccm_enabled`` cluster parameter to 0 and click on **Save changes**.
-
 ![benchmark](/images/5/5.2/16.png)
 
 5. Verify Cluster Cache Management is disabled by querying the function aurora_ccm_status() as shown below:
@@ -240,20 +228,16 @@ Since earlier testing with CCM already warmed the buffer cache of the reader and
 
 ##### To stop the cluster
 1. Verify that the cluster status is shown as “Available”, then click on the **Actions** menu and choose **Stop temporarily**.
-
 ![benchmark](/images/5/5.2/18.png)
 
 2. Confirm the action by clicking **Stop temporarily** database.
-
 ![benchmark](/images/5/5.2/19.png)
 
 *It will take several minutes and the cluster status will change from Stopping to Stopped.*
-
 ![benchmark](/images/5/5.2/20.png)
 
 ##### To start the cluster
 1. Once the cluster status changes to ”Stopped”, click on the **Actions** menu again and choose **Start**.
-
 ![benchmark](/images/5/5.2/21.png)
 
 *It will take several minutes and the cluster status will change from "Starting" to "Available".*
@@ -282,7 +266,6 @@ cat ccm_disable_before_failover.out
 psql
 \dx pg_buffercache
 ```
-
 ![benchmark](/images/5/5.2/23.png)
 
 2. Verify that you are connected to the Writer node and query **pg_buffercache** to see number of cached pages for various tables.
@@ -291,7 +274,6 @@ psql
 show transaction_read_only;
 
 ```
-
 ![benchmark](/images/5/5.2/24.png)
 
 
@@ -306,7 +288,6 @@ SELECT c.relname, count(*) AS buffers
  LIMIT 10;
 
 ```
-
 ![benchmark](/images/5/5.2/25.png)
 
 
@@ -318,7 +299,6 @@ psql -h  <Aurora Reader EndPoint>
 \dx pg_buffercache
 
 ```
-
 ![benchmark](/images/5/5.2/26.png)
 
 2. Verify that you are connected to the Reader node and query **pg_buffercache** to see number of cached pages for various tables.
@@ -327,7 +307,6 @@ psql -h  <Aurora Reader EndPoint>
 show transaction_read_only;
 
 ```
-
 ![benchmark](/images/5/5.2/27.png)
 
 
@@ -342,7 +321,6 @@ SELECT c.relname, count(*) AS buffers
  LIMIT 10;
 
 ```
-
 ![benchmark](/images/5/5.2/28.png)
 
 
@@ -373,7 +351,6 @@ After 600 seconds when benchmark is complete, you can verify the pgbench output 
 cat ccm_disable_after_failover.out
 
 ```
-
 ![benchmark](/images/5/5.2/31.png)
 
 *Notice that after disabling CCM, the tps numbers on the new writer node after failover is significantly less compared to the old writer node before the failover.*

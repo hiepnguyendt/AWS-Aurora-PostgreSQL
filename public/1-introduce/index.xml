@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Introduction on AWS RDS PostgreSQL</title>
-    <link>/1-introduce/</link>
+    <link>//localhost:1313/1-introduce/</link>
     <description>Recent content in Introduction on AWS RDS PostgreSQL</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/1-introduce/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="//localhost:1313/1-introduce/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

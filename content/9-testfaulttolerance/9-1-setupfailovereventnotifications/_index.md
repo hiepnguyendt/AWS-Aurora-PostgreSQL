@@ -17,7 +17,6 @@ To receive notifications when failover events occur with your DB cluster, you wi
 
     ```
     If successful, the command will respond back with a TopicArn identifier, you will need this value in the next command.
-
     ![failover](/images/9/9.1/1.png)
 
 2. Next, subscribe your email address to the SNS topic using the command below, changing the placeholder [YourEmail] with your email address:
@@ -31,15 +30,12 @@ To receive notifications when failover events occur with your DB cluster, you wi
     ```
 
     You should see Output similar to the following:
-
     ![failover](/images/9/9.1/2.png)
 
 3. You will receive a verification email on that address, please confirm the subscription by following the instructions in the email.
-
     ![failover](/images/9/9.1/3.png)
 
     Once you click **Confirm subscription** in the email, you'll see a browser window with a confirmation message as follows:
-
     ![failover](/images/9/9.1/4.png)
 
 4. Once confirmed, or while you are waiting for the verification email to arrive, create an RDS event subscription and register the DB cluster as an event source using the command below:
@@ -56,16 +52,16 @@ If your Aurora cluster name is different than aupg-labs-cluster, update the comm
     --event-categories '["failover"]' \
     --enabled
     ```
+![failover](/images/9/9.1/5.png)
 
-    ![failover](/images/9/9.1/5.png)
+![failover](/images/9/9.1/6.png)  
     ```
     aws rds add-source-identifier-to-subscription \
     --subscription-name auroralab-cluster-failovers \
     --source-identifier aupg-fcj-labs
 
     ```
-
-    ![failover](/images/9/9.1/6.png)
+    
 
 
 At this time the event notifications have been configured. Ensure you have verified your email address before proceeding to the next section.
